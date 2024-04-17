@@ -1,4 +1,4 @@
-import Nav from "../common/All/nav";
+import Nav from "../common/All/Nav";
 import Card from "../common/cards/organisersOption/card";
 import icons from "../constants/icons";
 
@@ -20,7 +20,7 @@ const Index = () => {
     <GlobalStyle />
     <div className="tw-relative ">
       <HeaderBack />
-      <Nav />
+      {/* <Nav /> */}
       <div class="tw-flex tw-h-screen ">
         <div class="tw-w-0 sm:tw-w-2/3">
           <div class="div-empty"></div>
@@ -44,7 +44,7 @@ const Index = () => {
       <div className="tw-h-screen tw-p-8 tw-m-16">
         <ShortCutsWrapper />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
     </>
     

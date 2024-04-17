@@ -1,28 +1,7 @@
 import styled from "styled-components";
 import searchIcon from "../../assets/icons/search_icon.png";
 import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
-// const Nav = ()=>{
-//     return(
-//         <NavStyle className="container">
-//             <div className="logo">
-//                 inna<span>MIA</span>te
-//             </div>
-//             <div className="nav-links">
-//                 <ul>
-//                     <li><a href="#">Home</a></li>
-//                     <li><a href="#">Hackathons</a></li>
-//                     <li><a href="#">Create Hackathons</a></li>
-//                     <li><a href="#">About Us</a></li>
-//                 </ul>
-//             </div>
-//             <div className="btns">
-//                 <button className="search"><img src={searchIcon} alt="search icon" /></button>
-//                 <button className="login">Log In</button>
-//                 <button className="signUp">Sign Up</button>
-//             </div>
-//         </NavStyle>
-//     )
-// }
+
 
 const Nav = () => {
   return (
@@ -83,7 +62,6 @@ const Nav = () => {
 };
 
 const NavStyle = styled.div`
-
   .logo {
     font-weight: 600;
     font-size: 19px;

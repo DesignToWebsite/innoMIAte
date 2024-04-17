@@ -1,22 +1,28 @@
 import { useState } from 'react'
-import Nav from './common/All/nav'
 import Footer from './common/All/Footer'
-import Header_Home from './Participants/Components/Header_Home'
-import Search from './Participants/Components/Search'
-import Card_small from './common/cards/shorcuts/Card'
+import Nav from './common/All/Nav'
+import Home_page from './Participants/Pages/Home_page'
 import GlobalStyle from './style/GlobalStyle'
+import { Route, Routes, useLocation } from 'react-router'
+import Index from './Creator'
+
 
 function App() {
- 
+ const location = useLocation();
 
   return (
     <>
-    <GlobalStyle/>
+      <GlobalStyle />
+      <>
       <Nav />
-      <Header_Home/>
-      <Search />
-      <Card_small/>
+
+      <Routes location={location} key={location.pathname}>
+        <Route path='/' element={<Home_page/>} />
+        <Route path='/homeOrg' element={<Index/>} />
+      </Routes>
+
       <Footer />
+      </>
     </>
   )
 }
