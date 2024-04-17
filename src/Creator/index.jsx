@@ -1,11 +1,12 @@
-import Nav from "../component/nav";
+import Nav from "../common/All/nav";
 import Card from "../common/cards/organisersOption/card";
 import icons from "../constants/icons";
 
 import HeaderBack from "./HeaderBack";
 import GuidesWrapper from "./GuidesWrapper";
 import ShortCutsWrapper from "./ShortCutsWrapper";
-import Footer from "../component/Footer";
+import Footer from "../common/All/Footer";
+import GlobalStyle from "../style/GlobalStyle";
 
 const Index = () => {
   const creatorCardText =
@@ -15,6 +16,8 @@ const Index = () => {
   const creatorButtonText = "Creator";
   const expertButtonText = "Expert";
   return (
+    <>
+    <GlobalStyle />
     <div className="tw-relative ">
       <HeaderBack />
       <Nav />
@@ -43,6 +46,8 @@ const Index = () => {
       </div>
       <Footer />
     </div>
+    </>
+    
   );
 };
 export default Index;

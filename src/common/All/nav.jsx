@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import searchIcon from "../icons/search_icon.png";
-import { RED_COLOR, GREEN_COLOR } from "../style/Colors";
+import searchIcon from "../../assets/icons/search_icon.png";
+import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
 // const Nav = ()=>{
 //     return(
 //         <NavStyle className="container">

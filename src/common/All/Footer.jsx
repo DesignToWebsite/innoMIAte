@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-import { RED_COLOR, GREEN_COLOR } from "../style/Colors";
-import Twitter from "../icons/Twitter.png";
-import Facebook from "../icons/Facebook.png";
-import Linkedln from "../icons/Linkedln.png";
-import Discord from "../icons/Discord.png";
+import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
+import Twitter from "../../assets/icons/Twitter.png";
+import Facebook from "../../assets/icons/Facebook.png";
+import Linkedln from "../../assets/icons/Linkedln.png";
+import Discord from "../../assets/icons/Discord.png";
 
 const Footer = () => {
   return (
@@ -73,26 +73,26 @@ const Footer = () => {
               <p>Connect</p>
             </div>
             <ul>
-              <li>
+              <li className="social-media">
                 <a href="#">
                   <img src={Twitter} alt="twitter" />
                   Twitter
                 </a>
               </li>
-              <li>
+              <li className="social-media">
                 <a href="#">
                   <img src={Discord} alt="Discord" />
                   Discord
                 </a>
               </li>
 
-              <li>
+              <li className="social-media">
                 <a href="#">
                   <img src={Facebook} alt="Facebook" />
                   Facebook
                 </a>
               </li>
-              <li>
+              <li className="social-media">
                 <a href="#">
                   <img src={Linkedln} alt="Linkedlin" />
                   Linkedlin
@@ -140,6 +140,12 @@ bottom: 0; */
       ul {
         padding: 0;
         li {
+          &.social-media{
+            a{
+              display: grid;
+              grid-template-columns: 1fr 2fr;
+            }
+          }
           a {
             color: white;
             img {
