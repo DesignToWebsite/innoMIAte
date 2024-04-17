@@ -5,6 +5,7 @@ import Home_page from './Participants/Pages/Home_page'
 import GlobalStyle from './style/GlobalStyle'
 import { Route, Routes, useLocation } from 'react-router'
 import Index from './Creator'
+import Competition_page from './Participants/Pages/Competition_page'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Home_page/>} />
         <Route path='/homeOrg' element={<Index/>} />
+        <Route path="/competition" element={<Competition_page />} />
       </Routes>
 
       <Footer />
