@@ -1,13 +1,82 @@
 {
-    "competition" : {
-        "img" : "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg",
-        "title" : "Competition Name",
-        "date" : "Jan 09 - Mar 12, 2024",
-        "participants" : 3561,
-        "place" : "Oujda",
-        "smallDescription" : "Build a full stack app",
-        "whoCanPaticipate" : ["Ages 18+ only", "All countries"],
-        "about" : "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
-        "whatYouGet" : ""
-    }
+  "competition": {
+    "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg",
+    "title": "Competition Name",
+    "date": "Jan 09 - Mar 12, 2024",
+    "participants": 3561,
+    "place": "Oujda",
+    "smallDescription": "Build a full stack app",
+    "whoCanPaticipate": ["Ages 18+ only", "All countries"],
+    "about": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
+    "whatYouGet": "",
+    "deadLine": "2024-04-20T12:00:00 ",
+    "public": "Public",
+    "prizes": ["$20000", "$5000"],
+    "theme": "Development web",
+    "tags": ["Database", "Web", "AI"],
+    "AboutCompetition": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
+    "WhatYouGet": "Lorem ipsum dolor sit amet consectetur",
+    "GettingStarted": "Lorem ipsum dolor sit [Link Text](URL) amet consectetur",
+    "prizesAll": [
+      {
+        "price": "2000$",
+        "others": ["6 month pro", "Badge"],
+        "title": "Best Overall app"
+      },
+      {
+        "price": "2000$",
+        "others": ["6 month pro", "Badge"],
+        "title": "Best Overall app"
+      },
+      {
+        "price": "2000$",
+        "others": ["6 month pro", "Badge"],
+        "title": "Best Overall app"
+      },
+      {
+        "price": "2000$",
+        "others": ["6 month pro", "Badge"],
+        "title": "Best Overall app"
+      }
+    ],
+    "judges" : [
+        {
+            "name": "Judge Name",
+            "job" : "Co*Founder/ CEo at ...",
+            "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+            "name": "Judge Name",
+            "job" : "Co*Founder/ CEo at ...",
+            "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+            "name": "Judge Name",
+            "job" : "Co*Founder/ CEo at ...",
+            "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        }
+    ],
+    "coachs" : [
+      {
+          "name": "Judge Name",
+          "job" : "Co*Founder/ CEo at ...",
+          "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+      },
+      {
+          "name": "Judge Name",
+          "job" : "Co*Founder/ CEo at ...",
+          "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+      },
+      {
+          "name": "Judge Name",
+          "job" : "Co*Founder/ CEo at ...",
+          "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+      }
+  ],
+  "sponsor" : [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
+  ]
+  }
 }

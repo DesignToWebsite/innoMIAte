@@ -114,7 +114,7 @@ const FooterStyle = styled.div`
 bottom: 0; */
   /* width: 100%; */
 
-  background: linear-gradient(to right, #00a651, #ff0101);
+  background: linear-gradient(to right, ${GREEN_COLOR} 20%, ${RED_COLOR});
   color: white;
 
   .footerItems {

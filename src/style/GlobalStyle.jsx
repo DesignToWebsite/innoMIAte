@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body{
         overflow-x: hidden;
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Arial';
         /* background-color: #6a6969; */
         color: black;
     }
