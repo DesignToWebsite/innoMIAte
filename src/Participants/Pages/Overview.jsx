@@ -3,10 +3,10 @@ import dataJson from "../../data/data.json";
 import CardCompetitionInfo from "../Components/CardCompetitionInfo";
 import CompInfoOverview from "../Components/CompInfoOverview";
 import DescriptionComp from "../Components/DescriptionComp";
+import { useEffect, useState } from "react";
 
 const Overview = () => {
   const data = dataJson.competition;
-  const Deadline = new Date();
   return (
     <OverviewStyle>
       <div className="header">

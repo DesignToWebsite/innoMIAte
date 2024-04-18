@@ -30,9 +30,9 @@ const DescriptionComp = () => {
 
         <h3>Les Prix</h3>
         <div className="prices">
-          {data.prizesAll.map((price) => {
+          {data.prizesAll.map((price, key) => {
             return (
-              <div className="priceItem">
+              <div key={key} className="priceItem">
                 <div className="title">
                   <img src={star} alt="" />
                   {price.title}
@@ -40,8 +40,8 @@ const DescriptionComp = () => {
 
                 <ul>
                   <li> {price.price} </li>
-                  {price.others.map((other) => {
-                    return <li>{other}</li>;
+                  {price.others.map((other, index) => {
+                    return <li key={index}>{other}</li>;
                   })}
                 </ul>
               </div>
@@ -52,9 +52,9 @@ const DescriptionComp = () => {
         <h2>Les Entraîneurs</h2>
 
         <div className="coachs">
-          {data.coachs.map((coach) => {
+          {data.coachs.map((coach, index) => {
             return (
-              <div className="item">
+              <div key={index} className="item">
                 <div className="image">
                   <img src={coach.img} alt="" />
                 </div>
@@ -69,9 +69,9 @@ const DescriptionComp = () => {
 
         <h3>Les Juges</h3>
         <div className="judges">
-          {data.judges.map((judge) => {
+          {data.judges.map((judge, index) => {
             return (
-              <div className="item">
+              <div key={index} className="item">
                 <div className="image">
                   <img src={judge.img} alt="" />
                 </div>
@@ -90,8 +90,8 @@ const DescriptionComp = () => {
           <a href="#"> Email the hackathon manager</a>
         </div>
         <div className="sponsors">
-          {data.sponsor.map((item) => {
-            return <img src={item} />;
+          {data.sponsor.map((item, index) => {
+            return <img key={index} src={item} />;
           })}
         </div>
       </div>

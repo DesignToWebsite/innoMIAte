@@ -4,19 +4,23 @@ import dataJson from "../../data/data.json";
 import RegisterCompetition from "../Components/RegisterCompetition";
 import { BtnCreateProject, CreateProject } from "./CreateProject";
 import Project_competition from "../Components/Project_competition";
+import { useEffect, useState } from "react";
 
 const MyProject_competition = () => {
   const data = dataJson.competition;
-  const isLogged = true;
-  const noProject = false;
-
+  const isLogged = localStorage.getItem("user");
+  const [noProject, setNoProject] = useState(localStorage.getItem('projectExist'));
+  // useEffect(()=>{
+  //   
+  // },[])
+  console.log(noProject)
   return (
     <Projects>
       <div className="row">
         <div className="col-12 col-md-7 col-sm-6 col-lg-8">
           {!isLogged && <RegisterCompetition />}
-          {isLogged && noProject && <CreateProject />}
-          {isLogged && !noProject && <Project_competition />}
+          {isLogged && !noProject && <CreateProject noProject={noProject} setNoProject={setNoProject} />}
+          {isLogged && noProject && <Project_competition />}
         </div>
         <div className="col-12 col-md-5 col-sm-6 col-lg-4">
           {isLogged && noProject  && <BtnCreateProject />}

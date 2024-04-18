@@ -1,8 +1,15 @@
 import styled from "styled-components"
 
+import { useNavigate } from "react-router";
 
 
 const CompInfoOverview = ({data})=>{
+  const navigate = useNavigate()
+
+  const addProject = async(e)=>{
+    localStorage.setItem("projectExist", true)
+    navigate('/competition/myProject/createProject')
+  }
     return(
         <Info>
              <div className="info">
@@ -18,7 +25,7 @@ const CompInfoOverview = ({data})=>{
               </div>
               <a  href="#">Voir le règlement complet</a>
             </div>
-            <button className="btn btn-red">Rejoignez le hackathon</button>
+            <button onClick={addProject} className="btn btn-red">Rejoignez le hackathon</button>
           </div>
         </Info>
     )

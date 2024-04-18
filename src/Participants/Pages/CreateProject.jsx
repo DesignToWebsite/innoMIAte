@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const CreateProject = () => {
+  const navigate = useNavigate()
+  const rejoindre = async(e)=>{
+    if(localStorage.getItem("user")){
+      localStorage.setItem("projectExist", true)
+      navigate("/myProject")
+    }
+  }
   return (
     <Create>
       <h2>Mon projet de hackathon</h2>
@@ -9,7 +17,7 @@ const CreateProject = () => {
           Démarrez un projet pour commencer votre soumission et inviter des
           coéquipiers
         </p>
-        <button className="btn btn-red">Rejoignez le hackathon</button>
+        <button onClick={rejoindre}  className="btn btn-red">Rejoignez le hackathon</button>
       </div>
     </Create>
   );
