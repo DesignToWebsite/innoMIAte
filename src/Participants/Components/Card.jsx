@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const Card = ()=>{
     return(
-        <Link to="competition">
+        <Link to="/competition/overview">
         <CardStyle>
             competition
         </CardStyle>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import searchIcon from "../../assets/icons/search_icon.png";
 import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
+import { Link } from "react-router-dom";
 
 
 const Nav = () => {
@@ -8,11 +9,11 @@ const Nav = () => {
     <NavStyle>
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="#">
+          <Link to="/" class="navbar-brand" href="#">
             <div className="logo">
               inno<span>MIA</span>te
             </div>
-          </a>
+          </Link>
           <button
             class="navbar-toggler"
             type="button"
@@ -27,9 +28,9 @@ const Nav = () => {
           <div class="collapse navbar-collapse m-auto " id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+                <Link to="/" class="nav-link active" aria-current="page" href="#">
                   Home
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">

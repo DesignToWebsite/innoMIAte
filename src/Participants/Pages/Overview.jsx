@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import dataJson from "../../data/data.json";
-import CardCompetitionInfo from "./CardCompetitionInfo";
-import CompInfoOverview from "./CompInfoOverview";
-import DescriptionComp from "./DescriptionComp";
+import CardCompetitionInfo from "../Components/CardCompetitionInfo";
+import CompInfoOverview from "../Components/CompInfoOverview";
+import DescriptionComp from "../Components/DescriptionComp";
 
 const Overview = () => {
   const data = dataJson.competition;

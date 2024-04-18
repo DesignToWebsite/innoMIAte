@@ -20,7 +20,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Home_page/>} />
         <Route path='/homeOrg' element={<Index/>} />
-        <Route path="/competition" element={<Competition_page />} />
+        <Route path="/competition/*" element={<Competition_page />} />
       </Routes>
 
       <Footer />

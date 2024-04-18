@@ -8,18 +8,19 @@ import Picture from "../../assets/dashboard_competition/Picture.png"
 import Ressources from "../../assets/dashboard_competition/Ressources.png"
 import Task from "../../assets/dashboard_competition/Task.png"
 import { GREEN_COLOR } from "../../style/Colors";
+import { Link } from "react-router-dom";
 
 const Dashboard_competition = () => {
   return (
     <Dashboard>
     <nav class="nav flex-column">
-      <a class="nav-link active" aria-current="page" href="#">
+      <Link to="/competition/overview" class="nav-link active" aria-current="page" >
          <img src={Overview} alt="" /> <span>Aperçu</span>
-      </a>
-      <a class="nav-link" href="#">
+      </Link>
+      <Link to="/competition/myProject" class="nav-link" >
         <img src={Task} alt="" />
-        <span>Mes projets</span>
-      </a>
+        <span>Mon projet</span>
+      </Link>
       <a class="nav-link" href="#">
         <img src={Participants} alt="" />
         <span>Participants (220)</span>

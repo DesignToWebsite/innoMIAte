@@ -39,44 +39,64 @@
         "title": "Best Overall app"
       }
     ],
-    "judges" : [
-        {
-            "name": "Judge Name",
-            "job" : "Co*Founder/ CEo at ...",
-            "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-        },
-        {
-            "name": "Judge Name",
-            "job" : "Co*Founder/ CEo at ...",
-            "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-        },
-        {
-            "name": "Judge Name",
-            "job" : "Co*Founder/ CEo at ...",
-            "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-        }
-    ],
-    "coachs" : [
+    "judges": [
       {
-          "name": "Judge Name",
-          "job" : "Co*Founder/ CEo at ...",
-          "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        "name": "Judge Name",
+        "job": "Co*Founder/ CEo at ...",
+        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
       },
       {
-          "name": "Judge Name",
-          "job" : "Co*Founder/ CEo at ...",
-          "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        "name": "Judge Name",
+        "job": "Co*Founder/ CEo at ...",
+        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
       },
       {
-          "name": "Judge Name",
-          "job" : "Co*Founder/ CEo at ...",
-          "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        "name": "Judge Name",
+        "job": "Co*Founder/ CEo at ...",
+        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
       }
-  ],
-  "sponsor" : [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
-  ]
+    ],
+    "coachs": [
+      {
+        "name": "Judge Name",
+        "job": "Co*Founder/ CEo at ...",
+        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+      },
+      {
+        "name": "Judge Name",
+        "job": "Co*Founder/ CEo at ...",
+        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+      },
+      {
+        "name": "Judge Name",
+        "job": "Co*Founder/ CEo at ...",
+        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+      }
+    ],
+    "sponsor": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
+    ]
+  },
+  "user": {
+    "name": "zineb",
+    "email": "zineb@gmail.com",
+    "competition": [
+      {
+        "competitionId": 1,
+        "project": {
+          "name": "Project Name",
+          "description": "Lorem ipsum dolor t. A, pariatur! Lorem ipsumet consectetur adipisicing elit. Quam, quas.",
+          "team" : [
+            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
+            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg", 
+            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"],
+          
+
+          "img" : "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg"
+        }
+      }
+    ]
   }
 }

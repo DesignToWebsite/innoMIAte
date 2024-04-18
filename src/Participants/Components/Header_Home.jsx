@@ -12,22 +12,22 @@ const Header_Home = () => {
       
       <div className="container">
         <div className="row">
-          <div className="col-12 col-lg-6 col-md-6">
+          <div className="col-12 col-lg-6 col-md-6 my-5 my-md-1 order-2 order-md-1">
             <div className="description">
-              <h1>Welcome to InnoMIATé:</h1>
-              <p>Your Ultimate Destination for Hackathons and Cometitions</p>
+              <h1>Bienvenue chez InnoMIATé :</h1>
+              <p>Votre destination ultime pour les hackathons et les compétitions</p>
               <div className="row">
-                <div className="col-12 col-md-6 col-lg-6">
+                <div className="col-12 col-md-12 col-lg-6">
                   <button className="btn btn-green">
-                    <p>For organizers</p>
+                    <p>Pour les organisateurs</p>
                     <p className="icon">
                       <img src={arrow} alt="go to the organizers page" />
                     </p>
                   </button>
                 </div>
-                <div className="col-12 col-md-6 col-lg-6">
+                <div className="col-12 col-md-12 col-lg-6">
                 <button className="btn btn-red">
-                  <p>For participants</p>
+                  <p>Pour les participants</p>
                   <p className="icon">
                     <img src={arrow} alt="go to the participants page" />
                   </p>
@@ -36,7 +36,7 @@ const Header_Home = () => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-lg-6 col-md-6">
+          <div className="col-12 col-lg-6 col-md-6 order-1 order-md-2">
             <div className="image">
               <img src={mia_header} alt="MIA" />
             </div>
@@ -76,6 +76,7 @@ const Header = styled.div`
       align-items: center;
       /* padding: 0; */
       width: 100%;
+      margin-bottom: 15px;
       p{
         padding: 0;
         margin: 0;

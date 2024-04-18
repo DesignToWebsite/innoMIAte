@@ -26,7 +26,7 @@ const CompInfoOverview = ({data})=>{
 
 const Info = styled.div`
     .info {
-    /* padding: 2em 1em; */
+    padding: 0em 2em;
     h3 {
       font-size: 1.4em;
     }

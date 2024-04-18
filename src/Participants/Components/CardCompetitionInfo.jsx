@@ -74,8 +74,8 @@ const CardCompetitionInfo = ({ data }) => {
           </div>
           <div className="tags">
             <img src={tags} alt="" />
-            {data.tags.map((tag) => {
-              return <p className="tag">{tag} </p>;
+            {data.tags.map((tag, index) => {
+              return <p key={index} className="tag">{tag} </p>;
             })}
           </div>
         </div>
@@ -89,6 +89,7 @@ const Card = styled.div`
   background-color: white;
   max-width: 300px;
   padding: 1em 0.5em;
+  border-radius: 10px;
   img {
     margin-right: 10px;
   }

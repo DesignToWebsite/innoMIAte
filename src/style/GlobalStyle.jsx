@@ -36,6 +36,9 @@ const GlobalStyle = createGlobalStyle`
         border-radius: 0;
         padding: 10px 30px;
         color: white;
+        &:hover{
+            color: white;
+        }
         /* font-size: 20px; */
         &.btn-red{
             background: ${RED_COLOR};
