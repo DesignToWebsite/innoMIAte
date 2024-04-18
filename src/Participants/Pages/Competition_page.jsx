@@ -7,11 +7,6 @@ import { Routes, Route, useLocation } from "react-router";
 import MyProject_competition from "./MyProject_competition";
 import { useEffect, useState } from "react";
 import Participants_comp from "../Components/Participants_comp";
-import Ressources from "../Components/Ressources";
-import Rules from "../Components/Rules";
-import Discussions from "../Components/discussions";
-import Project_competition from "../Components/Project_competition";
-import ProjectGallery from "../Components/ProjectGallery";
 const Competition_page = () => {
   const location = useLocation();
   
@@ -27,10 +22,10 @@ const Competition_page = () => {
             element={<MyProject_competition  />}
           />
           <Route path="/participants" element={<Participants_comp/>} />
-          <Route path="/ressources" element={<Ressources />}/>
+          {/* <Route path="/ressources" element={<Ressources />}/>
           <Route path="/rules" element={<Rules />} />
           <Route path="/projectGallery" element={<ProjectGallery />} />
-          <Route path="/discussions" element={<Discussions /> } />
+          <Route path="/discussions" element={<Discussions /> } /> */}
         </Routes>
       </div>
     </CompetitionStyle>
