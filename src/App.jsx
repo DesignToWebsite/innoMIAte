@@ -8,6 +8,7 @@ import Index from './Creator'
 import Competition_page from './Participants/Pages/Competition_page'
 import SignIn from './common/login/SignIn'
 import LogIn from './common/login/Login'
+import Profile1 from './Participants/Pages/Profile/Profile1'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/competition/*" element={<Competition_page />} />
         <Route path="/signUp" element={<SignIn/>} />
         <Route path="/logIn" element={<LogIn/>} />
+        <Route path='/profile' element={<Profile1/>} />
       </Routes>
 
       <Footer />

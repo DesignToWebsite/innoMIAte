@@ -77,6 +77,64 @@
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
+    ],
+    "ressources": [
+      {
+        "title": "Ressource 1",
+        "description": "Description de la ressource 1",
+        "url": "https://exemple.com/ressource1"
+      },
+      {
+        "title": "Ressource 2",
+        "description": "Description de la ressource 2",
+        "url": "https://exemple.com/ressource2"
+      },
+      {
+        "title": "Ressource 3",
+        "description": "Description de la ressource 3",
+        "url": "https://exemple.com/ressource3"
+      }
+    ],
+    "rules": [
+      {
+        "title": "Rule 1",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "title": "Rule 2",
+        "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        "title": "Rule 3",
+        "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      }
+    ],
+    "galleryPublished": true,
+    "videos": [
+      {
+        "title": "Video 1",
+        "url": "https://www.youtube.com/watch?v=bgkWW6-JF-8",
+        "duration": "3:00",
+        "size": "25MB"
+      },
+      {
+        "title": "Video 2",
+        "url": "https://www.youtube.com/watch?v=bgkWW6-JF-8",
+        "duration": "3:00",
+        "size": "25MB"
+      }
+    ],
+    "photos": [
+      {
+        "title": "Photo 1",
+        "url": "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&h=350",
+        "size": "25MB"
+      },
+      {
+        "title": "Photo 2",
+        "url": "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&h=350",
+        "size": "25MB"
+      }
     ]
   },
   "user": {
