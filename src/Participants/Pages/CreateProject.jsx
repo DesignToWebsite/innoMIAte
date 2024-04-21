@@ -6,7 +6,7 @@ const CreateProject = () => {
   const rejoindre = async(e)=>{
     if(localStorage.getItem("user")){
       localStorage.setItem("projectExist", true)
-      navigate("/myProject")
+      navigate("/createProject")
     }
   }
   return (

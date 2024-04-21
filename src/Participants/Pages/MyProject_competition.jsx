@@ -9,21 +9,21 @@ import { useEffect, useState } from "react";
 const MyProject_competition = () => {
   const data = dataJson.competition;
   const isLogged = localStorage.getItem("user");
-  const [noProject, setNoProject] = useState(localStorage.getItem('projectExist'));
+  const [projectExist, setProjectExist] = useState(localStorage.getItem('projectExist'));
   // useEffect(()=>{
   //   
   // },[])
-  console.log(noProject)
+  console.log(projectExist)
   return (
     <Projects>
       <div className="row">
         <div className="col-12 col-md-7 col-sm-6 col-lg-8">
           {!isLogged && <RegisterCompetition />}
-          {isLogged && !noProject && <CreateProject noProject={noProject} setNoProject={setNoProject} />}
-          {isLogged && noProject && <Project_competition />}
+          {isLogged && !projectExist && <CreateProject projectExist={projectExist} setProjectExist={setProjectExist} />}
+          {isLogged && projectExist && <Project_competition />}
         </div>
         <div className="col-12 col-md-5 col-sm-6 col-lg-4">
-          {isLogged && noProject  && <BtnCreateProject />}
+          {isLogged && projectExist  && <BtnCreateProject />}
           <CardCompetitionInfo data={data} />
           <p>
 

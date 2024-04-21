@@ -154,7 +154,8 @@ const Description = styled.div`
     padding-right: 20px;
     padding-bottom: 25px;
     img {
-      width: 70px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
     }
     h4 {

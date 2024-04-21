@@ -113,13 +113,13 @@
     "videos": [
       {
         "title": "Video 1",
-        "url": "https://www.youtube.com/watch?v=bgkWW6-JF-8",
+        "url": "https://www.youtube.com/embed/bgkWW6-JF-8?si=HFk0bkSxYzKVKEzr",
         "duration": "3:00",
         "size": "25MB"
       },
       {
         "title": "Video 2",
-        "url": "https://www.youtube.com/watch?v=bgkWW6-JF-8",
+        "url": "https://www.youtube.com/embed/bgkWW6-JF-8?si=HFk0bkSxYzKVKEzr",
         "duration": "3:00",
         "size": "25MB"
       }
@@ -138,23 +138,100 @@
     ]
   },
   "user": {
-    "name": "zineb",
+    "name": "zineb Essoussi",
+    "userName" : "zineb-essoussi",
+    "bio" : "I'm an IT student",
+    "skills" : ["CSS", "HTML", "REACT", "SASS"],
+    "interests" : ["Communication", "e-commerce", "Education", "Mobile", "web"],
     "email": "zineb@gmail.com",
+    "location" : "Morocco",
+    "website" : "https://zinebessoussi.netlify.app/",
+    "github" : "https://github.com/DesignToWebsite", 
+    "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
     "competition": [
       {
         "competitionId": 1,
         "project": {
           "name": "Project Name",
           "description": "Lorem ipsum dolor t. A, pariatur! Lorem ipsumet consectetur adipisicing elit. Quam, quas.",
-          "team" : [
+          "team": [
             "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
-            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg", 
-            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"],
-          
+            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
+            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+          ],
 
-          "img" : "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg"
+          "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg"
+        }
+      },
+      {
+        "competitionId": 2,
+        "project": {
+          "name": "Project Name",
+          "description": "Lorem ipsum dolor t. A, pariatur! Lorem ipsumet consectetur adipisicing elit. Quam, quas.",
+          "team": [
+            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
+            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
+            "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+          ],
+
+          "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg"
         }
       }
-    ]
-  }
+    ],
+    "followers" : [],
+    "following" : [],
+    "likes" : [],
+    "presonalProjects" :[]
+  },
+  "projectSteps": [
+    {
+      "idStep": 1,
+      "Title": "Project details",
+      "Info": "Information entered below will appear on your public project page.",
+      "toComplete": [
+        {
+          "type": "textarea",
+          "label": "About the project",
+          "description": "Be sure to write what inspired you, what you learned, how you built your project, and the challenges you faced. Format yourstory in Markdown.",
+          "placeholder": " ## Inspiration",
+          "required": true,
+          "value": "",
+          "mulipleValues": false
+        },
+        {
+          "type": "input",
+          "label": "Built with",
+          "description": "What languages, frameworks, platforms, cloud services, databases, APIs, or other technologies did you use?",
+          "placeholder": "Languages, frameworks, platforms, cloud services, databases, APIs, etc.",
+          "required": true,
+          "value": "",
+          "mulipleValues": false
+        },
+        {
+          "type": "input",
+          "label": "Links",
+          "description": "Add links where people can try your project or see your code.",
+          "required": false,
+          "value": [],
+          "mulipleValues": true
+        },
+        {
+          "type": "image",
+          "label": "Image gallery",
+          "description": "JPG, PNG or GIF format, 5 MB max file size. For best results, use a 3:2 ratio.",
+          "required": false,
+          "value": [],
+          "mulipleValues": true
+        },
+        {
+          "type": "input",
+          "label": " Video demo link",
+          "description": "This video will be embedded at the top of your project page. Read more about uploading videos.",
+          "required": true,
+          "value": "",
+          "mulipleValues": false
+        }
+      ]
+    }
+  ]
 }

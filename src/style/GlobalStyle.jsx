@@ -47,6 +47,9 @@ const GlobalStyle = createGlobalStyle`
         &.btn-green{
             background:${GREEN_COLOR};
         }
+        &.btn-gray{
+            background: #475D65;
+        }
     }
     
 `;

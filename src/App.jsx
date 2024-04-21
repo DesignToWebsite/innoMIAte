@@ -26,7 +26,7 @@ function App() {
         <Route path="/competition/*" element={<Competition_page />} />
         <Route path="/signUp" element={<SignIn/>} />
         <Route path="/logIn" element={<LogIn/>} />
-        <Route path='/profile' element={<Profile1/>} />
+        <Route path='/profile/*' element={<Profile1/>} />
       </Routes>
 
       <Footer />

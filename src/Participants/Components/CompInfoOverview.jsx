@@ -8,7 +8,7 @@ const CompInfoOverview = ({data})=>{
 
   const addProject = async(e)=>{
     localStorage.setItem("projectExist", true)
-    navigate('/competition/myProject/createProject')
+    navigate('/competition/createProject')
   }
     return(
         <Info>

@@ -11,6 +11,7 @@ import Ressources from "./Ressources"
 import Rules from "./Rules";
 import ProjectGallery from "./ProjectGallery";
 import Discussions from "./Discussions";
+import CreateProject_step from "../Components/CreateProject_step";
 const Competition_page = () => {
   const location = useLocation();
   
@@ -30,6 +31,7 @@ const Competition_page = () => {
           <Route path="/rules" element={<Rules />} />
           <Route path="/projectGallery" element={<ProjectGallery />} />
           <Route path="/discussions" element={<Discussions /> } />
+          <Route path="/createProject" element={<CreateProject_step />} />
         </Routes>
       </div>
     </CompetitionStyle>

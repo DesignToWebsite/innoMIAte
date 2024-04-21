@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import data from '../../data/data.json'; // Importer les données depuis data.json
+import YouTube from 'react-youtube'; // Import the react-youtube library
+import data from '../../data/data.json'; // Import the data from data.json
 
 const ProjectGallery = () => {
   const [videos, setVideos] = useState([]);
@@ -8,7 +9,7 @@ const ProjectGallery = () => {
   const [isPublished, setIsPublished] = useState(false);
 
   useEffect(() => {
-    // Extraire les vidéos et les photos à partir de data.json
+    // Extract videos and photos from data.json
     const { videos, photos, galleryPublished } = data.competition;
     setVideos(videos);
     setPhotos(photos);
@@ -23,20 +24,23 @@ const ProjectGallery = () => {
         <>
           <VideosContainer>
             {videos.map((video, index) => (
-              <Video key={index} src={video.url} controls />
+          <iframe width="560" height="315" key={index} src={video.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
             ))}
           </VideosContainer>
-
           <PhotosContainer>
             {photos.map((photo, index) => (
               <Photo key={index} src={photo.url} alt={photo.title} />
             ))}
           </PhotosContainer>
+          <div>
+
+          </div>
         </>
       )}
     </GalleryContainer>
   );
-}
+};
 
 const GalleryContainer = styled.div`
   padding: 20px;
@@ -55,10 +59,6 @@ const VideosContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-`;
-
-const Video = styled.video`
-  max-width: 100%;
 `;
 
 const PhotosContainer = styled.div`

@@ -1,10 +1,21 @@
 import styled from "styled-components";
 import searchIcon from "../../assets/icons/search_icon.png";
 import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
-import { Link } from "react-router-dom";
-
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Nav = () => {
+  const navigate = useNavigate()
+  const [isLogged, setIsLogged] = useState(false);
+  useEffect(() => {
+    setIsLogged(localStorage.getItem("user"));
+  }, [navigate]);
+  const logout = async (e)=>{
+    e.preventDefault()
+    localStorage.clear()
+    // alert("Log out successfully")
+    navigate("/login")
+  }
   return (
     <NavStyle>
       <nav class="navbar navbar-expand-lg">
@@ -25,10 +36,18 @@ const Nav = () => {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse m-auto " id="navbarSupportedContent">
+          <div
+            class="collapse navbar-collapse m-auto "
+            id="navbarSupportedContent"
+          >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <Link to="/" class="nav-link active" aria-current="page" href="#">
+                <Link
+                  to="/"
+                  class="nav-link active"
+                  aria-current="page"
+                  href="#"
+                >
                   Home
                 </Link>
               </li>
@@ -52,8 +71,20 @@ const Nav = () => {
               <button className="search">
                 <img src={searchIcon} alt="search icon" />
               </button>
-              <button className="login">Log In</button>
-              <button className="signUp">Sign Up</button>
+              {isLogged ? (
+                <button onClick={logout} className="login">
+                  SE DÉCONNECTER
+                </button>
+              ) : (
+                <>
+                  <button  className="login">
+                    <Link to="logIn">SE CONNECTER</Link>{" "}
+                  </button>
+                  <button className="signUp">
+                    <Link to="/signUp">S'INSCRIRE</Link>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -72,13 +103,12 @@ const NavStyle = styled.div`
       font-weight: 600;
     }
   }
-   
-        a {
-          color: ${RED_COLOR};
-          font-weight: 600;
-        }
-  
-  
+
+  a {
+    color: ${RED_COLOR};
+    font-weight: 600;
+  }
+
   .btns {
     button {
       border: none;
@@ -89,11 +119,13 @@ const NavStyle = styled.div`
       font-weight: 600;
       &.signUp {
         background-color: ${RED_COLOR};
-        color: white;
+        a {
+          color: white;
+        }
       }
     }
   }
-  button.navbar-toggler{
+  button.navbar-toggler {
     box-shadow: none;
   }
 `;
