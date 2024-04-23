@@ -3,7 +3,7 @@ import dataJSON from "../../data/data.json";
 import { Marked, marked } from "marked";
 import star from "../../assets/dashboard_competition/Star.png";
 const DescriptionComp = () => {
-  const data = dataJSON.competition;
+  const data = dataJSON.competition[0];
 
   return (
     <DescriptionCompStyle>

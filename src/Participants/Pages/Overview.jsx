@@ -6,7 +6,7 @@ import DescriptionComp from "../Components/DescriptionComp";
 import { useEffect, useState } from "react";
 
 const Overview = () => {
-  const data = dataJson.competition;
+  const data = dataJson.competition[0];
   return (
     <OverviewStyle>
       <div className="header">

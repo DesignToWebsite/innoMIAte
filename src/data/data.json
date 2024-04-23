@@ -1,153 +1,295 @@
 {
-  "competition": {
-    "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg",
-    "title": "Competition Name",
-    "date": "Jan 09 - Mar 12, 2024",
-    "participants": 3561,
-    "place": "Oujda",
-    "smallDescription": "Build a full stack app",
-    "whoCanPaticipate": ["Ages 18+ only", "All countries"],
-    "about": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
-    "whatYouGet": "",
-    "deadLine": "2024-04-20T12:00:00 ",
-    "public": "Public",
-    "prizes": ["$20000", "$5000"],
-    "theme": "Development web",
-    "tags": ["Database", "Web", "AI"],
-    "AboutCompetition": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
-    "WhatYouGet": "Lorem ipsum dolor sit amet consectetur",
-    "GettingStarted": "Lorem ipsum dolor sit [Link Text](URL) amet consectetur",
-    "prizesAll": [
-      {
-        "price": "2000$",
-        "others": ["6 month pro", "Badge"],
-        "title": "Best Overall app"
-      },
-      {
-        "price": "2000$",
-        "others": ["6 month pro", "Badge"],
-        "title": "Best Overall app"
-      },
-      {
-        "price": "2000$",
-        "others": ["6 month pro", "Badge"],
-        "title": "Best Overall app"
-      },
-      {
-        "price": "2000$",
-        "others": ["6 month pro", "Badge"],
-        "title": "Best Overall app"
-      }
-    ],
-    "judges": [
-      {
-        "name": "Judge Name",
-        "job": "Co*Founder/ CEo at ...",
-        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-      },
-      {
-        "name": "Judge Name",
-        "job": "Co*Founder/ CEo at ...",
-        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-      },
-      {
-        "name": "Judge Name",
-        "job": "Co*Founder/ CEo at ...",
-        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-      }
-    ],
-    "coachs": [
-      {
-        "name": "Judge Name",
-        "job": "Co*Founder/ CEo at ...",
-        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-      },
-      {
-        "name": "Judge Name",
-        "job": "Co*Founder/ CEo at ...",
-        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-      },
-      {
-        "name": "Judge Name",
-        "job": "Co*Founder/ CEo at ...",
-        "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-      }
-    ],
-    "sponsor": [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
-    ],
-    "ressources": [
-      {
-        "title": "Ressource 1",
-        "description": "Description de la ressource 1",
-        "url": "https://exemple.com/ressource1"
-      },
-      {
-        "title": "Ressource 2",
-        "description": "Description de la ressource 2",
-        "url": "https://exemple.com/ressource2"
-      },
-      {
-        "title": "Ressource 3",
-        "description": "Description de la ressource 3",
-        "url": "https://exemple.com/ressource3"
-      }
-    ],
-    "rules": [
-      {
-        "title": "Rule 1",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      {
-        "title": "Rule 2",
-        "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      },
-      {
-        "title": "Rule 3",
-        "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-      }
-    ],
-    "galleryPublished": true,
-    "videos": [
-      {
-        "title": "Video 1",
-        "url": "https://www.youtube.com/embed/bgkWW6-JF-8?si=HFk0bkSxYzKVKEzr",
-        "duration": "3:00",
-        "size": "25MB"
-      },
-      {
-        "title": "Video 2",
-        "url": "https://www.youtube.com/embed/bgkWW6-JF-8?si=HFk0bkSxYzKVKEzr",
-        "duration": "3:00",
-        "size": "25MB"
-      }
-    ],
-    "photos": [
-      {
-        "title": "Photo 1",
-        "url": "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&h=350",
-        "size": "25MB"
-      },
-      {
-        "title": "Photo 2",
-        "url": "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&h=350",
-        "size": "25MB"
-      }
-    ]
-  },
+  "competition": [
+    {
+      "id": 1,
+      "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg",
+      "title": "Competition Name",
+      "date": "Jan 09 - Mar 12, 2024",
+      "participants": 3561,
+      "place": "Oujda",
+      "smallDescription": "Build a full stack app",
+      "whoCanPaticipate": ["Ages 18+ only", "All countries"],
+      "about": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
+      "whatYouGet": "",
+      "deadLine": "2024-04-20T12:00:00 ",
+      "public": "Public",
+      "prizes": ["$20000", "$5000"],
+      "theme": "Development web",
+      "tags": ["Database", "Web", "AI"],
+      "AboutCompetition": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
+      "WhatYouGet": "Lorem ipsum dolor sit amet consectetur",
+      "GettingStarted": "Lorem ipsum dolor sit [Link Text](URL) amet consectetur",
+      "prizesAll": [
+        {
+          "price": "2000$",
+          "others": ["6 month pro", "Badge"],
+          "title": "Best Overall app"
+        },
+        {
+          "price": "2000$",
+          "others": ["6 month pro", "Badge"],
+          "title": "Best Overall app"
+        },
+        {
+          "price": "2000$",
+          "others": ["6 month pro", "Badge"],
+          "title": "Best Overall app"
+        },
+        {
+          "price": "2000$",
+          "others": ["6 month pro", "Badge"],
+          "title": "Best Overall app"
+        }
+      ],
+      "judges": [
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        }
+      ],
+      "coachs": [
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        }
+      ],
+      "sponsor": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
+      ],
+      "ressources": [
+        {
+          "title": "Ressource 1",
+          "description": "Description de la ressource 1",
+          "url": "https://exemple.com/ressource1"
+        },
+        {
+          "title": "Ressource 2",
+          "description": "Description de la ressource 2",
+          "url": "https://exemple.com/ressource2"
+        },
+        {
+          "title": "Ressource 3",
+          "description": "Description de la ressource 3",
+          "url": "https://exemple.com/ressource3"
+        }
+      ],
+      "rules": [
+        {
+          "title": "Rule 1",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+          "title": "Rule 2",
+          "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": "Rule 3",
+          "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+      ],
+      "galleryPublished": true,
+      "videos": [
+        {
+          "title": "Video 1",
+          "url": "https://www.youtube.com/embed/bgkWW6-JF-8?si=HFk0bkSxYzKVKEzr",
+          "duration": "3:00",
+          "size": "25MB"
+        },
+        {
+          "title": "Video 2",
+          "url": "https://www.youtube.com/embed/bgkWW6-JF-8?si=HFk0bkSxYzKVKEzr",
+          "duration": "3:00",
+          "size": "25MB"
+        }
+      ],
+      "photos": [
+        {
+          "title": "Photo 1",
+          "url": "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&h=350",
+          "size": "25MB"
+        },
+        {
+          "title": "Photo 2",
+          "url": "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&h=350",
+          "size": "25MB"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg",
+      "title": "Competition Name",
+      "date": "Jan 09 - Mar 12, 2024",
+      "participants": 3561,
+      "place": "Oujda",
+      "smallDescription": "Build a full stack app",
+      "whoCanPaticipate": ["Ages 18+ only", "All countries"],
+      "about": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
+      "whatYouGet": "",
+      "deadLine": "2024-04-20T12:00:00 ",
+      "public": "Public",
+      "prizes": ["$20000", "$5000"],
+      "theme": "Development web",
+      "tags": ["Database", "Web", "AI"],
+      "AboutCompetition": "Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus aklsdflksdfsdkf",
+      "WhatYouGet": "Lorem ipsum dolor sit amet consectetur",
+      "GettingStarted": "Lorem ipsum dolor sit [Link Text](URL) amet consectetur",
+      "prizesAll": [
+        {
+          "price": "2000$",
+          "others": ["6 month pro", "Badge"],
+          "title": "Best Overall app"
+        },
+        {
+          "price": "2000$",
+          "others": ["6 month pro", "Badge"],
+          "title": "Best Overall app"
+        },
+        {
+          "price": "2000$",
+          "others": ["6 month pro", "Badge"],
+          "title": "Best Overall app"
+        },
+        {
+          "price": "2000$",
+          "others": ["6 month pro", "Badge"],
+          "title": "Best Overall app"
+        }
+      ],
+      "judges": [
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        }
+      ],
+      "coachs": [
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        },
+        {
+          "name": "Judge Name",
+          "job": "Co*Founder/ CEo at ...",
+          "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
+        }
+      ],
+      "sponsor": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
+      ],
+      "ressources": [
+        {
+          "title": "Ressource 1",
+          "description": "Description de la ressource 1",
+          "url": "https://exemple.com/ressource1"
+        },
+        {
+          "title": "Ressource 2",
+          "description": "Description de la ressource 2",
+          "url": "https://exemple.com/ressource2"
+        },
+        {
+          "title": "Ressource 3",
+          "description": "Description de la ressource 3",
+          "url": "https://exemple.com/ressource3"
+        }
+      ],
+      "rules": [
+        {
+          "title": "Rule 1",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+          "title": "Rule 2",
+          "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": "Rule 3",
+          "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+      ],
+      "galleryPublished": true,
+      "videos": [
+        {
+          "title": "Video 1",
+          "url": "https://www.youtube.com/embed/bgkWW6-JF-8?si=HFk0bkSxYzKVKEzr",
+          "duration": "3:00",
+          "size": "25MB"
+        },
+        {
+          "title": "Video 2",
+          "url": "https://www.youtube.com/embed/bgkWW6-JF-8?si=HFk0bkSxYzKVKEzr",
+          "duration": "3:00",
+          "size": "25MB"
+        }
+      ],
+      "photos": [
+        {
+          "title": "Photo 1",
+          "url": "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&h=350",
+          "size": "25MB"
+        },
+        {
+          "title": "Photo 2",
+          "url": "https://images.freeimages.com/images/large-previews/56d/peacock-1169961.jpg?fmt=webp&h=350",
+          "size": "25MB"
+        }
+      ]
+    }
+  ],
   "user": {
     "name": "zineb Essoussi",
-    "userName" : "zineb-essoussi",
-    "bio" : "I'm an IT student",
-    "skills" : ["CSS", "HTML", "REACT", "SASS"],
-    "interests" : ["Communication", "e-commerce", "Education", "Mobile", "web"],
+    "userName": "zineb-essoussi",
+    "bio": "I'm an IT student",
+    "skills": ["CSS", "HTML", "REACT", "SASS"],
+    "interests": ["Communication", "e-commerce", "Education", "Mobile", "web"],
     "email": "zineb@gmail.com",
-    "location" : "Morocco",
-    "website" : "https://zinebessoussi.netlify.app/",
-    "github" : "https://github.com/DesignToWebsite", 
-    "img" : "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
+    "location": "Morocco",
+    "website": "https://zinebessoussi.netlify.app/",
+    "github": "https://github.com/DesignToWebsite",
+    "img": "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
     "competition": [
       {
         "competitionId": 1,
@@ -161,6 +303,12 @@
           ],
 
           "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg"
+        },
+        "team": {
+          "complete": true,
+          "maxMumber": 2,
+          "TeamName": "GI4",
+          "TeamMember": ["Zineb", "Safae"]
         }
       },
       {
@@ -175,31 +323,41 @@
           ],
 
           "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg"
+        },
+        "team": {
+          "complete": false,
+          "TeamName": "GI4",
+          "maxMumber": 3,
+          "TeamMember": ["Zineb", "Safae"]
         }
       }
     ],
-    "followers" : [],
-    "following" : [],
-    "likes" : [],
-    "presonalProjects" :[]
+    "followers": [],
+    "following": [],
+    "likes": [],
+    "presonalProjects": []
   },
   "projectSteps": [
     {
       "idStep": 1,
+      "infoWithCard": false,
       "Title": "Project details",
       "Info": "Information entered below will appear on your public project page.",
       "toComplete": [
         {
-          "type": "textarea",
+          "type": "text",
+          "tag": "textarea",
           "label": "About the project",
           "description": "Be sure to write what inspired you, what you learned, how you built your project, and the challenges you faced. Format yourstory in Markdown.",
           "placeholder": " ## Inspiration",
           "required": true,
           "value": "",
-          "mulipleValues": false
+          "mulipleValues": false,
+          "id": "about"
         },
         {
-          "type": "input",
+          "type": "text",
+          "tag": "input",
           "label": "Built with",
           "description": "What languages, frameworks, platforms, cloud services, databases, APIs, or other technologies did you use?",
           "placeholder": "Languages, frameworks, platforms, cloud services, databases, APIs, etc.",
@@ -208,7 +366,8 @@
           "mulipleValues": false
         },
         {
-          "type": "input",
+          "type": "text",
+          "tag": "input",
           "label": "Links",
           "description": "Add links where people can try your project or see your code.",
           "required": false,
@@ -217,6 +376,7 @@
         },
         {
           "type": "image",
+          "tag": "image",
           "label": "Image gallery",
           "description": "JPG, PNG or GIF format, 5 MB max file size. For best results, use a 3:2 ratio.",
           "required": false,
@@ -224,12 +384,46 @@
           "mulipleValues": true
         },
         {
-          "type": "input",
+          "type": "text",
+          "tag": "input",
           "label": " Video demo link",
           "description": "This video will be embedded at the top of your project page. Read more about uploading videos.",
           "required": true,
           "value": "",
           "mulipleValues": false
+        }
+      ]
+    },
+    {
+      "idStep": 2,
+      "Title": "Aperçu du projet",
+      "Info": "Veuillez respecter nos <a href=\"#\">directives communautaires</a>.",
+      "SecondTitle": "General info",
+      "infoWithCard": true,
+      "toComplete": [
+        {
+          "type": "text",
+          "tag": "input",
+          "label": "Nom du projet",
+          "description": "",
+          "placeholder": "",
+          "required": true,
+          "value": "",
+          "mulipleValues": false,
+          "maxCaracter": 60,
+          "id": "projectName"
+        },
+        {
+          "type": "text",
+          "tag": "textarea",
+          "label": "Description du projet",
+          "description": "",
+          "placeholder": "",
+          "required": true,
+          "value": "",
+          "mulipleValues": false,
+          "maxCaracter": 200,
+          "id": "projectDescription"
         }
       ]
     }

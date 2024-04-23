@@ -1,9 +1,9 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-const ProjectCard_competition = ({data})=>{
-    return(
-        <ProjectCard>
-            <div className="project">
+const ProjectCard_competition = ({ data }) => {
+  return (
+    <ProjectCard>
+      <div className="project">
         <div className="img">
           <img src={data.img} alt="" />
         </div>
@@ -16,39 +16,37 @@ const ProjectCard_competition = ({data})=>{
           </div>
           <div className="team">
             <div className="img-team">
-            {data.team.map((img, index) => {
-              return (
-                <div
-                className="circle"
-                style={{position:"absolute",  left: index * 20 }}
-                key={index}
-              >
-                <img src={img} alt={`Image ${index + 1}`} />
-              </div>
-              )
-              
-            })}
+              {data.team.map((img, index) => {
+                return (
+                  <div
+                    className="circle"
+                    style={{ position: "absolute", left: index * 20 }}
+                    key={index}
+                  >
+                    <img src={img} alt={`Image ${index + 1}`} />
+                  </div>
+                );
+              })}
             </div>
 
-            
-            { window.location.href.includes("competition") &&
+            {window.location.href.includes("competition") && (
               <a href="#">Gérer l'équipe</a>
-            }
+            )}
           </div>
-          
         </div>
       </div>
-        </ProjectCard>
-    )
-}
+    </ProjectCard>
+  );
+};
 
 const ProjectCard = styled.div`
-     .project {
+  .project {
     width: 300px;
     border: 1px solid #b7c3c7;
     position: relative;
     .img img {
       height: 200px;
+      width: 100%;
     }
     .info {
       padding: 10px;
@@ -60,30 +58,25 @@ const ProjectCard = styled.div`
       /* display: flex; */
       position: relative;
       padding-bottom: 2em;
-      a{
+      a {
         text-align: end;
         display: flex;
         align-items: end;
         justify-content: end;
         z-index: 100;
       }
-      .img-team{
+      .img-team {
         max-width: 60%;
         overflow: hidden;
-        .circle{
-            width: 40px;
-            img{
-                border-radius: 50%;
-
-            }
+        .circle {
+          width: 40px;
+          img {
+            border-radius: 50%;
+          }
         }
       }
-        
-      
     }
   }
+`;
 
-`
-
-
-export default ProjectCard_competition
+export default ProjectCard_competition;

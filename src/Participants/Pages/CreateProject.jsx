@@ -38,9 +38,14 @@ padding : 0 2em;
 `;
 
 const BtnCreateProject = () => {
+  const navigate = useNavigate()
+  const startProject = async(e)=>{
+    e.preventDefault();
+    navigate("/competition/createProject")
+  }
   return (
     <BtnCreate>
-      <button className="btn btn-red">Démarrer le projet</button>
+      <button onClick={startProject} className="btn btn-red">Démarrer le projet</button>
       <button className="btn btn-green">Trouver des coéquipiers</button>
     </BtnCreate>
   );
