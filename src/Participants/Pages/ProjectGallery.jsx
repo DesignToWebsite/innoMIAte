@@ -10,7 +10,7 @@ const ProjectGallery = () => {
 
   useEffect(() => {
     // Extract videos and photos from data.json
-    const { videos, photos, galleryPublished } = data.competition;
+    const { videos, photos, galleryPublished } = data.competition[0];
     setVideos(videos);
     setPhotos(photos);
     setIsPublished(galleryPublished);

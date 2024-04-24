@@ -7,7 +7,7 @@ const Rules = () => {
 
   useEffect(() => {
     // Fonction pour charger les règles depuis le fichier data.json
-    setRules(data.competition.rules);
+    setRules(data.competition[0].rules);
   }, []);
 
   return (

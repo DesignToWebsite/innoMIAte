@@ -7,7 +7,7 @@ const Ressources = () => {
 
   useEffect(() => {
     // Mettez à jour l'état des ressources avec les données importées
-    setRessources(data.competition.ressources);
+    setRessources(data.competition[0].ressources);
   }, []);
 
   return (

@@ -7,7 +7,7 @@ import Project_competition from "../Components/Project_competition";
 import { useEffect, useState } from "react";
 
 const MyProject_competition = () => {
-  const data = dataJson.competition;
+  const data = dataJson.competition[0];
   const isLogged = localStorage.getItem("user");
   const [projectExist, setProjectExist] = useState(localStorage.getItem('projectExist'));
   // useEffect(()=>{
