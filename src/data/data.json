@@ -140,7 +140,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": 2,
       "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg",
       "title": "Competition Name",
       "date": "Jan 09 - Mar 12, 2024",
@@ -293,6 +293,7 @@
     "competition": [
       {
         "competitionId": 1,
+        "title": "Competition Name",
         "project": {
           "name": "Project Name",
           "description": "Lorem ipsum dolor t. A, pariatur! Lorem ipsumet consectetur adipisicing elit. Quam, quas.",
@@ -309,10 +310,15 @@
           "maxMumber": 2,
           "TeamName": "GI4",
           "TeamMember": ["Zineb", "Safae"]
-        }
+        },
+        "deadLine": "2024-04-20T12:00:00 ",
+        "prizes": ["$20000", "$5000"],
+        "timeLeft": "2 jours",
+        "participants": 3561
       },
       {
         "competitionId": 2,
+        "title": "Competition Name",
         "project": {
           "name": "Project Name",
           "description": "Lorem ipsum dolor t. A, pariatur! Lorem ipsumet consectetur adipisicing elit. Quam, quas.",
@@ -329,7 +335,11 @@
           "TeamName": "GI4",
           "maxMumber": 3,
           "TeamMember": ["Zineb", "Safae"]
-        }
+        },
+        "deadLine": "2024-04-20T12:00:00 ",
+        "prizes": ["$20000", "$5000"],
+        "timeLeft": "2 jours",
+        "participants": 3561
       }
     ],
     "followers": [],

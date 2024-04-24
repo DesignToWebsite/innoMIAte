@@ -10,16 +10,53 @@ import { GREEN_COLOR, ORANGE_COLOR, RED_COLOR } from "../../../style/Colors";
 import ProjectCard_competition from "../../Components/ProjectCard_competition";
 import ProfileNoProject from "../../Components/ProfileNoProject";
 import ProfileProjectsExist from "../../Components/ProfileProjectsExist";
+import NewProjectAlert from "../../Components/NewProjectAlert";
+import HackathonCard from "../../Components/HackathonCard";
 // import Profile_noProject from "../../Components/profile_noProject";
 
 
 const Profile = () => {
   const user = data.user;
-  // const project = data.competition
+  const competitions = data.competition;
   const [activePage, setActivePage] = useState("Projects")
   const projectsCounter =
     user.competition.length + user.presonalProjects;
     console.log(projectsCounter)
+
+
+
+    const [showAlert, setShowAlert] = useState(false);
+  const [selectedHackathon, setSelectedHackathon] = useState(null);
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCancelAlert = () => {
+    setShowAlert(false);
+    setSelectedHackathon(null);
+  };
+
+  const handleYesClick = () => {
+    if (selectedHackathon) {
+      // Logic to submit project to selected hackathon
+      alert(`Project submitted to ${selectedHackathon.title}`);
+      setShowAlert(false);
+      setSelectedHackathon(null);
+    } else {
+      alert("Please select a hackathon.");
+    }
+  };
+
+  const handleNoClick = () => {
+    // Add project only to the user's profile
+    setShowAlert(false); // Close the alert
+    // Add logic here to add the project to the user's profile
+  };
+
+  const handleHackathonSelection = (competition) => {
+    setSelectedHackathon(competition);
+  };
   return (
     <ProfileStyle>
       <UserInfo>
@@ -31,7 +68,7 @@ const Profile = () => {
                 <img src={user.img} alt="" />
                 <div className="btns">
                   <div className="btn btn-red">Modifier les paramètres</div>
-                  <div className="btn btn-green">Ajouter un nouveau projet</div>
+                  <div className="btn btn-green" onClick={handleShowAlert}>Ajouter un nouveau projet</div>
                 </div>
               </div>
               <div className="info">
@@ -86,6 +123,17 @@ const Profile = () => {
           </div>
         </div>
       </UserInfo>
+      
+      {showAlert && (
+        <NewProjectAlert
+          onCancel={handleCancelAlert}
+          onYesClick={handleYesClick}
+          onNoClick={handleNoClick}
+          competitions={competitions}
+          onSelectHackathon={handleHackathonSelection}
+          selectedHackathonId={selectedHackathon ? selectedHackathon.id : null}
+        />
+      )}
       <UserDashboard>
         <div className="UserDashboard">
           <div className="container">
@@ -168,12 +216,31 @@ const Profile = () => {
                 ""
               )
             }
+            {
+              activePage === "Hackathon" && user.competition.length > 0 ? (
+                <HackathonSection>
+                  <HackathonList>
+                    {user.competition.map((competition, index) => (
+                      <HackathonCard
+                      key={competition.id}
+                      competition={competition}
+                      index={index}
+                    />
+                    ))}
+                  </HackathonList>
+                </HackathonSection>
+              ) : (
+                ""
+              )
+            }
           </div>
         </div>
       </UserDashboard>
     </ProfileStyle>
   );
 };
+
+
 
 const UserDashboard = styled.div`
   .UserDashboard {
@@ -323,4 +390,15 @@ const UserInfo = styled.div`
     }
   }
 `;
+
+const HackathonSection = styled.div`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+`;
+
+const HackathonList = styled.div`
+  margin-top: 30px;
+`;
+
 export default Profile;
