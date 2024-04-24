@@ -2,21 +2,24 @@ import styled from "styled-components";
 import ProjectCard_competition from "./ProjectCard_competition";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import data from "../../data/data.json";
+import dataJSON from "../../data/data.json";
 import Input_Step from "./Steps_components/Input_Step";
 import Textarea_Step from "./Steps_components/Textarea_Step"
 import Card_project from "./Steps_components/Card_project";
+import Image_drag_drop from "./Steps_components/Image_drag_drop";
 
 const CreateProject_step = () => {
-  const stepInfo = data.projectSteps[1];
+  const stepInfo = dataJSON.projectSteps[0];
   const navigate = useNavigate();
- 
 
   const saveProject = async (e) => {
     e.preventDefault();
     navigate("/competition/step1");
   };
-
+    const defaultCompetitionCard = dataJSON.competitionDefault;
+    const [dataCard, setDataCard] = useState(defaultCompetitionCard);
+  
+ 
   return (
     <ProjectForm className={`step${stepInfo.idStep}`}>
       <h2>{stepInfo.Title}</h2>
@@ -35,6 +38,7 @@ const CreateProject_step = () => {
                     label={item.label}
                     maxCaracter={item.maxCaracter}
                     value={item.value}
+                    setDataCard={setDataCard}
                      />
                 }
                 {
@@ -45,17 +49,19 @@ const CreateProject_step = () => {
                     label={item.label}
                     maxCaracter={item.maxCaracter}
                     value={item.value}
+                    setDataCard={setDataCard}
                      />
                 }
               </div>
             );
           })}
+                <Image_drag_drop />
 
           <button onClick={saveProject} className="btn btn-red">
             Enregistrer && continuer
           </button>
         </form>
-        <Card_project />
+        <Card_project setDataCard={setDataCard} dataCard={dataCard} />
         
       </div>
     </ProjectForm>
