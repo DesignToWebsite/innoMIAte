@@ -4,13 +4,11 @@ import { Link, useLocation } from "react-router-dom";
 import { ORANGE_COLOR } from "../../style/Colors";
 import ProfileInfo from "./ProfileInfo";
 import data from "../../data/data.json";
-import PreferenceEligibility from "./PreferenceEligibility";
 import Password from "./Password";
 import AccountPrivacy from "./AccountPrivacy";
 
 const SideEdit = () => {
     const user = data.user;
-  const location = useLocation();
   const [activePage, setActivePage] = useState("ProfileInfo")
 
   return (
@@ -26,18 +24,6 @@ const SideEdit = () => {
                     to="/profile/edit/ProfileInfo"
                     >
             Informations de profile
-            </StyledLink>
-        </LinkList>
-
-        <Title>Recommandations pour le hackathon</Title>
-        <LinkList>
-            <StyledLink onClick={(e) => {
-                        e.preventDefault();
-                        setActivePage("PreferenceEligibility");
-                    }}
-                    className={activePage == "PreferenceEligibility" ? "active" : ""}
-                    to="/profile/edit/preferences-eligibility">
-            Préférences et éligibilité
             </StyledLink>
         </LinkList>
 
@@ -65,20 +51,6 @@ const SideEdit = () => {
             {
                 activePage=="ProfileInfo" ? (
                 <ProfileInfo user={user}/>
-                ) : (
-                ""
-                )
-            }
-            {
-                activePage=="PreferenceEligibility" ? (
-                <PreferenceEligibility user={user}/>
-                ) : (
-                ""
-                )
-            }
-            {
-                activePage=="PreferenceEligibility" ? (
-                <PreferenceEligibility user={user}/>
                 ) : (
                 ""
                 )
