@@ -1,12 +1,22 @@
 import { useState } from "react";
 
-const Textarea_Step = ({id, label, type, maxCaracter, value}) => {
+const Textarea_Step = ({
+  id,
+  label,
+  type,
+  maxCaracter = false,
+  value,
+  setDataCard = false,
+}) => {
   const [remainingCharacters, setRemainingCharacters] = useState(maxCaracter);
-  const handleInputChange = async(e) => {
+  const handleInputChange = async (e) => {
     const { name, value } = e.target;
-
-      setRemainingCharacters(maxCaracter - value.length);
-   
+    if (maxCaracter) setRemainingCharacters(maxCaracter - value.length);
+    if (setDataCard)
+      setDataCard((prev) => ({
+        ...prev,
+        description: value,
+      }));
   };
   return (
     <div className="input">
@@ -20,12 +30,13 @@ const Textarea_Step = ({id, label, type, maxCaracter, value}) => {
         defaultValue={value}
         onChange={handleInputChange}
       />
-      {maxCaracter &&
+      {maxCaracter && (
         <p className="charactersLeft">
-        {remainingCharacters} caractères restants
-      </p>}
+          {remainingCharacters} caractères restants
+        </p>
+      )}
     </div>
   );
 };
 
-export default Textarea_Step
+export default Textarea_Step;

@@ -4,6 +4,7 @@ import completeStepIcon from "../../assets/dashboard_competition/completeStep.pn
 import incompleteStepIcon from "../../assets/dashboard_competition/incompleteStep.png";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import data from "../../data/data.json";
 
 const StepsMenu = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const StepsMenu = () => {
     setCurrentStep(`step${id}`);
     navigate("/competition/step" + id);
   };
+  const steps = data.projectSteps;
   return (
     <Menu>
       <div className="stepList">
@@ -34,82 +36,30 @@ const StepsMenu = () => {
             <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
           </svg>{" "}
         </div>
-        <div
-          onClick={() => {
-            activeStep(2);
-          }}
-          className="step2 step incomplete active"
-        >
-          <img src={incompleteStepIcon} alt="" />
-          <span>Project overview</span>
-          <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 46.241042222054375 155.14875111077515"
-            width="21"
-            height="71"
-          >
-            <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
-          </svg>{" "}
-        </div>
-        <div
-          onClick={() => {
-            activeStep(3);
-          }}
-          className="step3 step incomplete"
-        >
-          <img src={incompleteStepIcon} alt="" />
-          <span>Project details</span>
-          <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 46.241042222054375 155.14875111077515"
-            width="21"
-            height="71"
-          >
-            <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
-          </svg>{" "}
-        </div>
-        <div
-          onClick={() => {
-            activeStep(4);
-          }}
-          className="step4 step incomplete"
-        >
-          <img src={incompleteStepIcon} alt="" />
-          <span>Additional info</span>
-          <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 46.241042222054375 155.14875111077515"
-            width="21"
-            height="71"
-          >
-            <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
-          </svg>{" "}
-        </div>
-        <div
-          onClick={() => {
-            activeStep(5);
-          }}
-          className="step5 step incomplete"
-        >
-          <img src={incompleteStepIcon} alt="" />
-          <span>Submit</span>
-          <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 46.241042222054375 155.14875111077515"
-            width="21"
-            height="71"
-          >
-            <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
-          </svg>{" "}
-        </div>
+        
+        {steps.map((step, index) => {
+          return (
+            <div
+              onClick={() => {
+                activeStep(3);
+              }}
+              className={`step${index} step ${step.completed ? "complete" : "incomplete"}`}
+            >
+              <img src={incompleteStepIcon} alt="" />
+              <span>{step.Title}</span>
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 46.241042222054375 155.14875111077515"
+                width="21"
+                height="71"
+              >
+                <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
+              </svg>{" "}
+            </div>
+          );
+        })}
         {/* </div> */}
       </div>
     </Menu>
