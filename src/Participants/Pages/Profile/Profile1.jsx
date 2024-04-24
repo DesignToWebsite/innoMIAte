@@ -67,7 +67,7 @@ const Profile = () => {
               <div className="image">
                 <img src={user.img} alt="" />
                 <div className="btns">
-                  <div className="btn btn-red">Modifier les paramètres</div>
+                  <Link to="/edit" className="btn btn-red">Modifier les paramètres</Link>
                   <div className="btn btn-green" onClick={handleShowAlert}>Ajouter un nouveau projet</div>
                 </div>
               </div>
