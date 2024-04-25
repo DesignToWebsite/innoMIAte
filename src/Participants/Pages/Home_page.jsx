@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Nav from  '../../common/All/Nav'
 import Footer from '../../common/All/Footer'
 import Header_Home from '../Components/Header_Home'
@@ -8,7 +8,8 @@ import Card from '../Components/Card'
 import Cards_small from '../Components/Cards_small'
 
 const Home_page = ()=> {
- 
+  
+  
 
   return (
     <>

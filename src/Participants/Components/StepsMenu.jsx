@@ -2,26 +2,28 @@ import { renderToString } from "react-dom/server";
 import styled from "styled-components";
 import completeStepIcon from "../../assets/dashboard_competition/completeStep.png";
 import incompleteStepIcon from "../../assets/dashboard_competition/incompleteStep.png";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useState } from "react";
 import data from "../../data/data.json";
 
-const StepsMenu = () => {
+const StepsMenu = ({steps, currentStep, setCurrentStep}) => {
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState("step1");
-  const activeStep = (id) => {
-    setCurrentStep(`step${id}`);
-    navigate("/competition/step" + id);
+  const {id} = useParams();
+
+  const activeStep = (id_step) => {
+    console.log("id step : ", id_step)
+    setCurrentStep(id_step)
+    
+    // navigate(`/competition/${id}/step${id_step}`);
   };
-  const steps = data.projectSteps;
   return (
     <Menu>
       <div className="stepList">
         <div
           onClick={() => {
-            activeStep(1);
+            activeStep("manageTeam");
           }}
-          className="step1 step incomplete"
+          className={`manageTeam step incomplete ${currentStep=="manageTeam" ? "active" : ""}`}
         >
           <img src={incompleteStepIcon} alt="" />
           <span>Manage team</span>
@@ -41,9 +43,11 @@ const StepsMenu = () => {
           return (
             <div
               onClick={() => {
-                activeStep(3);
+                activeStep(index);
+
               }}
-              className={`step${index} step ${step.completed ? "complete" : "incomplete"}`}
+              key={index}
+              className={`step${index} step ${step.completed ? "complete" : "incomplete"} ${currentStep==`${index}` ? "active" : ""}`}
             >
               <img src={incompleteStepIcon} alt="" />
               <span>{step.Title}</span>
@@ -56,7 +60,7 @@ const StepsMenu = () => {
                 height="71"
               >
                 <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
-              </svg>{" "}
+              </svg>
             </div>
           );
         })}

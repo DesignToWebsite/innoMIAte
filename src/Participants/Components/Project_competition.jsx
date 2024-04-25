@@ -3,6 +3,7 @@ import dataJson from "../../data/data.json";
 import ProjectCard_competition from "./ProjectCard_competition";
 const Project_competition = () => {
   const data = dataJson.user.competition[0].project;
+  console.log(data)
   return (
     <Project>
       <h2>Mon projet de hackathon</h2>

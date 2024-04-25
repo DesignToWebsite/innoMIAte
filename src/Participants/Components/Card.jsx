@@ -3,11 +3,11 @@ import styled from "styled-components"
 
 
 
-const Card = ()=>{
+const Card = ({data})=>{
     return(
-        <Link to="/competition/overview">
+        <Link to={`/competition/${data.id}/overview`}>
         <CardStyle>
-            competition
+            {data.title} {data.id}
         </CardStyle>
         </Link>
     )

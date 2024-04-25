@@ -22,7 +22,7 @@ const Competition_page = () => {
       <div className="content">
         <Dashboard_competition />
         <Routes location={location} key={location.pathname}>
-          <Route path="/overview" element={<Overview  />} />
+          <Route path="overview" element={<Overview  />} />
           <Route
             path="/myProject"
             element={<MyProject_competition  />}
@@ -34,7 +34,7 @@ const Competition_page = () => {
           <Route path="/discussions" element={<Discussions /> } />
 
           {/* <Route path="/createProject" element={<CreateProject_step />} /> */}
-          <Route path="/step/*" element={<StepsCompetition_page />} />
+          <Route path="/steps" element={<StepsCompetition_page />} />
 
           {/* <Route path="/step1" element={< />} /> */}
         </Routes>

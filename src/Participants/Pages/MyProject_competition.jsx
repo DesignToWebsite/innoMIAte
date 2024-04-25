@@ -8,12 +8,13 @@ import { useEffect, useState } from "react";
 
 const MyProject_competition = () => {
   const data = dataJson.competition[0];
+// console.log(data)
   const isLogged = localStorage.getItem("user");
   const [projectExist, setProjectExist] = useState(localStorage.getItem('projectExist'));
   // useEffect(()=>{
   //   
   // },[])
-  console.log(projectExist)
+  // console.log(projectExist)
   return (
     <Projects>
       <div className="row">

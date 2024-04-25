@@ -8,36 +8,37 @@ import Picture from "../../assets/dashboard_competition/Picture.png"
 import Ressources from "../../assets/dashboard_competition/Ressources.png"
 import Task from "../../assets/dashboard_competition/Task.png"
 import { GREEN_COLOR } from "../../style/Colors";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Dashboard_competition = () => {
+  const {id} = useParams()
   return (
     <Dashboard>
     <nav class="nav flex-column">
-      <Link to="/competition/overview" class="nav-link active" aria-current="page" >
+      <Link to={`/competition/${id}/overview`} class="nav-link active" aria-current="page" >
          <img src={Overview} alt="" /> <span>Aperçu</span>
       </Link>
-      <Link to="/competition/myProject" class="nav-link" >
+      <Link to={`/competition/${id}/myProject`} class="nav-link" >
         <img src={Task} alt="" />
         <span>Mon projet</span>
       </Link>
-      <Link class="nav-link" to="/competition/participants">
+      <Link class="nav-link" to={`/competition/${id}/participants`}>
         <img src={Participants} alt="" />
         <span>Participants (220)</span>
       </Link>
-      <Link class="nav-link" to="/competition/ressources">
+      <Link class="nav-link" to={`/competition/${id}/ressources`}>
         <img src={Ressources} alt="" />
         <span>Ressources</span> 
       </Link>
-      <Link class="nav-link" to="/competition/rules">
+      <Link class="nav-link" to={`/competition/${id}/rules`}>
         <img src={Rules} alt="" />
         <span>Règles</span> 
       </Link>
-      <Link class="nav-link" to="/competition/projectGallery">
+      <Link class="nav-link" to={`/competition/${id}/projectGallery`}>
         <img src={Picture} alt="" />
         <span>Galerie de projets</span> 
       </Link>
-      <Link class="nav-link" to="/competition/discussions">
+      <Link class="nav-link" to={`/competition/${id}/discussions`}>
         <img src={Discussion} alt="" />
         <span>Discussions</span> 
       </Link>

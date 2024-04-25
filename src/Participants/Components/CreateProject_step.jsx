@@ -1,25 +1,33 @@
 import styled from "styled-components";
 import ProjectCard_competition from "./ProjectCard_competition";
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import dataJSON from "../../data/data.json";
 import Input_Step from "./Steps_components/Input_Step";
-import Textarea_Step from "./Steps_components/Textarea_Step"
+import Textarea_Step from "./Steps_components/Textarea_Step";
 import Card_project from "./Steps_components/Card_project";
 import Image_drag_drop from "./Steps_components/Image_drag_drop";
 
-const CreateProject_step = () => {
-  const stepInfo = dataJSON.projectSteps[0];
+const CreateProject_step = ({ steps, currentStep, setCurrentStep }) => {
+  const [stepInfo, setStepInfo] = useState(steps[currentStep]);
+  console.log("current step : ",currentStep)
+  // console.log(stepInfo)
   const navigate = useNavigate();
+  useEffect(()=>{
+    setStepInfo(steps[currentStep])
+  },[currentStep])
+  const { id } = useParams();
 
   const saveProject = async (e) => {
     e.preventDefault();
-    navigate("/competition/step1");
+    if (currentStep < steps.length)
+      setCurrentStep(currentStep + 1)
+    else
+      navigate('/completed')
   };
-    const defaultCompetitionCard = dataJSON.competitionDefault;
-    const [dataCard, setDataCard] = useState(defaultCompetitionCard);
-  
- 
+  const defaultCompetitionCard = dataJSON.competitionDefault;
+  const [dataCard, setDataCard] = useState(defaultCompetitionCard);
+console.log(stepInfo)
   return (
     <ProjectForm className={`step${stepInfo.idStep}`}>
       <h2>{stepInfo.Title}</h2>
@@ -31,38 +39,36 @@ const CreateProject_step = () => {
           {stepInfo.toComplete.map((item, index) => {
             return (
               <div key={index} className="input">
-                { item.tag == "input" &&
-                  <Input_Step 
-                    type={item.type} 
-                    id={item.id} 
+                {item.tag == "input" && (
+                  <Input_Step
+                    type={item.type}
+                    id={item.id}
                     label={item.label}
                     maxCaracter={item.maxCaracter}
                     value={item.value}
                     setDataCard={setDataCard}
-                     />
-                }
-                {
-                  item.tag == "textarea" &&
-                  <Textarea_Step 
-                    type={item.type} 
-                    id={item.id} 
+                  />
+                )}
+                {item.tag == "textarea" && (
+                  <Textarea_Step
+                    type={item.type}
+                    id={item.id}
                     label={item.label}
                     maxCaracter={item.maxCaracter}
                     value={item.value}
                     setDataCard={setDataCard}
-                     />
-                }
+                  />
+                )}
               </div>
             );
           })}
-                <Image_drag_drop />
+          <Image_drag_drop />
 
           <button onClick={saveProject} className="btn btn-red">
             Enregistrer && continuer
           </button>
         </form>
         <Card_project setDataCard={setDataCard} dataCard={dataCard} />
-        
       </div>
     </ProjectForm>
   );
@@ -102,7 +108,7 @@ const ProjectForm = styled.div`
     grid-template-columns: 2fr 1fr;
     gap: 12px;
   }
-  
+
   .team {
     display: none;
   }

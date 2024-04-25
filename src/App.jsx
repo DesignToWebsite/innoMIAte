@@ -23,7 +23,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Home_page/>} />
         <Route path='/homeOrg' element={<Index/>} />
-        <Route path="/competition/*" element={<Competition_page />} />
+        <Route path="/competition/:id/*" element={<Competition_page />} />
         <Route path="/signUp" element={<SignIn/>} />
         <Route path="/logIn" element={<LogIn/>} />
         <Route path='/profile/*' element={<Profile1/>} />
