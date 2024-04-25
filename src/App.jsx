@@ -9,6 +9,7 @@ import Competition_page from './Participants/Pages/Competition_page'
 import SignIn from './common/login/SignIn'
 import LogIn from './common/login/Login'
 import Profile1 from './Participants/Pages/Profile/Profile1'
+import EditProfile from './Participants/Pages/Profile/EditProfile'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/signUp" element={<SignIn/>} />
         <Route path="/logIn" element={<LogIn/>} />
         <Route path='/profile/*' element={<Profile1/>} />
+        <Route path='edit' element={<EditProfile/>} /> 
       </Routes>
 
       <Footer />
