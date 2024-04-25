@@ -3,7 +3,7 @@ import Cover_competition from "../Components/Cover_competition";
 import Dashboard_competition from "../Components/Dashboard_competition";
 import Overview from "./Overview";
 import { ORANGE_COLOR } from "../../style/Colors";
-import { Routes, Route, useLocation } from "react-router";
+import { Routes, Route, useLocation, useParams } from "react-router";
 import MyProject_competition from "./MyProject_competition";
 import { useEffect, useState } from "react";
 import Participants_comp from "../Components/Participants_comp";
@@ -15,30 +15,74 @@ import CreateProject_step from "../Components/CreateProject_step";
 import StepsCompetition_page from "./StepsCompetition_page";
 const Competition_page = () => {
   const location = useLocation();
-  
+  const { id } = useParams();
+
+  const connectedUser = JSON.parse(localStorage.getItem('user'))
+  const isLogged = localStorage.getItem("user");
+
+  const [joinedCompetition, setJoinedCompetition] = useState(false)
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (isLogged) {
+      // SEE IF THE USER IS CONNECTED To the competition
+      fetch(`http://localhost:8000/user?id=${connectedUser.id}`)
+        .then((res) => {
+          return res.json()
+        })
+        .then((data) => {
+          console.log(data)
+          const userInfo = data[0]
+          if (userInfo.competition) {
+            const competitions = userInfo.competition;
+            competitions.forEach(item => {
+              if (item.competitionId == id) {
+                console.log("logged to a competition")
+                setJoinedCompetition(true)
+              }
+            });
+          } else {
+            console.log("is not")
+          }
+        })
+    }
+
+
+    //GET THE COMPETITION DATA FROM THE API
+    fetch(`http://localhost:8000/competition?id=${id}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setData(data[0]);
+      });
+  }, [])
+
   return (
     <CompetitionStyle>
-      <Cover_competition />
-      <div className="content">
-        <Dashboard_competition />
-        <Routes location={location} key={location.pathname}>
-          <Route path="overview" element={<Overview  />} />
-          <Route
-            path="/myProject"
-            element={<MyProject_competition  />}
-          />
-          <Route path="/participants" element={<Participants_comp/>} />
-          <Route path="/ressources" element={<Ressources/>}/>
-          <Route path="/rules" element={<Rules />} />
-          <Route path="/projectGallery" element={<ProjectGallery />} />
-          <Route path="/discussions" element={<Discussions /> } />
+      {data &&
+        <>
+          <Cover_competition />
+          <div className="content">
+            <Dashboard_competition />
+            <Routes location={location} key={location.pathname}>
+              <Route path="overview" element={<Overview  data={data} isLogged={isLogged} setJoinedCompetition={setJoinedCompetition} joinedCompetition={joinedCompetition} />} />
+              <Route
+                path="/myProject"
+                element={<MyProject_competition data={data} isLogged={isLogged}  setJoinedCompetition={setJoinedCompetition} joinedCompetition={joinedCompetition} />}
+              />
+              <Route path="/participants" element={<Participants_comp setJoinedCompetition={setJoinedCompetition} joinedCompetition={joinedCompetition} />} />
+              <Route path="/ressources" element={<Ressources joinedCompetition={joinedCompetition} />} />
+              <Route path="/rules" element={<Rules joinedCompetition={joinedCompetition} />} />
+              <Route path="/projectGallery" element={<ProjectGallery joinedCompetition={joinedCompetition} />} />
+              <Route path="/discussions" element={<Discussions joinedCompetition={joinedCompetition} />} />
 
-          {/* <Route path="/createProject" element={<CreateProject_step />} /> */}
-          <Route path="/steps" element={<StepsCompetition_page />} />
+              <Route path="/steps" element={<StepsCompetition_page joinedCompetition={joinedCompetition} />} />
 
-          {/* <Route path="/step1" element={< />} /> */}
-        </Routes>
-      </div>
+            </Routes>
+          </div>
+        </>}
+
     </CompetitionStyle>
   );
 };

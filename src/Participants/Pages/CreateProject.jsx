@@ -1,12 +1,66 @@
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import styled from "styled-components";
 
 const CreateProject = () => {
   const navigate = useNavigate()
   const rejoindre = async(e)=>{
     if(localStorage.getItem("user")){
-      localStorage.setItem("projectExist", true)
-      navigate("/createProject")
+      // localStorage.setItem("projectExist", true)
+      
+      const connectedUser = JSON.parse(localStorage.getItem('user'));
+      const competition = {
+        competitionId: id,
+        project: {
+          name: "Sans titre",
+          description: "Pas de description",
+          team: [],
+          img: "data:image/jpeg"
+        }
+      };
+
+      // Fetch the user data from the server using the connectedUser's ID
+      fetch(`http://localhost:8000/user/${connectedUser.id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+        .then((res) => res.json()) 
+        .then((data) => {
+          console.log(data)
+          if (data.competition) {
+            data.competition.push(competition);
+            // console.log(data)
+
+            // Update the user data on the server
+            fetch(`http://localhost:8000/user/${connectedUser.id}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            })
+              .then((res) => res.json())
+              .then(() => {
+
+                console.log("Competition added to user successfully.");
+                setJoinedCompetition(true)
+                navigate(`/competition/${id}/createProject`)
+
+              })
+              .catch((error) => {
+                console.error("Error updating the user data: ", error);
+              });
+          } else {
+            console.error("User data not found or user.competition array is missing.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching the user data: ", error);
+        });
+
+    
+      navigate(`competition/${id}/steps`)
     }
   }
   return (
@@ -39,14 +93,19 @@ padding : 0 2em;
 
 const BtnCreateProject = () => {
   const navigate = useNavigate()
-  const startProject = async(e)=>{
+  const {id} = useParams()
+  const editProject = async(e)=>{
     e.preventDefault();
-    navigate("/competition/createProject")
+    navigate(`/competition/${id}/steps`)
+  }
+  const addMembers = async(e)=>{
+    e.preventDefault()
+    navigate(`/competition/${id}/participants`)
   }
   return (
     <BtnCreate>
-      <button onClick={startProject} className="btn btn-red">Démarrer le projet</button>
-      <button className="btn btn-green">Trouver des coéquipiers</button>
+      <button onClick={editProject} className="btn btn-red">Edit project</button>
+      <button onClick={addMembers} className="btn btn-green">Trouver des coéquipiers</button>
     </BtnCreate>
   );
 };

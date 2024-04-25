@@ -10,8 +10,6 @@ import Image_drag_drop from "./Steps_components/Image_drag_drop";
 
 const CreateProject_step = ({ steps, currentStep, setCurrentStep }) => {
   const [stepInfo, setStepInfo] = useState(steps[currentStep]);
-  console.log("current step : ",currentStep)
-  // console.log(stepInfo)
   const navigate = useNavigate();
   useEffect(()=>{
     setStepInfo(steps[currentStep])
@@ -27,7 +25,6 @@ const CreateProject_step = ({ steps, currentStep, setCurrentStep }) => {
   };
   const defaultCompetitionCard = dataJSON.competitionDefault;
   const [dataCard, setDataCard] = useState(defaultCompetitionCard);
-console.log(stepInfo)
   return (
     <ProjectForm className={`step${stepInfo.idStep}`}>
       <h2>{stepInfo.Title}</h2>

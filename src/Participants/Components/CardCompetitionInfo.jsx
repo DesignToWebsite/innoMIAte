@@ -8,7 +8,7 @@ import { GREEN_COLOR, ORANGE_COLOR } from "../../style/Colors";
 const CardCompetitionInfo = ({ data }) => {
   //   const deadline = "2024-04-20T12:00:00";
   const calculateTimeLeft = () => {
-    const difference = +new Date(data.deadline) - +new Date();
+    const difference = +new Date(data.deadLine.trim()) - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {
@@ -49,7 +49,7 @@ const CardCompetitionInfo = ({ data }) => {
             )}
           </p>
           <h4>Date limite</h4>
-          <p>19 mars 2024 @ 12:00am GMT </p>
+          <p>{data.date} </p>
         </div>
         <Line />
         <div className="info">

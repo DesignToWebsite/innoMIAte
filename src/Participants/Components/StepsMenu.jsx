@@ -11,7 +11,6 @@ const StepsMenu = ({steps, currentStep, setCurrentStep}) => {
   const {id} = useParams();
 
   const activeStep = (id_step) => {
-    console.log("id step : ", id_step)
     setCurrentStep(id_step)
     
     // navigate(`/competition/${id}/step${id_step}`);

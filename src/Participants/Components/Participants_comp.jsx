@@ -28,7 +28,7 @@ const Participants_comp = () => {
                             </div>
                             <div className="info">
                                 <div className="name">
-                                    <p>Name</p>
+                                    <p>Zineb Essoussi</p>
                                     <button className="follow">+</button>
                                     
                                 </div>
@@ -54,6 +54,12 @@ const Participants = styled.div`
     margin: 2em auto;
     padding: 2em 2em;
     text-align: center;
+  }
+  .participants{
+    margin: 2em;
+    .listParticipants{
+      margin: 2em  1em;
+    }
   }
 `;
 

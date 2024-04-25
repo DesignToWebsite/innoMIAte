@@ -6,26 +6,20 @@ import { BtnCreateProject, CreateProject } from "./CreateProject";
 import Project_competition from "../Components/Project_competition";
 import { useEffect, useState } from "react";
 
-const MyProject_competition = () => {
-  const data = dataJson.competition[0];
-// console.log(data)
-  const isLogged = localStorage.getItem("user");
-  const [projectExist, setProjectExist] = useState(localStorage.getItem('projectExist'));
-  // useEffect(()=>{
-  //   
-  // },[])
-  // console.log(projectExist)
+const MyProject_competition = ({data, isLogged, joinedCompetition, setJoinedCompetition}) => {
+
+ 
   return (
     <Projects>
       <div className="row">
-        <div className="col-12 col-md-7 col-sm-6 col-lg-8">
+        <div className=" col-12 col-md-7 col-sm-6 col-lg-8">
           {!isLogged && <RegisterCompetition />}
-          {isLogged && !projectExist && <CreateProject projectExist={projectExist} setProjectExist={setProjectExist} />}
-          {isLogged && projectExist && <Project_competition />}
+          {isLogged && !joinedCompetition && <CreateProject joinedCompetition={joinedCompetition} setJoinedCompetition={setJoinedCompetition} />}
+          {isLogged && joinedCompetition && <Project_competition data={data} />}
         </div>
         <div className="col-12 col-md-5 col-sm-6 col-lg-4">
-          {isLogged && projectExist  && <BtnCreateProject />}
-          <CardCompetitionInfo data={data} />
+          {isLogged && joinedCompetition  && <BtnCreateProject />}
+          {data && <CardCompetitionInfo data={data} />}
           <p>
 
           </p>

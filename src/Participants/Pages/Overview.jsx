@@ -3,25 +3,10 @@ import dataJson from "../../data/data.json";
 import CardCompetitionInfo from "../Components/CardCompetitionInfo";
 import CompInfoOverview from "../Components/CompInfoOverview";
 import DescriptionComp from "../Components/DescriptionComp";
-import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
 
-const Overview = () => {
-  // const data = dataJson.competition[0];
-  const location = useLocation()
-  const url = location.pathname;
-  const {id} = useParams()
-  console.log(id)
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    fetch(`http://localhost:8000/competition?id=${id}`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setData(data[0]);
-      });
-  }, []);
+
+const Overview = ({data, isLogged, joinedCompetition, setJoinedCompetition}) => {
+
   return (
     <>
       {data && 
@@ -29,7 +14,11 @@ const Overview = () => {
           <div className="header">
             <div className="row">
               <div className="col-12 col-md-7 col-sm-6 col-lg-8">
-                <CompInfoOverview data={data} />
+                <CompInfoOverview 
+                    isLogged={isLogged} 
+                    joinedCompetition={joinedCompetition} 
+                    setJoinedCompetition={setJoinedCompetition}  
+                    data={data} />
               </div>
               <div className="col-12 col-md-5 col-sm-6 col-lg-4">
                 <CardCompetitionInfo data={data} />

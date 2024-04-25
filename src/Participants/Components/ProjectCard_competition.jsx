@@ -1,9 +1,11 @@
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const ProjectCard_competition = ({ data }) => {
+  const { id } = useParams();
   return (
     <ProjectCard>
-      <div className="project">
+      <Link to={`/competition/${id}/steps`} className="project">
         <div className="img">
           <img src={data.img} alt="" />
         </div>
@@ -29,21 +31,23 @@ const ProjectCard_competition = ({ data }) => {
               })}
             </div>
 
-            {window.location.href.includes("competition") && (
-              <a href="#">Gérer l'équipe</a>
-            )}
+            {/* {window.location.href.includes("competition") && (
+              <Link to={`/competition/${id}/steps`}>Gérer l'équipe</Link>
+            )} */}
           </div>
         </div>
-      </div>
+      </Link>
     </ProjectCard>
   );
 };
 
 const ProjectCard = styled.div`
-  .project {
+  a.project {
     width: 300px;
+    display: grid;
     border: 1px solid #b7c3c7;
     position: relative;
+    color: black;
     .img img {
       height: 200px;
       width: 100%;

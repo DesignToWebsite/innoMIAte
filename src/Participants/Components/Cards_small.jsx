@@ -10,7 +10,6 @@ const Cards_small = () => {
       .then((res) => res.json())
       .then((data) => {
         setCompetitions(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching data : ", error);

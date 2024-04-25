@@ -12,7 +12,7 @@ const RegisterCompetition = () => {
 };
 
 const Register = styled.div`
-  .register {
+.register {
     display: flex;
     flex-direction: column;
     align-items: center;
