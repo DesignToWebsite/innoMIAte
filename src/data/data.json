@@ -1,4 +1,21 @@
 {
+  "faq": [
+    {
+      "question": "Qu'est-ce que React?",
+      "titleAnswer": "React",
+      "answer": "React est une bibliothèque JavaScript utilisée pour construire des interfaces utilisateur interactives."
+    },
+    {
+      "question": "Comment installer React?",
+      "titleAnswer": "React",
+      "answer": "Vous pouvez installer React en utilisant npm ou yarn. Exécutez `npm install react` ou `yarn add react` dans votre terminal."
+    },
+    {
+      "question": "Qu'est-ce que JSX?",
+      "titleAnswer": "React",
+      "answer": "JSX est une syntaxe de JavaScript qui permet d'écrire du HTML dans des fichiers JavaScript et de les utiliser avec React."
+    }
+  ],
   "competition": [
     {
       "id": 1,
@@ -281,6 +298,8 @@
   ],
   "user": {
     "name": "zineb Essoussi",
+    "firstName": "zineb",
+    "lastName": "Essoussi",
     "userName": "zineb-essoussi",
     "bio": "I'm an IT student",
     "skills": ["CSS", "HTML", "REACT", "SASS"],

@@ -6,11 +6,11 @@ import { ORANGE_COLOR, RED_COLOR, GREEN_COLOR } from "../../style/Colors";
 
 const ProfileInfo = () => {
   // Supposons que les données utilisateur soient accessibles dans data.user
-  const { name, userName, bio, github, linkedin, website } = data.user;
+  const { firstName, lastName, bio, github, linkedin, website } = data.user;
 
   const handleSave = () => {
     // Récupérer les nouvelles valeurs des champs d'entrée
-    const newUserName = document.getElementById("userName").value;
+    const newUserName = document.getElementById("firstName").value;
     const newEmail = document.getElementById("bio").value;
   
     // Implémenter la logique pour enregistrer les modifications
@@ -37,11 +37,11 @@ const ProfileInfo = () => {
       <Info>
         <InputContainer>
           <Label>Nom</Label>
-          <InputInfo defaultValue={name} />
+          <InputInfo defaultValue={lastName} />
         </InputContainer>
         <InputContainer>
-          <Label>Nom d'utilisateur</Label>
-          <InputInfo id="userName" defaultValue={userName} />
+          <Label>Prénom</Label>
+          <InputInfo id="firstName" defaultValue={firstName} />
         </InputContainer>
       </Info>
 

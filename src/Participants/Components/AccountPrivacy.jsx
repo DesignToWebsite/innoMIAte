@@ -39,25 +39,6 @@ const AccountPrivacy = () => {
         <InfoText>La tête haute! Lorsque vous modifiez votre adresse e-mail, vous devrez revérifier avant de vous connecter avec cette adresse.</InfoText>
         <Input id="email" defaultValue={email} />
       </InputContainer>
-
-      <TitleSmall>Connexion sociale</TitleSmall>
-      <InfoText>Ajoutez vos comptes de réseaux sociaux pour vous connecter plus facilement à Devpost</InfoText>
-
-      <ButtonContainer>
-      <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=123456789&redirect_uri=https://votre-domaine.com/auth/linkedin/callback&state=123abc&scope=r_liteprofile%20r_emailaddress">
-        <ConnectButton>
-          <Icon src={LinkedIn} />
-          Connectez-vous avec LinkedIn
-        </ConnectButton>
-        </a>
-        <a href="https://github.com/login/oauth/authorize">
-        <ConnectButton >
-          <Icon src={git_icon} />
-          Connectez-vous avec GitHub
-        </ConnectButton>
-        </a>
-      </ButtonContainer>
-
       <ButtonContainer>
         <SaveButton onClick={handleSave}>Enregistrer les modifications</SaveButton>
         <Link to="/profile">
