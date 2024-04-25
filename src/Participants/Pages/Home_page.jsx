@@ -6,6 +6,7 @@ import Search from '../Components/Search'
 import Card_small from '../../common/cards/shorcuts/Card'
 import Card from '../Components/Card'
 import Cards_small from '../Components/Cards_small'
+import FAQ from '../Components/FAQ'
 
 const Home_page = ()=> {
   
@@ -16,6 +17,7 @@ const Home_page = ()=> {
      
       <Header_Home/>
       <Search />
+      <FAQ/>
       <Cards_small />      
     </>
   )

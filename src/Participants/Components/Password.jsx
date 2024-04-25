@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
 
 const PasswordChange = () => {
@@ -77,7 +78,9 @@ const PasswordChange = () => {
 
         <ButtonContainer>
           <SaveButton type="submit" to="/profile">Enregistrer les modifications</SaveButton>
-          <CancelButton type="button" onClick={handleCancel}>Annuler</CancelButton>
+          <Link to="/profile">
+            <CancelButton type="button">Annuler</CancelButton>
+          </Link>
         </ButtonContainer>
       </Form>
 
