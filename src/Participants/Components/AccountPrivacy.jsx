@@ -10,6 +10,20 @@ const AccountPrivacy = () => {
   // Supposons que les données utilisateur soient accessibles dans data.user
   const { userName, email } = data.user;
 
+  const handleSave = () => {
+    // Récupérer les nouvelles valeurs des inputs
+    const newUserName = document.getElementById("userName").value;
+    const newEmail = document.getElementById("email").value;
+  
+    // Enregistrer les modifications
+    // Par exemple, vous pouvez envoyer ces nouvelles valeurs à votre backend pour les enregistrer dans la base de données
+    console.log("Nouveau nom d'utilisateur :", newUserName);
+    console.log("Nouvel email :", newEmail);
+  
+    // Rediriger vers la page de profil
+    window.location.href = "/profile"; // Redirection vers la page de profil
+  };
+
   return (
     <AccountPrivacyContainer>
       <Title>Confidentialité du compte</Title>
@@ -17,13 +31,13 @@ const AccountPrivacy = () => {
 
       <InputContainer>
         <Label>Nom d'utilisateur</Label>
-        <Input defaultValue={userName} />
+        <Input id="userName"  defaultValue={userName} />
       </InputContainer>
 
       <InputContainer>
         <Label>Email</Label>
         <InfoText>La tête haute! Lorsque vous modifiez votre adresse e-mail, vous devrez revérifier avant de vous connecter avec cette adresse.</InfoText>
-        <Input defaultValue={email} />
+        <Input id="email" defaultValue={email} />
       </InputContainer>
 
       <TitleSmall>Connexion sociale</TitleSmall>
@@ -45,8 +59,10 @@ const AccountPrivacy = () => {
       </ButtonContainer>
 
       <ButtonContainer>
-        <SaveButton>Enregistrer les modifications</SaveButton>
-        <CancelButton>Annuler</CancelButton>
+        <SaveButton onClick={handleSave}>Enregistrer les modifications</SaveButton>
+        <Link to="/profile">
+          <CancelButton type="button">Annuler</CancelButton>
+        </Link>
       </ButtonContainer>
     </AccountPrivacyContainer>
   );

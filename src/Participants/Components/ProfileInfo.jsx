@@ -8,6 +8,19 @@ const ProfileInfo = () => {
   // Supposons que les données utilisateur soient accessibles dans data.user
   const { name, userName, bio, github, linkedin, website } = data.user;
 
+  const handleSave = () => {
+    // Récupérer les nouvelles valeurs des champs d'entrée
+    const newUserName = document.getElementById("userName").value;
+    const newEmail = document.getElementById("bio").value;
+  
+    // Implémenter la logique pour enregistrer les modifications
+    // Par exemple, vous pouvez envoyer ces données à un serveur
+    // ou les enregistrer localement
+  
+    // Une fois que les modifications sont enregistrées, vous pouvez rediriger l'utilisateur vers la page de profil
+    window.location.href = "/profile";
+  };
+
   return (
     <ProfileInfoContainer>
       <Title>Informations de profil</Title>
@@ -28,14 +41,14 @@ const ProfileInfo = () => {
         </InputContainer>
         <InputContainer>
           <Label>Nom d'utilisateur</Label>
-          <InputInfo defaultValue={userName} />
+          <InputInfo id="userName" defaultValue={userName} />
         </InputContainer>
       </Info>
 
       {/* Input pour la bio */}
       <InputContainer>
         <Label>Bio</Label>
-        <Textarea defaultValue={bio} />
+        <Textarea id="bio" defaultValue={bio} />
       </InputContainer>
 
       <Title>Social</Title>
@@ -60,8 +73,10 @@ const ProfileInfo = () => {
 
       {/* Boutons pour enregistrer les modifications ou annuler */}
       <ButtonContainer>
-        <SaveButton>Enregistrer les modifications</SaveButton>
-        <CancelButton>Annuler</CancelButton>
+        <SaveButton onClick={handleSave}>Enregistrer les modifications</SaveButton>
+        <Link to="/profile">
+          <CancelButton type="button">Annuler</CancelButton>
+        </Link>
       </ButtonContainer>
     </ProfileInfoContainer>
   );

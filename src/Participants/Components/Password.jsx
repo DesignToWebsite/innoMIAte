@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
 
 const PasswordChange = () => {
@@ -8,7 +7,9 @@ const PasswordChange = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [savedData, setSavedData] = useState({});
 
+  // Fonction pour enregistrer les modifications
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
@@ -16,9 +17,14 @@ const PasswordChange = () => {
     } else if (newPassword.length < 8) {
       setError("Les mots de passe doivent comporter au moins 8 caractères.");
     } else {
-      // Logic to handle password change
+      // Enregistrer les nouvelles valeurs
+      setSavedData({
+        oldPassword,
+        newPassword,
+        confirmPassword
+      });
+      // Réinitialiser les champs d'entrée et les erreurs
       setError("");
-      // Reset input fields
       setOldPassword("");
       setNewPassword("");
       setConfirmPassword("");
@@ -26,7 +32,7 @@ const PasswordChange = () => {
   };
 
   const handleCancel = () => {
-    // Clear all input fields
+    // Effacer les champs d'entrée et les erreurs
     setOldPassword("");
     setNewPassword("");
     setConfirmPassword("");
@@ -70,10 +76,20 @@ const PasswordChange = () => {
         <ErrorMessage>{error}</ErrorMessage>
 
         <ButtonContainer>
-          <SaveButton type="submit">Enregistrer les modifications</SaveButton>
+          <SaveButton type="submit" to="/profile">Enregistrer les modifications</SaveButton>
           <CancelButton type="button" onClick={handleCancel}>Annuler</CancelButton>
         </ButtonContainer>
       </Form>
+
+      {/* Afficher les données enregistrées */}
+      {/* {savedData && (
+        <SavedDataContainer>
+          <TitleSmall>Données enregistrées :</TitleSmall>
+          <p>Ancien mot de passe : {savedData.oldPassword}</p>
+          <p>Nouveau mot de passe : {savedData.newPassword}</p>
+          <p>Confirmation du nouveau mot de passe : {savedData.confirmPassword}</p>
+        </SavedDataContainer>
+      )} */}
     </PasswordChangeContainer>
   );
 };
@@ -126,8 +142,7 @@ const ErrorMessage = styled.p`
 
 const ButtonContainer = styled.div`
   margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
+  margin-bottom: 20px;
 `;
 
 const SaveButton = styled.button`
@@ -137,6 +152,7 @@ const SaveButton = styled.button`
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  margin-right: 10px;
 `;
 
 const CancelButton = styled.button`
@@ -146,6 +162,15 @@ const CancelButton = styled.button`
   border: none;
   border-radius: 3px;
   cursor: pointer;
+`;
+
+const SavedDataContainer = styled.div`
+  margin-top: 20px;
+`;
+
+const TitleSmall = styled.h4`
+  color: #000;
+  margin-top: 20px;
 `;
 
 export default PasswordChange;
