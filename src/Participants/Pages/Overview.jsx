@@ -25,7 +25,7 @@ const Overview = ({data, isLogged, joinedCompetition, setJoinedCompetition}) => 
               </div>
             </div>
           </div>
-          <DescriptionComp />
+          <DescriptionComp data={data}/>
         </OverviewStyle>
       }
     </>

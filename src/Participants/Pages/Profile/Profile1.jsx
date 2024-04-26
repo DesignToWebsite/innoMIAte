@@ -23,9 +23,7 @@ const Profile = () => {
     user.competition.length + user.presonalProjects;
     console.log(projectsCounter)
 
-
-
-    const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [selectedHackathon, setSelectedHackathon] = useState(null);
 
   const handleShowAlert = () => {
@@ -201,6 +199,19 @@ const Profile = () => {
                 >
                   <p className="number">{user.likes.length}</p>
                   <p>j'aime</p>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActivePage("badges");
+                  }}
+                  className={activePage == "badges" ? "active" : ""}
+                  to="/profile/badges"
+                >
+                  <p className="number">0</p>
+                  <p>badges</p>
                 </Link>
               </li>
             </ul>

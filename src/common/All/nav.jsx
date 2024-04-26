@@ -72,9 +72,16 @@ const Nav = () => {
                 <img src={searchIcon} alt="search icon" />
               </button>
               {isLogged ? (
-                <button onClick={logout} className="login">
-                  SE DÉCONNECTER
+                <>
+                
+                <button  className="btn">
+                  <Link to="/profile">Profile</Link>
                 </button>
+                  <button onClick={logout} className="login">
+                   Se déconnecter
+                </button>
+                </>
+                
               ) : (
                 <>
                   <button  className="login">

@@ -6,6 +6,8 @@
       "title": "Competition Name-1",
       "date": "Jan 20 - May 30, 2024",
       "participants": 3561,
+      "mainOrganizer" : "MIA",
+      "mainOrganizerImg" : "https://lh3.googleusercontent.com/proxy/XKWnsalkwSLKVlvCQSDUpYSPUuu7jjY6FU8TQsSlvCOqw_gtx8gVDxLmviBbwpj0iyRdOgU1QvNCTqay4QTyvNc1PS8PIQNvgwqftg0ltbJKG4Mi",
       "place": "Oujda",
       "smallDescription": "Build a full stack app",
       "whoCanPaticipate": [
@@ -100,6 +102,10 @@
       "sponsor": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
+      ],
+      "Partnership": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
       ],
       "ressources": [
@@ -274,6 +280,9 @@
       "id": "2",
       "img": "https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg",
       "title": "Competition Name",
+      "mainOrganizer" : "MIA",
+      "mainOrganizerImg" : "https://lh3.googleusercontent.com/proxy/XKWnsalkwSLKVlvCQSDUpYSPUuu7jjY6FU8TQsSlvCOqw_gtx8gVDxLmviBbwpj0iyRdOgU1QvNCTqay4QTyvNc1PS8PIQNvgwqftg0ltbJKG4Mi",
+      
       "date": "Jan 09 - Mar 12, 2024",
       "participants": 3561,
       "place": "Oujda",
@@ -370,6 +379,10 @@
       "sponsor": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZz9crGUvS33fVozidg2p6WkxCL_hZkLSbbzn653rGg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
+      ],
+      "Partnership": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeo1aedo_F7bzoaLcipBM4OcNYw92D2cA6hzD2PAMEEg&s",
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTghAbt4PPMqRbCaKbImPqai0vNIjINF6WPhXDeBdFmPA&s"
       ],
       "ressources": [

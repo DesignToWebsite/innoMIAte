@@ -16,6 +16,10 @@ const Header_Home = () => {
             <div className="description">
               <h1>Bienvenue chez InnoMIATé :</h1>
               <p>Votre destination ultime pour les hackathons et les compétitions</p>
+              <p className="loi">
+                Nous collectons les informations selon la loi marocaine
+                N.... <a href="#">La charte</a>
+              </p>
               <div className="row">
                 <div className="col-12 col-md-12 col-lg-6">
                   <button className="btn btn-green">
@@ -64,7 +68,9 @@ const Header = styled.div`
   min-height: 90vh;
   display: flex;
   align-items: center;
-  
+  .loi{
+    color: rgb(58, 58, 58);
+  }
   .description {
 
     h1 {

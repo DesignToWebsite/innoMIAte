@@ -2,9 +2,8 @@ import styled from "styled-components";
 import dataJSON from "../../data/data.json";
 import { Marked, marked } from "marked";
 import star from "../../assets/dashboard_competition/Star.png";
-const DescriptionComp = () => {
-  const data = dataJSON.competition[0];
-
+const DescriptionComp = ({data}) => {
+  // const data = dataJSON.competition[0];
   return (
     <DescriptionCompStyle>
       <Description>
@@ -90,6 +89,20 @@ const DescriptionComp = () => {
           <a href="#"> Email the hackathon manager</a>
         </div>
         <div className="sponsors">
+          <h3>Organisateur</h3>
+          {/* {data.sponsor.map((item, index) => { */}
+          <p>Mia</p>
+             <img  src={data.mainOrganizerImg}  alt={data.mainOrganizer}/>;
+          {/* })} */}
+        </div>
+        <div className="sponsors">
+          <h3>Partenariat</h3>
+          {data.Partnership.map((item, index) => {
+            return <img key={index} src={item} alt="" />;
+          })}
+        </div>
+        <div className="sponsors">
+          <h3>Sponsors</h3>
           {data.sponsor.map((item, index) => {
             return <img key={index} src={item} />;
           })}
@@ -107,11 +120,13 @@ const DescriptionCompStyle = styled.div`
       background-color: #f5f7f7;
       width: fit-content;
       padding: 5px 15px;
+      margin-bottom: 1em;
     }
     .sponsors {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 20px;
       img {
         width: 100px;
       }

@@ -79,8 +79,16 @@ const CompInfoOverview = ({ data, isLogged, joinedCompetition, setJoinedCompetit
   return (
     <Info>
       <div className="info">
+      <div className="organisateur">
+          <p>Organisée par la <span>{data.mainOrganizer} </span></p>
+          <div className="logo">
+            <img src={data.mainOrganizerImg} alt="" />
+          </div>
+        </div>
         <h1>{data.title}</h1>
+        
         <h3>{data.smallDescription}</h3>
+        
         <div className="isParticipant">
           <div className="whoCanParticipate">
             <p>Qui peut participer</p>
@@ -149,7 +157,20 @@ const Info = styled.div`
     button{
       margin: 5px !important;
     }
+    
   }
+  .organisateur{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      span{
+        font-weight: 600;
+      }
+      img{
+        width: 90px;
+      }
+    }
 `;
 
 export default CompInfoOverview;
