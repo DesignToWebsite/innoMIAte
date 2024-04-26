@@ -17,8 +17,9 @@ const Home_page = ()=> {
      
       <Header_Home/>
       <Search />
+      <Cards_small />    
       <FAQ/>
-      <Cards_small />      
+
     </>
   )
 }

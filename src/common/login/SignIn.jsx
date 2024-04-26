@@ -11,14 +11,16 @@ const SignIn = () => {
     const lastName = e.target.lastName.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const competition = []
     const user = {
       firstName,
       lastName,
       email,
       password,
+      competition,
     };
     localStorage.setItem("user", JSON.stringify(user));
-    useEffect(() => {
+    // useEffect(() => {
       fetch("http://localhost:8000/user", {
         method: "POST",
         headers: {
@@ -37,7 +39,7 @@ const SignIn = () => {
         });
 
       navigate("/login");
-    }, []);
+    // }, []);
   };
 
   return (

@@ -15,7 +15,7 @@ const FAQ = () => {
   };
 
   return (
-    <FAQContainer>
+    <FAQContainer className="container">
       <Title>FAQ</Title>
       {data.faq.map((item, index) => (
         <QuestionItem key={index}>
@@ -39,7 +39,7 @@ const FAQ = () => {
 };
 
 const FAQContainer = styled.div`
-  margin: 60px;
+  
 `;
 
 const Title = styled.h3`
