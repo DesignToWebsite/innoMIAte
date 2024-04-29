@@ -2,6 +2,8 @@ import styled from "styled-components";
 import mia_header from "../../assets/mia_header.png";
 import bg from "../../assets/bg_home.png";
 import arrow from "../../assets/arrow.png";
+import { Link } from 'react-router-dom';
+
 const Header_Home = () => {
   return (
     <>
@@ -21,14 +23,14 @@ const Header_Home = () => {
                 N.... <a href="#">Notre politique de données</a>
               </p>
               <div className="row">
-                <div className="col-12 col-md-12 col-lg-6">
-                  <button className="btn btn-green">
-                    <p>Pour les organisateurs</p>
-                    <p className="icon">
-                      <img src={arrow} alt="go to the organizers page" />
-                    </p>
-                  </button>
-                </div>
+              <div className="col-12 col-md-12 col-lg-6">
+                <Link to="./index" className="btn btn-green">
+                  <p>Pour les organisateurs</p>
+                  <p className="icon">
+                    <img src={arrow} alt="go to the organizers page" />
+                  </p>
+                </Link>
+              </div>
                 <div className="col-12 col-md-12 col-lg-6">
                 <button className="btn btn-red">
                   <p>Pour les participants</p>
@@ -59,6 +61,7 @@ const Bg = styled.div`
     /* top: 0; */
     right: 0;
     left: 0;
+    z-index: -1;
     img{
       width: 100%;
     }

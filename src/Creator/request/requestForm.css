@@ -1,0 +1,46 @@
+
+#form {
+    border-radius: 25px;
+    border: 2px solid #1d3003;
+    padding: 40px; 
+    width: 420px;
+    height: 420px;  
+    margin-top: 70px;
+    margin-top: -7em;
+    margin-left: -60px;
+  }
+  
+  /*div.a {
+    width: 320px;
+    height: 200px;
+    }*/
+
+  #MotivText {
+    position: relative;
+    top: 0px;
+    left:10px;
+    right:auto;
+  } 
+
+  .tw-ef {
+    position:relative;
+    text-indent: 20px;
+    text-align: justify;
+    margin-top: 40px;
+    margin-left: 100px;
+  }
+  
+  .tw-ef h4 {
+    font-size: 100px;
+    
+  }
+  
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
+    
