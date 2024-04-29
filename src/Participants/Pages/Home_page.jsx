@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Nav from  '../../common/All/nav'
+import Nav from  '../../common/All/Navbar'
 import Footer from '../../common/All/Footer'
 import Header_Home from '../Components/Header_Home'
 import Search from '../Components/Search'

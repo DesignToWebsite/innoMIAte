@@ -4,7 +4,7 @@ import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const Nav = () => {
+const Navbar = () => {
   const navigate = useNavigate()
   const [isLogged, setIsLogged] = useState(false);
   useEffect(() => {
@@ -137,4 +137,4 @@ const NavStyle = styled.div`
   }
 `;
 
-export default Nav;
+export default Navbar;

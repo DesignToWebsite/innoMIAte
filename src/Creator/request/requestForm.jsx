@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Nav from "../../common/All/nav";
+import Nav from "../../common/All/Navbar";
 import HeaderBack from "../HeaderBack";
 import Footer from "../../common/All/Footer";
 import creator from '../../assets/icons/creator.png'

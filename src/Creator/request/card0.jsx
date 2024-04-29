@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../../common/All/nav";
+import Nav from "../../common/All/Navbar";
 import Footer from "../../common/All/Footer";
 import ImageComponent from "./icon1";
 import creator from '../../assets/icons/creator.png';

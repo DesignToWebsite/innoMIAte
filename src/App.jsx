@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Footer from './common/All/Footer'
-import Nav from './common/All/nav'
 import Home_page from './Participants/Pages/Home_page'
 import GlobalStyle from './style/GlobalStyle'
 import { Route, Routes, useLocation } from 'react-router'
@@ -12,6 +11,7 @@ import Profile1 from './Participants/Pages/Profile/Profile1'
 import EditProfile from './Participants/Pages/Profile/EditProfile'
 import Card0 from './Creator/request/card0'
 import RequestForm from './Creator/request/requestForm'
+import Navbar from './common/All/Navbar'
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
     <>
       <GlobalStyle />
       <>
-      <Nav />
+      <Navbar />
       
       <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Home_page/>} />

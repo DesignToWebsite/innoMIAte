@@ -1,4 +1,4 @@
-import Nav from "../common/All/nav";
+import Nav from "../common/All/Navbar";
 import Card from "../common/cards/organisersOption/card";
 import icons from "../constants/icons";
 
