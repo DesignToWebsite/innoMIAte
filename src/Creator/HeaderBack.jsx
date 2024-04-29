@@ -14,7 +14,6 @@ const HeaderBack = () => {
       xmlns="http://www.w3.org/2000/svg"
       style={{
         position: "absolute",
-        top: "56px",
         left: 0,
         zIndex: -100,
         padding: 0,
