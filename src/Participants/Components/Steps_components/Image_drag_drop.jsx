@@ -100,8 +100,10 @@ const DragAndDropContainer = styled.div`
     border-radius: 8px;
     padding: 20px;
     text-align: center;
+    width: 100%;
     /* width: 300px; */
     margin: auto;
+    margin-bottom: 2em;
 
     p {
         margin: 0;

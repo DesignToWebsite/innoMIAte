@@ -39,7 +39,7 @@ const FAQ = () => {
 };
 
 const FAQContainer = styled.div`
-  
+  margin-bottom: 5em;
 `;
 
 const Title = styled.h3`

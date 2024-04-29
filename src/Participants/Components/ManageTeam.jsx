@@ -11,7 +11,7 @@ const ManageTeam = () => {
         step.
       </p>
       <div className="line"></div>
-      <div className="content">
+      <div className="addMember">
         <div className="addMembers">
           <h3>Invite Teammates</h3>
           <p>
@@ -71,8 +71,8 @@ const Team = styled.div`
         padding: 5px 10px;
     }
   }
-  .content {
-    display: grid;
+  .addMember {
+    display: grid !important;
     grid-template-columns: 2fr 1fr;
     gap: 30px;
   }

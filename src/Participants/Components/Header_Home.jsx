@@ -18,7 +18,7 @@ const Header_Home = () => {
               <p>Votre destination ultime pour les hackathons et les compétitions</p>
               <p className="loi">
                 Nous collectons les informations selon la loi marocaine
-                N.... <a href="#">La charte</a>
+                N.... <a href="#">Notre politique de données</a>
               </p>
               <div className="row">
                 <div className="col-12 col-md-12 col-lg-6">

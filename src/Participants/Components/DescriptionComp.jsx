@@ -89,14 +89,14 @@ const DescriptionComp = ({data}) => {
           <a href="#"> Email the hackathon manager</a>
         </div>
         <div className="sponsors">
-          <h3>Organisateur</h3>
+          <h3>Organisateurs</h3>
           {/* {data.sponsor.map((item, index) => { */}
           <p>Mia</p>
              <img  src={data.mainOrganizerImg}  alt={data.mainOrganizer}/>;
           {/* })} */}
         </div>
         <div className="sponsors">
-          <h3>Partenariat</h3>
+          <h3>partenaires </h3>
           {data.Partnership.map((item, index) => {
             return <img key={index} src={item} alt="" />;
           })}

@@ -56,16 +56,19 @@ const CreateProject_step = ({ steps, currentStep, setCurrentStep }) => {
                     setDataCard={setDataCard}
                   />
                 )}
+                {item.tag == "image" && (
+                  <Image_drag_drop/>
+                )}
               </div>
             );
           })}
-          <Image_drag_drop />
 
           <button onClick={saveProject} className="btn btn-red">
             Enregistrer && continuer
           </button>
         </form>
-        <Card_project setDataCard={setDataCard} dataCard={dataCard} />
+        {stepInfo.infoWithCard &&
+          <Card_project setDataCard={setDataCard} dataCard={dataCard} />}
       </div>
     </ProjectForm>
   );
