@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { GREEN_COLOR, RED_COLOR } from "../../style/Colors";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import axios from "axios";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -11,34 +12,29 @@ const SignIn = () => {
     const lastName = e.target.lastName.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const userName = firstName+"_"+lastName;
     const competition = []
     const user = {
       firstName,
       lastName,
+      userName,
       email,
       password,
-      competition,
     };
-    localStorage.setItem("user", JSON.stringify(user));
-    // useEffect(() => {
-      fetch("http://localhost:8000/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
-        .then((res) => {
-          res.json();
-        })
-        .then((data) => {
-          console.log("New user created : ", data);
-        })
-        .catch((error) => {
-          console.error("Error creating new item: ", error);
-        });
 
-      navigate("/login");
+      const url = "http://localhost:5299/api/User"
+      try{const response = await axios.post(
+        url, user
+      )
+      if(response.data){
+        navigate("/login");
+      }}
+      catch(error){
+        console.error(error)
+      }
+
+
+      
     // }, []);
   };
 

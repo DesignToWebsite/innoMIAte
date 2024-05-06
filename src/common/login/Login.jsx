@@ -11,20 +11,22 @@ const LogIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const user = {
-      email,
-      password,
-    };
-  
-      const url = `http://localhost:8000/user?email=${user.email}&password=${user.password}`;
+    const credential = {
+       email,
+      password
+    }
+  //http://localhost:5299/api/User/login
+
+      const url = `http://localhost:5299/api/Auth/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+      console.log(url)
       try{
-        const response = await axios.get(
-            url,
-            user
+        const response = await axios.post(
+            "http://localhost:5299/api/User/login",
+            credential
         )
         console.log(response.data)
-        if(response.data.length>0){
-            localStorage.setItem("user", JSON.stringify(response.data[0]));
+        if(response.data){
+            localStorage.setItem("user", JSON.stringify(response.data));
             navigate("/")
         }
       }catch (error){

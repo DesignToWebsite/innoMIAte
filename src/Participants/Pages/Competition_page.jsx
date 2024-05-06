@@ -47,15 +47,17 @@ const Competition_page = () => {
         })
     }
 
-
     //GET THE COMPETITION DATA FROM THE API
-    fetch(`http://localhost:8000/competition?id=${id}`)
+    fetch(`http://localhost:5299/api/Competition/${id}`)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        setData(data[0]);
+        setData(data);
+        // console.log(data)
       });
+
+    // const fetchData = 
   }, [])
 
   return (
@@ -71,7 +73,7 @@ const Competition_page = () => {
                 path="/myProject"
                 element={<MyProject_competition data={data} isLogged={isLogged}  setJoinedCompetition={setJoinedCompetition} joinedCompetition={joinedCompetition} />}
               />
-              <Route path="/participants" element={<Participants_comp setJoinedCompetition={setJoinedCompetition} joinedCompetition={joinedCompetition} />} />
+              <Route path="/participants" element={<Participants_comp data={data} setJoinedCompetition={setJoinedCompetition} joinedCompetition={joinedCompetition} />} />
               <Route path="/ressources" element={<Ressources joinedCompetition={joinedCompetition} />} />
               <Route path="/rules" element={<Rules joinedCompetition={joinedCompetition} />} />
               <Route path="/projectGallery" element={<ProjectGallery joinedCompetition={joinedCompetition} />} />

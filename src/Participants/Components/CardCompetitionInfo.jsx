@@ -49,32 +49,37 @@ const CardCompetitionInfo = ({ data }) => {
             )}
           </p>
           <h4>Date limite</h4>
-          <p>{data.date} </p>
+          <p>{data.deadLine} </p>
         </div>
         <Line />
         <div className="info">
           <div className="row">
             <div className="col-6 item">
               <img src={place} alt="" />
-              {data.place}
+              {data.location}
             </div>
             <div className="col-6 item">
               <img src={publicIcon} alt="" />
-              {data.public}
+              {data.public? "public" : "Private"}
             </div>
-            <div className="col-6 item">{data.prizes[0]} in prizes</div>
-            <div className="col-6 item">{data.participants} participants</div>
+            <div className="col-6 item">{data.prizes.$values[0]} in prizes</div>
+            <div className="col-6 item">{data.userCompetitions.$values.length} participants</div>
           </div>
         </div>
         <Line />
         <div className="metaData">
           <div className="theme">
             <img src={theme} alt="" />
-            <p>{data.theme}</p>
+            {
+             data.theme.$values.map((item, index)=>{
+                return(<p className="tagsTheme" key={index}>{item}</p>)
+              })
+            }
+  
           </div>
           <div className="tags">
             <img src={tags} alt="" />
-            {data.tags.map((tag, index) => {
+            {data.tags.$values.map((tag, index) => {
               return <p key={index} className="tag">{tag} </p>;
             })}
           </div>
@@ -127,12 +132,14 @@ const Card = styled.div`
     }
     .theme {
       display: flex;
+      flex-wrap   :wrap ;
       align-items: center;
       margin-bottom: 10px;
-      p {
+      .tagsTheme {
         color: ${ORANGE_COLOR};
         border: 2px solid ${ORANGE_COLOR};
         padding: 1px 10px;
+        margin: 5px 2px;
         border-radius: 30px;
         opacity: 0.8;
       }

@@ -24,7 +24,7 @@ const Dashboard_competition = () => {
       </Link>
       <Link class="nav-link" to={`/competition/${id}/participants`}>
         <img src={Participants} alt="" />
-        <span>Participants (220)</span>
+        <span>Participants </span>
       </Link>
       <Link class="nav-link" to={`/competition/${id}/ressources`}>
         <img src={Ressources} alt="" />

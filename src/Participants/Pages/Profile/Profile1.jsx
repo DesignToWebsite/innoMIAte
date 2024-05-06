@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import location from "../../../assets/Profile/location.png";
 import github from "../../../assets/Profile/github.png";
@@ -12,16 +12,35 @@ import ProfileNoProject from "../../Components/ProfileNoProject";
 import ProfileProjectsExist from "../../Components/ProfileProjectsExist";
 import NewProjectAlert from "../../Components/NewProjectAlert";
 import HackathonCard from "../../Components/HackathonCard";
+import axios from "axios";
 // import Profile_noProject from "../../Components/profile_noProject";
 
 
 const Profile = () => {
+  const connectedUser = JSON.parse(localStorage.getItem('user'))
+  const id = connectedUser.id;
+
+  const [userProfile, setUserProfile] = useState(null)
+
+  useEffect(()=>{
+    const fetchData = async()=>{
+      try{
+        const url = `http://localhost:5299/api/User/${id}`
+        const response = await axios.get(url)
+        setUserProfile(response.data)
+        console.log(userProfile)
+      }catch(error){
+        console.error(error);
+      }
+    }
+    fetchData()
+  },[])
   const user = data.user;
   const competitions = data.competition;
   const [activePage, setActivePage] = useState("Projects")
   const projectsCounter =
     user.competition.length + user.presonalProjects;
-    console.log(projectsCounter)
+    // console.log(projectsCounter)
 
   const [showAlert, setShowAlert] = useState(false);
   const [selectedHackathon, setSelectedHackathon] = useState(null);

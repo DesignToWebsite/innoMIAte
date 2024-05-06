@@ -2,8 +2,9 @@ import styled from "styled-components";
 import usersIcon from "../../assets/dashboard_competition/Users.png";
 import Search from "./Search";
 
-const Participants_comp = () => {
+const Participants_comp = ({data}) => {
   const logged = localStorage.getItem("user");
+  console.log(data)
   return (
     <Participants>
       {!logged && (

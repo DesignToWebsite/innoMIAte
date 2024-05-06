@@ -2,12 +2,12 @@ import styled from "styled-components";
 import dataJSON from "../../data/data.json";
 import { Marked, marked } from "marked";
 import star from "../../assets/dashboard_competition/Star.png";
-const DescriptionComp = ({data}) => {
+const DescriptionComp = ({ data }) => {
   // const data = dataJSON.competition[0];
   return (
     <DescriptionCompStyle>
       <Description>
-        <h3>À propos du défi</h3>
+        {/* <h3>À propos du défi</h3>
         <div
           dangerouslySetInnerHTML={{ __html: marked(data.AboutCompetition) }}
         />
@@ -25,23 +25,26 @@ const DescriptionComp = ({data}) => {
         />
         <div
           dangerouslySetInnerHTML={{ __html: marked(data.GettingStarted) }}
+        /> */}
+        <div
+          dangerouslySetInnerHTML={{ __html: marked(data.overviewDescription) }}
         />
 
         <h3>Les Prix</h3>
         <div className="prices">
-          {data.prizesAll.map((price, key) => {
+          {data.prizes.$values.map((price, key) => {
             return (
               <div key={key} className="priceItem">
-                <div className="title">
+                {/* <div className="title">
                   <img src={star} alt="" />
                   {price.title}
-                </div>
+                </div> */}
 
                 <ul>
-                  <li> {price.price} </li>
-                  {price.others.map((other, index) => {
+                  <li> {price} </li>
+                  {/* {price.others.map((other, index) => {
                     return <li key={index}>{other}</li>;
-                  })}
+                  })} */}
                 </ul>
               </div>
             );
@@ -51,7 +54,7 @@ const DescriptionComp = ({data}) => {
         <h2>Les Entraîneurs</h2>
 
         <div className="coachs">
-          {data.coachs.map((coach, index) => {
+          {/* {data.coachs.map((coach, index) => {
             return (
               <div key={index} className="item">
                 <div className="image">
@@ -63,11 +66,11 @@ const DescriptionComp = ({data}) => {
                 </div>
               </div>
             );
-          })}
+          })} */}
         </div>
 
         <h3>Les Juges</h3>
-        <div className="judges">
+        {/* <div className="judges">
           {data.judges.map((judge, index) => {
             return (
               <div key={index} className="item">
@@ -81,7 +84,7 @@ const DescriptionComp = ({data}) => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </Description>
       <div className="more">
         <div className="questions">
@@ -90,21 +93,42 @@ const DescriptionComp = ({data}) => {
         </div>
         <div className="sponsors">
           <h3>Organisateurs</h3>
-          {/* {data.sponsor.map((item, index) => { */}
-          <p>Mia</p>
-             <img  src={data.mainOrganizerImg}  alt={data.mainOrganizer}/>;
-          {/* })} */}
+
+          {data.organizers.$values.map((item) => {
+            return (
+              <div>
+                <p>{item.name}</p>
+                <img src={item.imageUrl} alt={item.name} />;
+              </div>
+            );
+          })}
         </div>
         <div className="sponsors">
           <h3>partenaires </h3>
-          {data.Partnership.map((item, index) => {
+          {/* {data.Partnership.map((item, index) => {
             return <img key={index} src={item} alt="" />;
+          })} */}
+          {data.partnerships.$values.map((item) => {
+            return (
+              <div>
+                <p>{item.name}</p>
+                <img src={item.imageUrl} alt={item.name} />;
+              </div>
+            );
           })}
         </div>
         <div className="sponsors">
           <h3>Sponsors</h3>
-          {data.sponsor.map((item, index) => {
+          {/* {data.sponsor.map((item, index) => {
             return <img key={index} src={item} />;
+          })} */}
+          {data.sponsors.$values.map((item) => {
+            return (
+              <div>
+                <p>{item.name}</p>
+                <img src={item.imageUrl} alt={item.name} />;
+              </div>
+            );
           })}
         </div>
       </div>
@@ -127,6 +151,11 @@ const DescriptionCompStyle = styled.div`
       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
+      div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
       img {
         width: 100px;
       }
