@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-const Cover_competition = ()=>{
+const Cover_competition = ({data})=>{
     return(
         <Cover>
-            <img src="https://pix4free.org/assets/library/2021-06-16/originals/competition.jpg" alt="" />
+            <img src={data.coverPhoto} alt="" />
             
         </Cover>
     )

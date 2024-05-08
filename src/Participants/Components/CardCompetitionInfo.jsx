@@ -6,7 +6,6 @@ import tags from "../../assets/dashboard_competition/tags.png";
 import theme from "../../assets/dashboard_competition/theme.png";
 import { GREEN_COLOR, ORANGE_COLOR } from "../../style/Colors";
 const CardCompetitionInfo = ({ data }) => {
-  //   const deadline = "2024-04-20T12:00:00";
   const calculateTimeLeft = () => {
     const difference = +new Date(data.deadLine.trim()) - +new Date();
     let timeLeft = {};
@@ -56,14 +55,14 @@ const CardCompetitionInfo = ({ data }) => {
           <div className="row">
             <div className="col-6 item">
               <img src={place} alt="" />
-              {data.location}
+              {data.location }
             </div>
             <div className="col-6 item">
               <img src={publicIcon} alt="" />
-              {data.public? "public" : "Private"}
+              {data.targetAudience}
             </div>
-            <div className="col-6 item">{data.prizes.$values[0]} in prizes</div>
-            <div className="col-6 item">{data.userCompetitions.$values.length} participants</div>
+            <div className="col-6 item">{/*data.prizes[0]*/} in prizes</div>
+            <div className="col-6 item">{/*data.userCompetitions.length*/} participants</div>
           </div>
         </div>
         <Line />
@@ -71,7 +70,7 @@ const CardCompetitionInfo = ({ data }) => {
           <div className="theme">
             <img src={theme} alt="" />
             {
-             data.theme.$values.map((item, index)=>{
+             data.theme.map((item, index)=>{
                 return(<p className="tagsTheme" key={index}>{item}</p>)
               })
             }
@@ -79,7 +78,7 @@ const CardCompetitionInfo = ({ data }) => {
           </div>
           <div className="tags">
             <img src={tags} alt="" />
-            {data.tags.$values.map((tag, index) => {
+            {data.tags.map((tag, index) => {
               return <p key={index} className="tag">{tag} </p>;
             })}
           </div>

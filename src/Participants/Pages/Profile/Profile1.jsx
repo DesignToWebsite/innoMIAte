@@ -13,32 +13,20 @@ import ProfileProjectsExist from "../../Components/ProfileProjectsExist";
 import NewProjectAlert from "../../Components/NewProjectAlert";
 import HackathonCard from "../../Components/HackathonCard";
 import axios from "axios";
+import userImage from "../../../assets/Profile/user.png"
 // import Profile_noProject from "../../Components/profile_noProject";
 
 
 const Profile = () => {
   const connectedUser = JSON.parse(localStorage.getItem('user'))
   const id = connectedUser.id;
-
-  const [userProfile, setUserProfile] = useState(null)
-
-  useEffect(()=>{
-    const fetchData = async()=>{
-      try{
-        const url = `http://localhost:5299/api/User/${id}`
-        const response = await axios.get(url)
-        setUserProfile(response.data)
-        console.log(userProfile)
-      }catch(error){
-        console.error(error);
-      }
-    }
-    fetchData()
-  },[])
+  console.log(connectedUser)
+  const [userProfile, setUserProfile] = useState(connectedUser)
+ 
   const user = data.user;
   const competitions = data.competition;
   const [activePage, setActivePage] = useState("Projects")
-  const projectsCounter =
+  const projectsCounter = 
     user.competition.length + user.presonalProjects;
     // console.log(projectsCounter)
 
@@ -82,7 +70,7 @@ const Profile = () => {
           <div className="container">
             <div className="content">
               <div className="image">
-                <img src={user.img} alt="" />
+                <img src={userProfile.image? userProfile.image : userImage} alt="" />
                 <div className="btns">
                   <Link to="/edit" className="btn btn-red">Modifier les paramètres</Link>
                   <div className="btn btn-green" onClick={handleShowAlert}>Ajouter un nouveau projet</div>
@@ -90,31 +78,31 @@ const Profile = () => {
               </div>
               <div className="info">
                 <h3 className="useName">
-                  {user.name} <span> ({user.userName})</span>
+                  {userProfile.firstName} {userProfile.lastName} <span> ({userProfile.userName})</span>
                 </h3>
-                <p className="bio">{user.bio}</p>
+                <p className="bio">{userProfile.bio}</p>
                 <div className="generalInfo">
                   <div className="item">
                     <img src={location} alt="" />
                     {/* <Link className="d-flex align-items-center " to=""> */}
 
-                    {user.location}
+                    {userProfile.location ? userProfile.location : "World"}
                     {/* <img className="edit ms-1" src={edit} alt="" /> */}
                     {/* </Link> */}
                   </div>
                   <div className="item">
                     <img src={website} alt="" />
-                    <a href={user.website}>Website</a>
+                    <a href={userProfile.website}>Website</a>
                   </div>
                   <div className="item">
                     <img src={github} alt="" />
-                    <a href={user.github}>GitHub</a>
+                    <a href={userProfile.github}>GitHub</a>
                   </div>
                 </div>
                 <div className="skills">
                   <h4>Compétences</h4>
                   <div className="list">
-                    {user.skills.map((item, key) => {
+                    {userProfile.skills?.map((item, key) => {
                       return (
                         <div key={key} className="item">
                           {item}
@@ -126,7 +114,7 @@ const Profile = () => {
                 <div className="interests">
                   <h4>Intérêts</h4>
                   <div className="list">
-                    {user.interests.map((item, key) => {
+                    {userProfile.interests?.map((item, key) => {
                       return (
                         <div key={key} className="item">
                           {item}

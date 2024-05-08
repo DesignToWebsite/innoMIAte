@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import data from '../../data/data.json';
+import { marked } from 'marked';
 
-const Rules = () => {
-  const [rules, setRules] = useState([]);
-
-  useEffect(() => {
-    // Fonction pour charger les règles depuis le fichier data.json
-    setRules(data.competition[0].rules);
-  }, []);
+const Rules = ({data}) => {
+  
 
   return (
     <RulesContainer>
       <Title>Rules</Title>
-      {rules.map((rule, index) => (
-        <Rule key={index}>
-          <RuleTitle>{rule.title}</RuleTitle>
-          <RuleContent>{rule.content}</RuleContent>
-        </Rule>
-      ))}
+      {data.rules? <div
+          dangerouslySetInnerHTML={{ __html: marked(data.rules) }}
+          /> : 'Empty'}
     </RulesContainer>
   );
 }

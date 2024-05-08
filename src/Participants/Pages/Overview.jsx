@@ -6,7 +6,7 @@ import DescriptionComp from "../Components/DescriptionComp";
 
 
 const Overview = ({data, isLogged, joinedCompetition, setJoinedCompetition}) => {
-
+// console.log(data)
   return (
     <>
       {data && 

@@ -3,22 +3,25 @@ import styled from 'styled-components';
 import YouTube from 'react-youtube'; // Import the react-youtube library
 import data from '../../data/data.json'; // Import the data from data.json
 
-const ProjectGallery = () => {
-  const [videos, setVideos] = useState([]);
-  const [photos, setPhotos] = useState([]);
-  const [isPublished, setIsPublished] = useState(false);
+const ProjectGallery = ({data}) => {
 
-  useEffect(() => {
-    // Extract videos and photos from data.json
-    const { videos, photos, galleryPublished } = data.competition[0];
-    setVideos(videos);
-    setPhotos(photos);
-    setIsPublished(galleryPublished);
-  }, []);
+  // const [videos, setVideos] = useState([]);
+  // const [photos, setPhotos] = useState([]);
+  // const [isPublished, setIsPublished] = useState(false);
+
+  // useEffect(() => {
+  //   // Extract videos and photos from data.json
+  //   const { videos, photos, galleryPublished } = data.competition[0];
+  //   setVideos(videos);
+  //   setPhotos(photos);
+  //   setIsPublished(galleryPublished);
+  // }, []);
 
   return (
     <GalleryContainer>
-      {!isPublished ? (
+            <Title>Gallery</Title>
+
+      {/* {!isPublished ? (
         <Message>The hackathon managers haven't published this gallery yet, but hang tight!</Message>
       ) : (
         <>
@@ -37,7 +40,17 @@ const ProjectGallery = () => {
 
           </div>
         </>
-      )}
+      )} */}
+      {
+        data.gallery ? 
+        <div>
+          {data.gallery?.map((item, key)=>{
+            return(
+              <img key={key} src={item} alt="" />
+            )
+          })}
+        </div> : "empty"
+      }
     </GalleryContainer>
   );
 };
@@ -45,7 +58,11 @@ const ProjectGallery = () => {
 const GalleryContainer = styled.div`
   padding: 20px;
 `;
-
+const Title = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
 const Message = styled.p`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;

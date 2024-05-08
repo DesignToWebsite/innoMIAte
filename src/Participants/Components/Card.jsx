@@ -5,16 +5,16 @@ import CardCompetitionInfo from "./CardCompetitionInfo"
 
 
 const Card = ({data})=>{
-    console.log(data)
+    // console.log(data)
     return(
         <CardStyle>
         <Link to={`/competition/${data.url}/overview`}>
 
             <div className="img">
-                <img src={data.image} alt="" />
+                <img src={data.photo} alt="" />
             </div>
             <div className="content">
-                <h2>{data.title}</h2>
+                <h2>{data.name}</h2>
                 <CardCompetitionInfo className="cardHome" data={data}/>
             </div>
         </Link>

@@ -7,32 +7,14 @@ const DescriptionComp = ({ data }) => {
   return (
     <DescriptionCompStyle>
       <Description>
-        {/* <h3>À propos du défi</h3>
+        
         <div
-          dangerouslySetInnerHTML={{ __html: marked(data.AboutCompetition) }}
-        />
-        <h3>Ce que vous obtenez</h3>
-        <div dangerouslySetInnerHTML={{ __html: marked(data.WhatYouGet) }} />
-        <div dangerouslySetInnerHTML={{ __html: marked(data.WhatYouGet) }} />
-        <div dangerouslySetInnerHTML={{ __html: marked(data.WhatYouGet) }} />
-
-        <h3>Commencer </h3>
-        <div
-          dangerouslySetInnerHTML={{ __html: marked(data.GettingStarted) }}
-        />
-        <div
-          dangerouslySetInnerHTML={{ __html: marked(data.GettingStarted) }}
-        />
-        <div
-          dangerouslySetInnerHTML={{ __html: marked(data.GettingStarted) }}
-        /> */}
-        <div
-          dangerouslySetInnerHTML={{ __html: marked(data.overviewDescription) }}
+          dangerouslySetInnerHTML={{ __html: marked(data.description) }}
         />
 
         <h3>Les Prix</h3>
         <div className="prices">
-          {data.prizes.$values.map((price, key) => {
+          {data.prizes?.map((price, key) => {
             return (
               <div key={key} className="priceItem">
                 {/* <div className="title">
@@ -94,7 +76,7 @@ const DescriptionComp = ({ data }) => {
         <div className="sponsors">
           <h3>Organisateurs</h3>
 
-          {data.organizers.$values.map((item) => {
+          {data.organizers.map((item) => {
             return (
               <div>
                 <p>{item.name}</p>
@@ -108,7 +90,7 @@ const DescriptionComp = ({ data }) => {
           {/* {data.Partnership.map((item, index) => {
             return <img key={index} src={item} alt="" />;
           })} */}
-          {data.partnerships.$values.map((item) => {
+          {data.partnerships.map((item) => {
             return (
               <div>
                 <p>{item.name}</p>
@@ -122,7 +104,7 @@ const DescriptionComp = ({ data }) => {
           {/* {data.sponsor.map((item, index) => {
             return <img key={index} src={item} />;
           })} */}
-          {data.sponsors.$values.map((item) => {
+          {data.sponsors.map((item) => {
             return (
               <div>
                 <p>{item.name}</p>

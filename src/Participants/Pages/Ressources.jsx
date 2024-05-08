@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import data from '../../data/data.json'; // Importez le fichier JSON contenant les données
+import { marked } from 'marked';
 
-const Ressources = () => {
-  const [ressources, setRessources] = useState([]);
+const Ressources = ({data}) => {
 
-  useEffect(() => {
-    // Mettez à jour l'état des ressources avec les données importées
-    setRessources(data.competition[0].ressources);
-  }, []);
-
+  
+console.log(data)
   return (
     <RessourcesContainer>
       <Title>Ressources</Title>
-      {ressources.map((resource, index) => (
-        <Resource key={index}>
-          <ResourceDescription>
-            {resource.description}{' '}
-            <ResourceLink href={resource.url} target="_blank">
-              {resource.title}
-            </ResourceLink>
-          </ResourceDescription>
-        </Resource>
-      ))}
+     {data.resource? 
+          <div
+          dangerouslySetInnerHTML={{ __html: marked(data.resource) }}
+          /> : 'No ressource'
+      }
     </RessourcesContainer>
   );
 }

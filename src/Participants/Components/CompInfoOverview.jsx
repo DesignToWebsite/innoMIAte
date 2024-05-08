@@ -29,46 +29,7 @@ const CompInfoOverview = ({ data, isLogged, joinedCompetition, setJoinedCompetit
         competitionId: data.id,
         role: "Participant"
       }
-      // Fetch the user data from the server using the connectedUser's ID
-      // fetch(`http://localhost:8000/user/${connectedUser.id}`, {
-      //   method: "GET",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   }
-      // })
-      //   .then((res) => res.json()) 
-      //   .then((data) => {
-      //     console.log(data)
-      //     if (data.competition) {
-      //       data.competition.push(competition);
-      //       // console.log(data)
-
-      //       // Update the user data on the server
-      //       fetch(`http://localhost:8000/user/${connectedUser.id}`, {
-      //         method: "PUT",
-      //         headers: {
-      //           "Content-Type": "application/json",
-      //         },
-      //         body: JSON.stringify(data),
-      //       })
-      //         .then((res) => res.json())
-      //         .then(() => {
-
-      //           console.log("Competition added to user successfully.");
-      //           setJoinedCompetition(true)
-      //           navigate(`/competition/${id}/steps`)
-
-      //         })
-      //         .catch((error) => {
-      //           console.error("Error updating the user data: ", error);
-      //         });
-      //     } else {
-      //       console.error("User data not found or user.competition array is missing.");
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error fetching the user data: ", error);
-      //   });
+      
       try{
         const url = "http://localhost:5299/api/UserCompetition";
         const response = await axios.post(url, userCompetition)
@@ -96,7 +57,7 @@ const CompInfoOverview = ({ data, isLogged, joinedCompetition, setJoinedCompetit
       <div className="organisateur">
         <p>Organisée par : </p>
         {
-          data.organizers.$values.map((item, key)=>{
+          data.organizers.map((item, key)=>{
             return(
               <div key={key}>
               <span>{item.name} </span>
@@ -109,7 +70,7 @@ const CompInfoOverview = ({ data, isLogged, joinedCompetition, setJoinedCompetit
         }
           
         </div>
-        <h1>{data.title}</h1>
+        <h1>{data.name}</h1>
         
         <h3>{data.descriptionTop}</h3>
         
@@ -122,7 +83,7 @@ const CompInfoOverview = ({ data, isLogged, joinedCompetition, setJoinedCompetit
                 <li>- Tous les pays/territoires</li>
               </ul>
             </div>
-            <a href={data.pdfRules}>Voir le règlement complet</a>
+            {/* <a href={data.pdfRules}>Voir le règlement complet</a> */}
           </div>
           
         </div>
@@ -172,7 +133,7 @@ const Info = styled.div`
   }
   .isParticipant{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
     align-items: center;
     /* flex-direction: row-reverse; */
     .whoCanParticipate{
@@ -188,11 +149,14 @@ const Info = styled.div`
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
+
       div{
         display: flex;
         align-items: center;
         span{
         font-weight: 600;
+        margin-right: 10px;
         }
         img{
           width: 90px;
