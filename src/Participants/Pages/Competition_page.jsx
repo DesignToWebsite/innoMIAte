@@ -7,7 +7,7 @@ import { Routes, Route, useLocation, useParams } from "react-router";
 import MyProject_competition from "./MyProject_competition";
 import { useEffect, useState } from "react";
 import Participants_comp from "../Components/Participants_comp";
-import Ressources from "./Ressources";
+import Resources from "./Resources";
 import Rules from "./Rules";
 import ProjectGallery from "./ProjectGallery";
 import Discussions from "./Discussions";
@@ -23,43 +23,33 @@ const Competition_page = () => {
 
   const [joinedCompetition, setJoinedCompetition] = useState(false);
   const [data, setData] = useState(null);
+  const [hasATeam, setHasATeam] = useState(null);
 
   useEffect(() => {
-    if (isLogged) {
-      // SEE IF THE USER IS CONNECTED To the competition
-      fetch(`http://localhost:8000/user?id=${connectedUser.id}`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          console.log(data);
-          const userInfo = data[0];
-          if (userInfo.competition) {
-            const competitions = userInfo.competition;
-            competitions.forEach((item) => {
-              if (item.competitionId == id) {
-                console.log("logged to a competition");
-                setJoinedCompetition(true);
-              }
-            });
-          } else {
-            console.log("is not");
-          }
-        });
-    }
     const fetchCompetition = async () => {
       const url = `http://localhost:5299/url/${id}`;
       try {
         const response = await axios.get(url);
-        console.log("Response data:", response.data);
+        // console.log("Response data:", response.data);
         setData(response.data);
-        
+
+        const participants = response.data.participants.$values;
+        const connectedUser = JSON.parse(localStorage.getItem("user"));
+        const userId = connectedUser.id;
+        setJoinedCompetition(
+          participants.find((participant) => participant.userId === userId)
+        );
+        if (joinedCompetition) {
+          setHasATeam(
+            participants.find((participant) => participant.userId === userId)
+              .teamId
+          );
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchCompetition();
-    // const fetchData =
   }, []);
 
   return (
@@ -76,7 +66,7 @@ const Competition_page = () => {
                   <Overview
                     data={data}
                     isLogged={isLogged}
-                    setJoinedCompetition={setJoinedCompetition}
+                    hasATeam={hasATeam}
                     joinedCompetition={joinedCompetition}
                   />
                 }
@@ -103,17 +93,27 @@ const Competition_page = () => {
                 }
               />
               <Route
-                path="/ressources"
-                element={<Ressources data={data} joinedCompetition={joinedCompetition} />}
+                path="/resources"
+                element={
+                  <Resources
+                    data={data}
+                    joinedCompetition={joinedCompetition}
+                  />
+                }
               />
               <Route
                 path="/rules"
-                element={<Rules data={data} joinedCompetition={joinedCompetition} />}
+                element={
+                  <Rules data={data} joinedCompetition={joinedCompetition} />
+                }
               />
               <Route
                 path="/projectGallery"
                 element={
-                  <ProjectGallery data={data} joinedCompetition={joinedCompetition} />
+                  <ProjectGallery
+                    data={data}
+                    joinedCompetition={joinedCompetition}
+                  />
                 }
               />
               <Route
@@ -122,9 +122,11 @@ const Competition_page = () => {
               />
 
               <Route
-                path="/steps"
+                path="/steps/:step/"
                 element={
-                  <StepsCompetition_page 
+                  <StepsCompetition_page
+                   data={data}
+                    hasATeam={hasATeam}
                     joinedCompetition={joinedCompetition}
                   />
                 }

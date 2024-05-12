@@ -9,7 +9,7 @@ import AccountPrivacy from "./AccountPrivacy";
 
 const SideEdit = () => {
     const user = data.user;
-  const [activePage, setActivePage] = useState("ProfileInfo")
+    const [activePage, setActivePage] = useState("ProfileInfo")
 
   return (
     <Edit>

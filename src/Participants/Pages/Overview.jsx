@@ -5,7 +5,7 @@ import CompInfoOverview from "../Components/CompInfoOverview";
 import DescriptionComp from "../Components/DescriptionComp";
 
 
-const Overview = ({data, isLogged, joinedCompetition, setJoinedCompetition}) => {
+const Overview = ({data, isLogged, joinedCompetition, hasATeam}) => {
 // console.log(data)
   return (
     <>
@@ -17,7 +17,7 @@ const Overview = ({data, isLogged, joinedCompetition, setJoinedCompetition}) => 
                 <CompInfoOverview 
                     isLogged={isLogged} 
                     joinedCompetition={joinedCompetition} 
-                    setJoinedCompetition={setJoinedCompetition}  
+                     hasATeam={hasATeam}
                     data={data} />
               </div>
               <div className="col-12 col-md-5 col-sm-6 col-lg-4">

@@ -12,12 +12,16 @@ const MyProject_competition = ({data, isLogged, joinedCompetition, setJoinedComp
   return (
     <Projects>
       <div className="row">
-        <div className=" col-12 col-md-7 col-sm-6 col-lg-8">
+        <div className="col-12 col-md-7 col-lg-8">
           {!isLogged && <RegisterCompetition />}
-          {isLogged && !joinedCompetition && <CreateProject joinedCompetition={joinedCompetition} setJoinedCompetition={setJoinedCompetition} />}
+          {isLogged && !joinedCompetition && <CreateProject  
+          isLogged={isLogged} 
+                    joinedCompetition={joinedCompetition} 
+                    setJoinedCompetition={setJoinedCompetition}  
+                    data={data}  />}
           {isLogged && joinedCompetition && <Project_competition data={data} />}
         </div>
-        <div className="col-12 col-md-5 col-sm-6 col-lg-4">
+        <div className="col-12 col-md-5 col-lg-4">
           {isLogged && joinedCompetition  && <BtnCreateProject />}
           {data && <CardCompetitionInfo data={data} />}
           <p>

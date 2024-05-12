@@ -1,10 +1,38 @@
 import styled from "styled-components";
 import usersIcon from "../../assets/dashboard_competition/Users.png";
 import Search from "./Search";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import axios from "axios";
+import userImage from "../../assets/Profile/user.png"
+import SearchParticipant from "./SearchParticipant";
 
-const Participants_comp = ({data}) => {
+
+const Participants_comp = () => {
   const logged = localStorage.getItem("user");
-  console.log(data)
+  const [data, setData] = useState(null);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  useEffect(() => {
+    const fetchCompetitionParticipant = async () => {
+      const url = `http://localhost:5299/url/${id}?ParticipantInfo=true`;
+      try {
+        const response = await axios.get(url);
+        console.log(
+          "Response data Participant:",
+          response.data.participants.$values
+        );
+        setData(response.data.participants.$values);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchCompetitionParticipant();
+  }, []);
+
+  const goToTheLoginPage = () => {
+    navigate("/login");
+  };
   return (
     <Participants>
       {!logged && (
@@ -14,69 +42,55 @@ const Participants_comp = ({data}) => {
             Veuillez vous connecter pour parcourir les participants à ce
             hackathon.
           </p>
-          <button className="btn btn-red">Se Connecter</button>
+          <button onClick={goToTheLoginPage} className="btn btn-red">
+            Se Connecter
+          </button>
         </div>
       )}
       {logged && (
         <div className="participants">
-          <Search />
+          <SearchParticipant />
           <div className="listParticipants">
-            <div className="item">
-              <div className="profile">
-                <div className="img">
-                  <img
-                    src="https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="info">
-                  <div className="name">
-                    
-                      <p>Zineb Essoussi</p>
-                      <button className="follow">+</button>
+            
+            {
+              data?.map((item)=>{
+                return(
+                  <div className="item">
+                  <div className="profile">
+                    <div className="img">
+                      <img
+                        src={item.user.image ? item.user.image : userImage}
+                        alt=""
+                      />
+                    </div>
+                    <div className="info">
+                      <div className="name">
+                        <p>{item.user.firstName}</p>
+                        <button className="follow">+</button>
+                      </div>
+                      <div className="status">{item.team? "Has a team": "Looking for teammates"}</div>
+                    </div>
                   </div>
-                  <div className="status">Looking for teammates</div>
-                </div>
-              </div>
-              <div className="others">
-                <div className="skills">
-                  <p>Front end</p>
-                </div>
-                <div className="intersts">
-                  <p>Front end</p>
-                  <p>Backend</p>
-                  <p>AI</p>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="profile">
-                <div className="img">
-                  <img
-                    src="https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="info">
-                  <div className="name">
-                    
-                      <p>Zineb Essoussi</p>
-                      <button className="follow">+</button>
+                  <div className="others">
+                    <div className="skills">
+                      {
+                        item.user.skills?.map((skill)=>{
+                          return <p>{skill}</p>
+                        })
+                      }
+                    </div>
+                    <div className="intersts">
+                      {
+                        item.user.interests?.map((interest)=>{
+                          return <p>{interest}</p>
+                        })
+                      }
+                    </div>
                   </div>
-                  <div className="status">Looking for teammates</div>
                 </div>
-              </div>
-              <div className="others">
-                <div className="skills">
-                  <p>Front end</p>
-                </div>
-                <div className="intersts">
-                  <p>Front end</p>
-                  <p>Backend</p>
-                  <p>AI</p>
-                </div>
-              </div>
-            </div>
+                )
+              })
+            }
           </div>
         </div>
       )}
@@ -101,7 +115,7 @@ const Participants = styled.div`
     .listParticipants {
       margin: 2em 1em;
       .item {
-        border: 1px solid #B7C3C7;
+        border: 1px solid #b7c3c7;
         padding: 20px 15px;
         margin-bottom: 15px;
         .profile {
@@ -109,7 +123,7 @@ const Participants = styled.div`
           gap: 10px;
           img {
             width: 60px;
-            height: 60px;
+            height: auto;
             border-radius: 50%;
           }
           .info {
@@ -120,37 +134,37 @@ const Participants = styled.div`
             .name {
               display: flex;
               align-items: center;
-              gap : 10px;
-              p{
+              gap: 10px;
+              p {
                 padding: 0;
                 font-size: 22px;
                 margin: 0;
               }
-              button{
-                background-color: #C58011;
+              button {
+                background-color: #c58011;
                 color: white;
                 font-weight: 600;
                 padding: 0px 5px;
                 font-size: 15px;
               }
             }
-            .status{
+            .status {
               color: #999794;
-              border: 2px solid #E6E6E6;
+              border: 2px solid #e6e6e6;
               border-radius: 30px;
               padding: 5px 8px;
             }
           }
         }
-        .others{
+        .others {
           margin: 1em 0;
           display: flex;
           justify-content: space-between;
-          .intersts{
+          .intersts {
             display: flex;
             gap: 10px;
           }
-          p{
+          p {
             color: #233136;
             background-color: #c5801157;
             padding: 5px 10px;

@@ -2,8 +2,10 @@ import styled from "styled-components";
 import dataJSON from "../../data/data.json";
 import { Marked, marked } from "marked";
 import star from "../../assets/dashboard_competition/Star.png";
+import imageUser from "../../assets/Profile/user.png"
 const DescriptionComp = ({ data }) => {
   // const data = dataJSON.competition[0];
+  console.log(data)
   return (
     <DescriptionCompStyle>
       <Description>
@@ -14,16 +16,17 @@ const DescriptionComp = ({ data }) => {
 
         <h3>Les Prix</h3>
         <div className="prices">
-          {data.prizes?.map((price, key) => {
+          {data.prizes?.$values.map((prize, key) => {
             return (
               <div key={key} className="priceItem">
-                {/* <div className="title">
+                <div className="title">
                   <img src={star} alt="" />
-                  {price.title}
-                </div> */}
+                  {prize.name}
+                </div>
 
                 <ul>
-                  <li> {price} </li>
+                  <li> {prize.amount} {prize.currency} </li>
+                  <li>{prize.description}</li>
                   {/* {price.others.map((other, index) => {
                     return <li key={index}>{other}</li>;
                   })} */}
@@ -36,37 +39,37 @@ const DescriptionComp = ({ data }) => {
         <h2>Les Entraîneurs</h2>
 
         <div className="coachs">
-          {/* {data.coachs.map((coach, index) => {
+          {data.coaches.$values?.map((coach, index) => {
             return (
               <div key={index} className="item">
                 <div className="image">
-                  <img src={coach.img} alt="" />
+                  <img src={coach.user.image? coach.user.image: imageUser} alt="" />
                 </div>
                 <div className="info">
-                  <h4>{coach.name}</h4>
-                  <p>{coach.job}</p>
-                </div>
-              </div>
-            );
-          })} */}
-        </div>
-
-        <h3>Les Juges</h3>
-        {/* <div className="judges">
-          {data.judges.map((judge, index) => {
-            return (
-              <div key={index} className="item">
-                <div className="image">
-                  <img src={judge.img} alt="" />
-                </div>
-                <div className="info">
-                  <h4>{judge.name}</h4>
-                  <p>{judge.job}</p>
+                  <h4>{coach.user.lastName} {coach.user.firstName}</h4>
+                  {/* <p>{coach.user.job}</p> */}
                 </div>
               </div>
             );
           })}
-        </div> */}
+        </div>
+
+        <h3>Les Juges</h3>
+        <div className="judges">
+          {data.judges.$values?.map((judge, index) => {
+            return (
+              <div key={index} className="item">
+                <div className="image">
+                  <img src={judge.user.image ? judge.user.image : imageUser } alt="" />
+                </div>
+                <div className="info">
+                  <h4>{judge.user.lastName} {judge.firstName}</h4>
+                  {/* <p>{judge.job}</p> */}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </Description>
       <div className="more">
         <div className="questions">
@@ -74,11 +77,11 @@ const DescriptionComp = ({ data }) => {
           <a href="#"> Email the hackathon manager</a>
         </div>
         <div className="sponsors">
-          <h3>Organisateurs</h3>
+          <h3>Organisateurs :</h3>
 
-          {data.organizers.map((item) => {
+          {data.organizers.$values.map((item) => {
             return (
-              <div>
+              <div className="item">
                 <p>{item.name}</p>
                 <img src={item.imageUrl} alt={item.name} />;
               </div>
@@ -86,13 +89,13 @@ const DescriptionComp = ({ data }) => {
           })}
         </div>
         <div className="sponsors">
-          <h3>partenaires </h3>
+          <h3>partenaires :</h3>
           {/* {data.Partnership.map((item, index) => {
             return <img key={index} src={item} alt="" />;
           })} */}
-          {data.partnerships.map((item) => {
+          {data.partnerships.$values.map((item) => {
             return (
-              <div>
+              <div className="item">
                 <p>{item.name}</p>
                 <img src={item.imageUrl} alt={item.name} />;
               </div>
@@ -100,11 +103,11 @@ const DescriptionComp = ({ data }) => {
           })}
         </div>
         <div className="sponsors">
-          <h3>Sponsors</h3>
+          <h3>Sponsors : </h3>
           {/* {data.sponsor.map((item, index) => {
             return <img key={index} src={item} />;
           })} */}
-          {data.sponsors.map((item) => {
+          {data.sponsors.$values.map((item) => {
             return (
               <div>
                 <p>{item.name}</p>
@@ -120,6 +123,9 @@ const DescriptionComp = ({ data }) => {
 const DescriptionCompStyle = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
+  @media screen and (max-width: 750px) {
+    grid-template-columns: 1fr;
+  }
   .more {
     padding: 2em 1em;
     .questions {
@@ -127,16 +133,37 @@ const DescriptionCompStyle = styled.div`
       width: fit-content;
       padding: 5px 15px;
       margin-bottom: 1em;
+      @media screen and (max-width: 750px) {
+        width: auto;
+        text-align: center;
+        padding: 1em;
+      }
     }
     .sponsors {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
+      @media screen and (max-width: 750px) {
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        h3, p{
+          margin: 0;
+          padding: 0;
+        }
+      
+      }
       div{
         display: flex;
         flex-direction: column;
         align-items: center;
+        @media screen and (max-width: 750px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
       }
       img {
         width: 100px;
@@ -174,14 +201,18 @@ const Description = styled.div`
   .coachs {
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
   }
   .item {
     display: flex;
     padding-right: 20px;
     padding-bottom: 25px;
+    gap: 10px;
+    align-items: center;
     img {
       width: 40px;
       height: 40px;
+      margin-right: 2px;
       border-radius: 50%;
     }
     h4 {

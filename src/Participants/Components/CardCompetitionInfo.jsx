@@ -61,8 +61,8 @@ const CardCompetitionInfo = ({ data }) => {
               <img src={publicIcon} alt="" />
               {data.targetAudience}
             </div>
-            <div className="col-6 item">{/*data.prizes[0]*/} in prizes</div>
-            <div className="col-6 item">{/*data.userCompetitions.length*/} participants</div>
+            <div className="col-6 item">{data.prizes.$values[0].amount}{data.prizes.$values[0].currency} in prizes</div>
+            <div className="col-6 item">{data.participants.$values.length} participants</div>
           </div>
         </div>
         <Line />
@@ -70,7 +70,7 @@ const CardCompetitionInfo = ({ data }) => {
           <div className="theme">
             <img src={theme} alt="" />
             {
-             data.theme.map((item, index)=>{
+             data.theme.$values.map((item, index)=>{
                 return(<p className="tagsTheme" key={index}>{item}</p>)
               })
             }
@@ -78,7 +78,7 @@ const CardCompetitionInfo = ({ data }) => {
           </div>
           <div className="tags">
             <img src={tags} alt="" />
-            {data.tags.map((tag, index) => {
+            {data.tags.$values.map((tag, index) => {
               return <p key={index} className="tag">{tag} </p>;
             })}
           </div>

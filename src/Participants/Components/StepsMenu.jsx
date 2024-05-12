@@ -6,22 +6,14 @@ import { useNavigate, useParams } from "react-router";
 import { useState } from "react";
 import data from "../../data/data.json";
 
-const StepsMenu = ({steps, currentStep, setCurrentStep}) => {
+const StepsMenu = ({steps}) => {
   const navigate = useNavigate();
-  const {id} = useParams();
-
-  const activeStep = (id_step) => {
-    setCurrentStep(id_step)
-    
-    // navigate(`/competition/${id}/step${id_step}`);
-  };
+  const {id, step} = useParams();
+ const [currentStep, setCurrentStep] = useState(step)
   return (
     <Menu>
       <div className="stepList">
         <div
-          onClick={() => {
-            activeStep("manageTeam");
-          }}
           className={`manageTeam step incomplete ${currentStep=="manageTeam" ? "active" : ""}`}
         >
           <img src={incompleteStepIcon} alt="" />
@@ -37,14 +29,10 @@ const StepsMenu = ({steps, currentStep, setCurrentStep}) => {
             <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
           </svg>{" "}
         </div>
-        
-        {steps.map((step, index) => {
+{/*         
+        {steps?.map((step, index) => {
           return (
             <div
-              onClick={() => {
-                activeStep(index);
-
-              }}
               key={index}
               className={`step${index} step ${step.completed ? "complete" : "incomplete"} ${currentStep==`${index}` ? "active" : ""}`}
             >
@@ -62,8 +50,7 @@ const StepsMenu = ({steps, currentStep, setCurrentStep}) => {
               </svg>
             </div>
           );
-        })}
-        {/* </div> */}
+        })} */}
       </div>
     </Menu>
   );

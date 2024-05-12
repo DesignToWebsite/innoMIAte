@@ -2,8 +2,8 @@ import styled from "styled-components"
 
 import search_icon from "../../assets/search_icon.png"
 
-const Search = ()=>{
-    const hackathon = "Search hackathons"
+const SearchParticipant = ()=>{
+    const hackathon = "Search Participant"
     return(
         <SearchStyle>
             <div className="container">
@@ -13,7 +13,7 @@ const Search = ()=>{
                         <span className="icon_search">
                             <img src={search_icon} alt="Search" />
                         </span>
-                        <input type="text" placeholder="Find your next hackathon" />
+                        <input type="text" placeholder="Find participant" />
                         </div>
                         
                     </div>
@@ -54,4 +54,4 @@ const SearchStyle = styled.div`
 }  
 `
 
-export default Search;
+export default SearchParticipant;

@@ -3,23 +3,23 @@ import styled from 'styled-components';
 import data from '../../data/data.json'; // Importez le fichier JSON contenant les données
 import { marked } from 'marked';
 
-const Ressources = ({data}) => {
+const Resources = ({data}) => {
 
   
 console.log(data)
   return (
-    <RessourcesContainer>
-      <Title>Ressources</Title>
+    <ResourcesContainer>
+      <Title>Resources</Title>
      {data.resource? 
           <div
           dangerouslySetInnerHTML={{ __html: marked(data.resource) }}
           /> : 'No ressource'
       }
-    </RessourcesContainer>
+    </ResourcesContainer>
   );
 }
 
-const RessourcesContainer = styled.div`
+const ResourcesContainer = styled.div`
   padding: 20px;
 `;
 
@@ -49,4 +49,4 @@ const ResourceLink = styled.a`
   }
 `;
 
-export default Ressources;
+export default Resources;
