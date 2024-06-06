@@ -5,15 +5,17 @@ import incompleteStepIcon from "../../assets/dashboard_competition/incompleteSte
 import { useNavigate, useParams } from "react-router";
 import { useState } from "react";
 import data from "../../data/data.json";
+import { Link } from "react-router-dom";
 
 const StepsMenu = ({steps}) => {
   const navigate = useNavigate();
   const {id, step} = useParams();
  const [currentStep, setCurrentStep] = useState(step)
+ console.log(steps)
   return (
     <Menu>
       <div className="stepList">
-        <div
+        <Link to={`/competition/${id}/steps/manageTeam`}
           className={`manageTeam step incomplete ${currentStep=="manageTeam" ? "active" : ""}`}
         >
           <img src={incompleteStepIcon} alt="" />
@@ -28,16 +30,17 @@ const StepsMenu = ({steps}) => {
           >
             <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
           </svg>{" "}
-        </div>
-{/*         
+        </Link>
+        
         {steps?.map((step, index) => {
+          // console.log("indesxxxxxxxxxxx", index)
           return (
-            <div
+            <Link to={`/competition/${id}/steps/${index}`}
               key={index}
               className={`step${index} step ${step.completed ? "complete" : "incomplete"} ${currentStep==`${index}` ? "active" : ""}`}
             >
               <img src={incompleteStepIcon} alt="" />
-              <span>{step.Title}</span>
+              <span>{step.title}</span>
               <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,9 +51,9 @@ const StepsMenu = ({steps}) => {
               >
                 <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
               </svg>
-            </div>
+            </Link>
           );
-        })} */}
+        })}
       </div>
     </Menu>
   );
@@ -65,6 +68,9 @@ const Menu = styled.div`
     border-right: none;
     width: fit-content;
     /* margin-bottom: 2em; */
+    a{
+      color: black;
+    }
     svg {
       position: absolute;
       height: 51px;

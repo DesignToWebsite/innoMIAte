@@ -2,15 +2,20 @@ import styled from "styled-components";
 
 import { useLocation, useNavigate, useParams } from "react-router";
 import axios from "axios";
+import { useState } from "react";
+import InProgress from "../common/All/InProgress";
 
-const AddProjectBtn = ({ data, isLogged, joinedCompetition, setJoinedCompetition }) => {
+const JoinCompetitionBtn = ({ data, isLogged, joinedCompetition, setJoinedCompetition }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const connectedUser = JSON.parse(localStorage.getItem('user'));
   console.log(connectedUser)
   const { id } = useParams()
   console.log(data)
+  const [inProgress, setInProgress] = useState(false)
+  const [error, setError] = useState(null)
   const addProject = async (e) => {
+    setInProgress(true)
     if (isLogged) {
       const userId = connectedUser.id
       const competitionId = data.competitionId
@@ -26,9 +31,12 @@ const AddProjectBtn = ({ data, isLogged, joinedCompetition, setJoinedCompetition
         const response = await axios.post(url, userCompetition)
         if(response.data){
           setJoinedCompetition(true)
-          navigate(`/competition/${id}/steps`)
+          window.location.reload()
+          navigate(`/competition/${id}/myProject`)
         }
       }catch(error){
+        setInProgress(false)
+        setError("error")
         console.error(error)
       }
     } 
@@ -41,11 +49,21 @@ const AddProjectBtn = ({ data, isLogged, joinedCompetition, setJoinedCompetition
 
   
   return (
-    <button onClick={addProject} className="btn btn-red">
+    <>
+      {inProgress ? 
+      <InProgress /> :
+      <button onClick={addProject} className="btn btn-red">
             Rejoignez le hackathon
-    </button>
+      </button>
+      }
+      {
+        error && <p className="error">{error}</p>
+      }
+    </>
+
+    
   );
 };
 
 
-export default AddProjectBtn;
+export default JoinCompetitionBtn;

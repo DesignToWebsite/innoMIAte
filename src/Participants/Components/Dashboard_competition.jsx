@@ -18,9 +18,13 @@ const Dashboard_competition = () => {
       <Link to={`/competition/${id}/overview`} class="nav-link active" aria-current="page" >
          <img src={Overview} alt="" /> <span>Aperçu</span>
       </Link>
-      <Link to={`/competition/${id}/steps/project`} class="nav-link" >
+      {/* <Link to={`/competition/${id}/myProject`} class="nav-link" >
         <img src={Task} alt="" />
         <span>Mon projet</span>
+      </Link> */}
+      <Link to={`/competition/${id}/myTeam`} class="nav-link" >
+        <img src={Task} alt="" />
+        <span>Team</span>
       </Link>
       <Link class="nav-link" to={`/competition/${id}/participants`}>
         <img src={Participants} alt="" />

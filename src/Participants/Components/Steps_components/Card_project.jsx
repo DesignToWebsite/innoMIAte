@@ -2,14 +2,17 @@ import styled from "styled-components";
 import ProjectCard_competition from "../ProjectCard_competition";
 import { useState } from "react";
 import axios from "axios";
+import no_image from "../../../assets/no_image.png";
 
-const Card_project = ({ dataCard, setDataCard, setSelectedFile }) => {
-  // const [selectedFile, setSelectedFile] = useState(null);
+const Card_project = ({ dataCard, setDataCard, setSelectedFile = null }) => {
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
-    setSelectedFile(file);
-
+    if (setSelectedFile) setSelectedFile(file);
     if (file) {
+      setDataCard((prevData) => ({
+        ...prevData,
+        img_save : file
+     }))
       const reader = new FileReader();
       reader.onloadend = () => {
         setDataCard((prevData) => ({
@@ -21,33 +24,39 @@ const Card_project = ({ dataCard, setDataCard, setSelectedFile }) => {
     }
   };
 
-
-
-  // const handleFileUpload = async (event) => {
-  //   const file = event.target.files[0];
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-  
-  //   try {
-  //       const response = await fetch('http://localhost:5299/api/Files/upload', {
-  //           method: 'POST',
-  //           body: formData
-  //       });
-  //       const text = await response.text(); // Read response as text
-  //       console.log('Response:', text); // Log the response
-  //       // Parse response as JSON if applicable
-  //       const data = JSON.parse(text);
-  //       console.log('File uploaded:', data.filePath);
-  //       // Store filePath in state or do further processing
-  //   } catch (error) {
-  //       console.error('Error uploading file:', error);
-  //   }
-  // };
-
   return (
     <Card>
       <div className="cardInfo">
-        <ProjectCard_competition data={dataCard} />
+        <div className="card">
+          <div className="img">
+            <img src={dataCard.img ? dataCard.img : no_image} alt="" />
+          </div>
+          <div className="info">
+            <div className="projectName">
+              <h5>{dataCard.name} </h5>
+            </div>
+
+            <div className="projectDescription">
+              <p>{dataCard.description}</p>{" "}
+            </div>
+            {/* <div className="team">
+              <div className="img-team">
+                {dataCard.team.map((img, index) => {
+                  return (
+                    <div
+                      className="circle"
+                      style={{ position: "absolute", left: index * 20 }}
+                      key={index}
+                    >
+                      <img src={img} alt={`Image ${index + 1}`} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div> */}
+          </div>
+        </div>
+
         <label className="btn btn-green" htmlFor="uploadImage">
           Modifier la miniature
         </label>
@@ -59,29 +68,49 @@ const Card_project = ({ dataCard, setDataCard, setSelectedFile }) => {
           onChange={handleImageChange}
           style={{ display: "none" }} // Caché mais associé au label
         />
-            {/* <input type="file" onChange={handleFileUpload} /> */}
-
-        <p>
+        <p className="rules">
           Format JPG, PNG ou GIF, taille de fichier maximale de 5 Mo. Pour de
           meilleurs résultats, utilisez un rapport de 3:2.
         </p>
-        
       </div>
     </Card>
   );
 };
 
 const Card = styled.div`
+  max-width: 400px;
   .cardInfo {
     display: flex;
     flex-direction: column;
+    .img img {
+      height: 200px;
+      width: 100%;
+    }
+    .projectName {
+     margin-bottom: 0;
+     padding-bottom: 0;
+     
+      border-bottom: 2px solid #dadadab5;
+      h5 {
+        font-weight: bold;
+        margin: 1em 0.5em;
+        margin-bottom: .2em;
+      }
+    }
+    .projectDescription {
+      font-size: 17px;
+      font-weight: 500;
+      margin: .8em .5em;
+    }
     .btn {
       width: fit-content;
       margin: 1em auto;
     }
-    p {
-      font-size: 16px;
+    p.rules {
+      font-size: 15px;
       padding: 10px;
+      max-width: 300px;
+      color: #969696;
     }
   }
 `;

@@ -1,13 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-
+import no_image from "../../assets/no_image.png"
 const ProjectCard_competition = ({ data }) => {
   const { id } = useParams();
   return (
     <ProjectCard>
       <Link to={`/competition/${id}/steps`} className="project">
         <div className="img">
-          <img src={data.img} alt="" />
+          <img src={data.img? data.img : no_image} alt="" />
         </div>
         <div className="info">
           <div className="projectName">
@@ -18,7 +18,7 @@ const ProjectCard_competition = ({ data }) => {
           </div>
           <div className="team">
             <div className="img-team">
-              {data.team.map((img, index) => {
+              {data.team?.map((img, index) => {
                 return (
                   <div
                     className="circle"
@@ -31,9 +31,7 @@ const ProjectCard_competition = ({ data }) => {
               })}
             </div>
 
-            {/* {window.location.href.includes("competition") && (
-              <Link to={`/competition/${id}/steps`}>Gérer l'équipe</Link>
-            )} */}
+            
           </div>
         </div>
       </Link>

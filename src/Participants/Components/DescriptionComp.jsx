@@ -39,7 +39,7 @@ const DescriptionComp = ({ data }) => {
         <h2>Les Entraîneurs</h2>
 
         <div className="coachs">
-          {data.coaches.$values?.map((coach, index) => {
+          {data.coaches?.$values?.map((coach, index) => {
             return (
               <div key={index} className="item">
                 <div className="image">
@@ -56,7 +56,7 @@ const DescriptionComp = ({ data }) => {
 
         <h3>Les Juges</h3>
         <div className="judges">
-          {data.judges.$values?.map((judge, index) => {
+          {data.judges?.$values?.map((judge, index) => {
             return (
               <div key={index} className="item">
                 <div className="image">
@@ -74,12 +74,12 @@ const DescriptionComp = ({ data }) => {
       <div className="more">
         <div className="questions">
           <h4>Questions?</h4>
-          <a href="#"> Email the hackathon manager</a>
+          <a href={`mailto:${data.responsibleEmail}`}> Email the hackathon manager</a>
         </div>
         <div className="sponsors">
           <h3>Organisateurs :</h3>
 
-          {data.organizers.$values.map((item) => {
+          {data.organizers?.$values.map((item) => {
             return (
               <div className="item">
                 <p>{item.name}</p>
@@ -90,10 +90,8 @@ const DescriptionComp = ({ data }) => {
         </div>
         <div className="sponsors">
           <h3>partenaires :</h3>
-          {/* {data.Partnership.map((item, index) => {
-            return <img key={index} src={item} alt="" />;
-          })} */}
-          {data.partnerships.$values.map((item) => {
+
+          {data.partnerships?.$values.map((item) => {
             return (
               <div className="item">
                 <p>{item.name}</p>
@@ -104,10 +102,8 @@ const DescriptionComp = ({ data }) => {
         </div>
         <div className="sponsors">
           <h3>Sponsors : </h3>
-          {/* {data.sponsor.map((item, index) => {
-            return <img key={index} src={item} />;
-          })} */}
-          {data.sponsors.$values.map((item) => {
+         
+          {data.sponsors?.$values.map((item) => {
             return (
               <div>
                 <p>{item.name}</p>

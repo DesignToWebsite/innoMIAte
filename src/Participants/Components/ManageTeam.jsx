@@ -2,43 +2,44 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const ManageTeam = () => {
+import userImage from "../../assets/Profile/user.png"
+const ManageTeam = ({data, isLeader, connectedUser}) => {
+  console.log(connectedUser)
   return (
+    <> {isLeader ?
     <Team>
       <h2>Manage team</h2>
       <p>
-        Add, remove, and look for teammates. If you're working alone, skip this
-        step.
+        Add, remove, and look for teammates. min 3 person max 5 person
       </p>
       <div className="line"></div>
       <div className="addMember">
         <div className="addMembers">
           <h3>Invite Teammates</h3>
           <p>
-            Either share the link below privately with your teammates or send an
-            invite link via email
+            Add your teammates by adding there emails and click save to add them to the project
           </p>
           <div className="inviteInput">
             <input
               type="email"
               placeholder="Add team members via email – someone@example.com"
             />
-            <button className="btn btn-green">Send invite</button>
+            <button className="btn btn-green">Add member</button>
           </div>
         </div>
         <div className="currentMembers">
           <h3>Current teammates</h3>
           <p>
-            Only the project creator, Zineb Essoussi, can remove team members.
+            Only the project creator, {connectedUser.lastName} {connectedUser.firstName}, can remove or add team members.
           </p>
           <div className="teams">
             <div className="item">
               <div className="img">
-                <img src="https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg" alt="" />
+                <img src={connectedUser.image ? connectedUser.image : userImage} alt="" />
               </div>
               <div className="info">
-                <Link to="/profile/zineb-zineb-zouzou">Zineb Essoussi</Link>
-                <p>@zineb-zineb-zouzou</p>
+                <Link to={`/profile/${connectedUser.userName}`} >Zineb Essoussi</Link>
+                <p>{connectedUser.userName}</p>
               </div>
             </div>
           </div>
@@ -46,9 +47,13 @@ const ManageTeam = () => {
       </div>
 
       <div className="btns">
-        <button className="btn btn-green">Save & continue</button>
+        <button className="btn btn-green">Save </button>
       </div>
-    </Team>
+    </Team> : 
+    <h2 style={{margin:"2em"}}>Only leader can invite members</h2>
+    }
+    </>
+    
   );
 };
 

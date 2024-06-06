@@ -51,7 +51,11 @@ const GlobalStyle = createGlobalStyle`
             background: #475D65;
         }
     }
-    
+    .error{
+    color: ${RED_COLOR};
+    font-size: 12px;
+    padding: 1em;
+  }
 `;
 
 export default GlobalStyle;

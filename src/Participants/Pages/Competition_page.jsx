@@ -14,6 +14,8 @@ import Discussions from "./Discussions";
 import CreateProject_step from "../Components/CreateProject_step";
 import StepsCompetition_page from "./StepsCompetition_page";
 import axios from "axios";
+import LeaderCreateProject from "./LeaderCreateProject";
+import ManageTeam from "../Components/ManageTeam";
 const Competition_page = () => {
   const location = useLocation();
   const { id } = useParams();
@@ -21,37 +23,37 @@ const Competition_page = () => {
   const connectedUser = JSON.parse(localStorage.getItem("user"));
   const isLogged = localStorage.getItem("user");
 
-  const [joinedCompetition, setJoinedCompetition] = useState(false);
+  const [joinedCompetition, setJoinedCompetition] = useState(null);
   const [data, setData] = useState(null);
   const [hasATeam, setHasATeam] = useState(null);
-
+  const [hasAProject, setHasAProject] = useState(null);
+  const [isLeader, setIsLeader] = useState(null);
+  console.log(data)
   useEffect(() => {
     const fetchCompetition = async () => {
-      const url = `http://localhost:5299/url/${id}`;
+      const url = `http://localhost:5299/url/${id}?ParticipantInfo=true`;
       try {
         const response = await axios.get(url);
-        // console.log("Response data:", response.data);
         setData(response.data);
-
-        const participants = response.data.participants.$values;
+        const participants = response?.data?.participants.$values;
         const connectedUser = JSON.parse(localStorage.getItem("user"));
         const userId = connectedUser.id;
-        setJoinedCompetition(
-          participants.find((participant) => participant.userId === userId)
-        );
-        if (joinedCompetition) {
-          setHasATeam(
-            participants.find((participant) => participant.userId === userId)
-              .teamId
-          );
-        }
+        console.log(participants)
+        if(response?.data){
+          const userParticipant = participants.find(participant => participant.userId === userId);
+
+        setJoinedCompetition(userParticipant);
+        setHasATeam(participants.find((participant) => participant.userId === userId).team)
+        setIsLeader(participants.find((participant) => participant.userId === userId && participant.teamId==userId) ? true : false)
+    }
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchCompetition();
   }, []);
-
+  console.log("jpine", joinedCompetition)
   return (
     <CompetitionStyle>
       {data && (
@@ -63,25 +65,20 @@ const Competition_page = () => {
               <Route
                 path="overview"
                 element={
+                  
                   <Overview
+                  isLeader={isLeader}
+                    setJoinedCompetition={setJoinedCompetition}
                     data={data}
                     isLogged={isLogged}
                     hasATeam={hasATeam}
                     joinedCompetition={joinedCompetition}
+                    hasAProject={hasAProject}
+                    setHasAProject={setHasAProject}
                   />
                 }
               />
-              <Route
-                path="/myProject"
-                element={
-                  <MyProject_competition
-                    data={data}
-                    isLogged={isLogged}
-                    setJoinedCompetition={setJoinedCompetition}
-                    joinedCompetition={joinedCompetition}
-                  />
-                }
-              />
+
               <Route
                 path="/participants"
                 element={
@@ -120,12 +117,56 @@ const Competition_page = () => {
                 path="/discussions"
                 element={<Discussions joinedCompetition={joinedCompetition} />}
               />
+              <Route
+                path="/myProject"
+                element={
+                  <MyProject_competition
+                    data={data}
+                    isLogged={isLogged}
+                    setJoinedCompetition={setJoinedCompetition}
+                    joinedCompetition={joinedCompetition}
+                    hasATeam={hasATeam}
+                    setHasATeam={setHasATeam}
+                    hasAProject={hasAProject} setHasAProject={setHasAProject}
+                  />
+                }
+              />
+              <Route
+                path="/myTeam"
+                element={
+                  <ManageTeam
+                  connectedUser={connectedUser}
+                    isLeader={isLeader}
+                    data={data}
+                    isLogged={isLogged}
+                    setJoinedCompetition={setJoinedCompetition}
+                    joinedCompetition={joinedCompetition}
+                    hasATeam={hasATeam}
+                    setHasATeam={setHasATeam}
+                    hasAProject={hasAProject} 
+                    setHasAProject={setHasAProject}
+                  />
+                }
+              />
+              <Route
+                path="/createProject/"
+                element={
+                  <LeaderCreateProject
+                    data={data}
+                    setHasATeam={setHasATeam}
+                    hasATeam={hasATeam}
+                    joinedCompetition={joinedCompetition}
+                    hasAProject={hasAProject} setHasAProject={setHasAProject}
+
+                  />
+                }
+              />
 
               <Route
                 path="/steps/:step/"
                 element={
                   <StepsCompetition_page
-                   data={data}
+                    data={data}
                     hasATeam={hasATeam}
                     joinedCompetition={joinedCompetition}
                   />

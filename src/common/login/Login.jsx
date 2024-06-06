@@ -1,37 +1,43 @@
 import styled from "styled-components";
 import { GREEN_COLOR, RED_COLOR } from "../../style/Colors";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import InProgress from "../All/InProgress";
 
 const LogIn = () => {
   const navigate = useNavigate();
-
+  const [inProgress, setInProgress] = useState(false);
+  const [error, setError] = useState(null)
   const handleLogin = async (e) => {
     e.preventDefault();
+    setInProgress(true);
     const email = e.target.email.value;
     const password = e.target.password.value;
     const credential = {
-       email,
-      password
-    }
-  //http://localhost:5299/api/User/login
+      email,
+      password,
+    };
 
-      const url = `http://localhost:5299/api/Auth/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
-      console.log(url)
-      try{
-        const response = await axios.post(
-            "http://localhost:5299/api/User/login",
-            credential
-        )
-        console.log(response.data)
-        if(response.data){
-            localStorage.setItem("user", JSON.stringify(response.data));
-            navigate("/")
-        }
-      }catch (error){
-        console.error(error)
+    const url = `http://localhost:5299/api/Auth/login?email=${encodeURIComponent(
+      email
+    )}&password=${encodeURIComponent(password)}`;
+    console.log(url);
+    try {
+      const response = await axios.post(
+        "http://localhost:5299/api/User/login",
+        credential
+      );
+      console.log(response.data);
+      if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        navigate("/");
       }
+    } catch (error) {
+      setInProgress(false);
+      console.error(error);
+      setError("Erreur");
+    }
   };
 
   return (
@@ -65,9 +71,16 @@ const LogIn = () => {
               required
             />
           </div>
-          <button type="submit" className="submit btn btn-red">
-            Se connecter
-          </button>
+          {inProgress ? (
+            <InProgress />
+          ) : (
+            <button type="submit" className="submit btn btn-red">
+              Se connecter
+            </button>
+          )}
+          {
+            error && <p className="error">{error}</p>
+          }
         </form>
         <div className="terms">
           <p>
@@ -84,6 +97,7 @@ const SignUp = styled.div`
   display: flex;
   justify-content: center;
   margin: 2em auto;
+  
   .logo {
     font-weight: 600;
     color: ${GREEN_COLOR};

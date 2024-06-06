@@ -7,7 +7,7 @@ import deleteIcon from "../../../assets/dashboard_competition/delete.png"
 const MAX_FILE_SIZE_MB = 5; // Max file size in MB
 const ACCEPTED_FORMATS = ["image/jpeg", "image/png", "image/gif"]; // Accepted formats
 
-const Image_drag_drop = () => {
+const Image_drag_drop = ({multipleFiles}) => {
     // State to store uploaded images
     const [uploadedImages, setUploadedImages] = useState([]);
 

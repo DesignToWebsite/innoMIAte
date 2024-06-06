@@ -132,103 +132,17 @@ import Textarea_Step from "./Steps_components/Textarea_Step";
 import Card_project from "./Steps_components/Card_project";
 import Image_drag_drop from "./Steps_components/Image_drag_drop";
 
-const CreateProject_step = () => {
+const CreateProject_step = ({stepInfo}) => {
   const navigate = useNavigate();
  
-  const { id } = useParams();
+  const { id, step} = useParams();
   const [selectedFile, setSelectedFile] = useState(null);
+console.log(stepInfo)
 
+ // const defaultCompetitionCard = dataJSON.competitionDefault;
+  // const [dataCard, setDataCard] = useState(defaultCompetitionCard);
  
-  const defaultCompetitionCard = dataJSON.competitionDefault;
-  const [dataCard, setDataCard] = useState(defaultCompetitionCard);
-  const steps = [
-    {
-      "idStep": 1,
-      "infoWithCard": true,
-      "Title": "Step 1 ",
-      "completed": true,
-      "Info": "Information entered below will appear on your public project page.",
-      "toComplete": [
-        {
-          "type": "text",
-          "tag": "textarea",
-          "label": "About the project",
-          "description": "Be sure to write what inspired you, what you learned, how you built your project, and the challenges you faced. Format yourstory in Markdown.",
-          "placeholder": " ## Inspiration",
-          "required": true,
-          "value": "",
-          "mulipleValues": false,
-          "id": "about"
-        },
-        {
-          "type": "text",
-          "tag": "input",
-          "label": "Built with",
-          "description": "What languages, frameworks, platforms, cloud services, databases, APIs, or other technologies did you use?",
-          "placeholder": "Languages, frameworks, platforms, cloud services, databases, APIs, etc.",
-          "required": true,
-          "value": "",
-          "mulipleValues": false,
-          "id": "builtWith"
-        },
-        {
-          "type": "text",
-          "tag": "input",
-          "label": "Links",
-          "description": "Add links where people can try your project or see your code.",
-          "required": false,
-          "value": [],
-          "mulipleValues": true,
-          "id": "links"
-        },
-        {
-          "type": "text",
-          "tag": "input",
-          "label": " Video demo link",
-          "description": "This video will be embedded at the top of your project page. Read more about uploading videos.",
-          "required": true,
-          "value": "",
-          "mulipleValues": false,
-          "id": "videoLink"
-        }
-      ]
-    },
-    {
-      "idStep": 2,
-      "completed": false,
-      "Title": "Create project",
-      "Info": "Veuillez respecter nos <a href=\"#\">directives communautaires</a>.",
-      "SecondTitle": "General info",
-      "infoWithCard": false,
-      "toComplete": [
-        {
-          "type": "text",
-          "tag": "input",
-          "label": "Nom du projet",
-          "description": "",
-          "placeholder": "",
-          "required": true,
-          "value": "",
-          "mulipleValues": false,
-          "maxCaracter": 60,
-          "id": "projectName"
-        },
-        {
-          "type": "text",
-          "tag": "textarea",
-          "label": "Description du projet",
-          "description": "",
-          "placeholder": "",
-          "required": true,
-          "value": "",
-          "mulipleValues": false,
-          "maxCaracter": 200,
-          "id": "projectDescription"
-        }
-      ]
-    }
-  ]
-  console.log(selectedFile)
+  // console.log(selectedFile)
   const handleFileUpload = async (event) => {
     event.preventDefault()
     const file = selectedFile;
@@ -250,16 +164,17 @@ const CreateProject_step = () => {
         console.error('Error uploading file:', error);
     }
   };
-  const stepInfo = steps[0]
   return (
+    stepInfo &&
+    <>
     <ProjectForm className={`step${stepInfo.idStep}`}>
-      <h2>{stepInfo.Title}</h2>
+      <h2>{stepInfo.title}</h2>
       <p>{stepInfo.description}</p>
       <Line />
-      <h3>{stepInfo.SecondTitle}</h3>
+      <h3>{stepInfo.secondTitle}</h3>
       <div className="descriptionStep">
         <form>
-          {stepInfo.toComplete.map((item, index) => {
+          {stepInfo.toComplete?.$values?.map((item, index) => {
             return (
               <div key={index} className="input">
                 {item.tag == "input" && (
@@ -269,7 +184,6 @@ const CreateProject_step = () => {
                     label={item.label}
                     maxCaracter={item.maxCaracter}
                     value={item.value}
-                    setDataCard={setDataCard}
                   />
                 )}
                 {item.tag == "textarea" && (
@@ -279,7 +193,6 @@ const CreateProject_step = () => {
                     label={item.label}
                     maxCaracter={item.maxCaracter}
                     value={item.value}
-                    setDataCard={setDataCard}
                   />
                 )}
                 {item.tag == "image" && (
@@ -293,10 +206,10 @@ const CreateProject_step = () => {
             Enregistrer && continuer
           </button>
         </form>
-        {/* {stepInfo.infoWithCard && */}
-          <Card_project setDataCard={setDataCard} setSelectedFile={setSelectedFile} dataCard={dataCard} />
       </div>
     </ProjectForm>
+    </>
+    
   );
 };
 

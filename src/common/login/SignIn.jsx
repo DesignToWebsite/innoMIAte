@@ -1,19 +1,21 @@
 import styled from "styled-components";
 import { GREEN_COLOR, RED_COLOR } from "../../style/Colors";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import InProgress from "../All/InProgress";
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const [inProgress, setInProgress] = useState(false);
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setInProgress(true);
     const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const userName = firstName+"_"+lastName;
-    const competition = []
+    const userName = firstName + "_" + lastName;
     const user = {
       firstName,
       lastName,
@@ -22,19 +24,17 @@ const SignIn = () => {
       password,
     };
 
-      const url = "http://localhost:5299/api/User"
-      try{const response = await axios.post(
-        url, user
-      )
-      if(response.data){
+    const url = "http://localhost:5299/api/User";
+    try {
+      const response = await axios.post(url, user);
+      if (response.data) {
         navigate("/login");
-      }}
-      catch(error){
-        console.error(error)
       }
+    } catch (error) {
+      setInProgress(false);
+      console.error(error);
+    }
 
-
-      
     // }, []);
   };
 
@@ -92,9 +92,13 @@ const SignIn = () => {
               required
             />
           </div>
-          <button type="submit" className="submit btn btn-red">
-            Sign up
-          </button>
+          {inProgress ? (
+            <InProgress />
+          ) : (
+            <button type="submit" className="submit btn btn-red">
+              Sign up
+            </button>
+          )}
         </form>
         <div className="terms">
           <p>
@@ -116,6 +120,7 @@ const SignUp = styled.div`
   display: flex;
   justify-content: center;
   margin: 2em auto;
+  
   .logo {
     font-weight: 600;
     color: ${GREEN_COLOR};

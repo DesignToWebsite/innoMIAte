@@ -13,9 +13,6 @@ const ProfileInfo = () => {
     const newUserName = document.getElementById("firstName").value;
     const newEmail = document.getElementById("bio").value;
   
-    // Implémenter la logique pour enregistrer les modifications
-    // Par exemple, vous pouvez envoyer ces données à un serveur
-    // ou les enregistrer localement
   
     // Une fois que les modifications sont enregistrées, vous pouvez rediriger l'utilisateur vers la page de profil
     window.location.href = "/profile";
