@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import InProgress from "../All/InProgress";
 
-const SignIn = () => {
+const SignIn = ({confirmation = false}) => {
   const navigate = useNavigate();
   const [inProgress, setInProgress] = useState(false);
   const handleSignUp = async (e) => {
@@ -28,7 +28,12 @@ const SignIn = () => {
     try {
       const response = await axios.post(url, user);
       if (response.data) {
-        navigate("/login");
+        setInProgress(false);
+        window.location.reload()
+
+        confirmation? navigate("/confirmation?success") : navigate("/login")
+
+
       }
     } catch (error) {
       setInProgress(false);
@@ -41,6 +46,7 @@ const SignIn = () => {
   return (
     <SignUp>
       <div className="desc">
+       {!confirmation && <div>
         <h1>
           Rejoindre{" "}
           <span className="logo">
@@ -51,6 +57,8 @@ const SignIn = () => {
           Rejoignez Trouvez et participez à des hackathons pour améliorer vos
           compétences et gagner des prix
         </p>
+        </div>}
+        
         <form onSubmit={handleSignUp}>
           <div className="item">
             <label htmlFor="firstName">Nom</label>
@@ -100,7 +108,8 @@ const SignIn = () => {
             </button>
           )}
         </form>
-        <div className="terms">
+        {!confirmation &&
+          <div className="terms">
           <p>
             Vous avez déjà un compte? <Link to="/login">Se connecter</Link>
           </p>
@@ -109,7 +118,7 @@ const SignIn = () => {
             <a href="#">nos conditions d'utilisation</a> et{" "}
             <a href="#">notre politique de confidentialité</a>.
           </p>
-        </div>
+        </div>}
       </div>
     </SignUp>
   );

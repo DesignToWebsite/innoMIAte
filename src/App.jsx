@@ -12,6 +12,7 @@ import EditProfile from './Participants/Pages/Profile/EditProfile'
 import Card0 from './Creator/request/card0'
 import RequestForm from './Creator/request/requestForm'
 import Navbar from './common/All/Navbar'
+import Confirmation from './Acceuil/Pages/Confirmation'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/index" element={<Index/>} />
         <Route path='/card0' element={<Card0 />} />
         <Route path='/requestForm' element={<RequestForm />} />
+        <Route path="/confirmation" element={<Confirmation />}/>
       </Routes>
       
       <Footer />
