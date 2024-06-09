@@ -118,7 +118,8 @@ const ModelAddToAGroup = ({ user, index }) => {
                 </div>
                 <div className="item">
                   <label htmlFor="isLeader">Nom du groupe</label>
-                  <select onChange={handleChange} name="group" id="group">
+                  <select onChange={handleChange}  name="group" id="group">
+                    <option value=""></option>
                     {getGroups?.map((item, key) => {
                       return (
                         <option key={key} value={item.groupId}>
