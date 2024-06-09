@@ -16,13 +16,14 @@ const Header_Home = () => {
         <div className="row">
           <div className="col-12 col-lg-6 col-md-6 my-5 my-md-1 order-2 order-md-1">
             <div className="description">
-              <h1>Bienvenue chez InnoMIATé :</h1>
+              <h1>Bienvenue chez InnoMIATe :</h1>
               <p>Votre destination ultime pour les hackathons et les compétitions</p>
               <p className="loi">
-                Nous collectons les informations selon la loi marocaine
-                N.... <a href="#">Notre politique de données</a>
+              Nous collectons les informations dans le respect de la loi 09-08  { }
+                <a href="https://www.dgssi.gov.ma/sites/default/files/legislative/brochure/2023-07/loi%2009-08.pdf">
+                 Notre politique de données</a>
               </p>
-              <div className="row">
+              {/* <div className="row">
               <div className="col-12 col-md-12 col-lg-6">
                 <Link to="./index" className="btn btn-green">
                   <p>Pour les organisateurs</p>
@@ -39,7 +40,7 @@ const Header_Home = () => {
                   </p>
                 </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="col-12 col-lg-6 col-md-6 order-1 order-md-2">

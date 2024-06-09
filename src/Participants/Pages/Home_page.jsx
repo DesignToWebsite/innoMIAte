@@ -16,7 +16,7 @@ const Home_page = ()=> {
     <>
      
       <Header_Home/>
-      <Search />
+      {/* <Search /> */}
       <Cards_small />    
       {/* <FAQ/> */}
 
