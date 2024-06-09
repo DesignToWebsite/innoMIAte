@@ -28,7 +28,19 @@ const Competition_page = () => {
   const [hasATeam, setHasATeam] = useState(null);
   const [hasAProject, setHasAProject] = useState(null);
   const [isLeader, setIsLeader] = useState(null);
-  console.log(data)
+  const [teamName, setTeamName] = useState(null);
+  const getTeamInfo = async (teamId) => {
+    const url = `http://localhost:5299/api/groups/${teamId}`;
+    try {
+      const response = await axios.get(url);
+      if (response.data) {
+        setTeamName(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  // console.log(data.participants.$values)
   useEffect(() => {
     const fetchCompetition = async () => {
       const url = `http://localhost:5299/url/${id}?ParticipantInfo=true`;
@@ -38,22 +50,28 @@ const Competition_page = () => {
         const participants = response?.data?.participants.$values;
         const connectedUser = JSON.parse(localStorage.getItem("user"));
         const userId = connectedUser.id;
-        console.log(participants)
-        if(response?.data){
-          const userParticipant = participants.find(participant => participant.userId === userId);
-
-        setJoinedCompetition(userParticipant);
-        setHasATeam(participants.find((participant) => participant.userId === userId).team)
-        setIsLeader(participants.find((participant) => participant.userId === userId && participant.teamId==userId) ? true : false)
-    }
-        
+        // console.log(participants)
+        if (response?.data) {
+          const userParticipant = participants.find(
+            (participant) => participant.userId === userId
+          );
+          // console.log("user participant", userParticipant);
+          setJoinedCompetition(userParticipant);
+          setHasATeam(userParticipant.groupId);
+          setIsLeader(userParticipant.isLeader);
+          if (userParticipant.groupId) {
+            getTeamInfo(userParticipant.groupId);
+          }
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchCompetition();
   }, []);
-  console.log("jpine", joinedCompetition)
+
+  // console.log(hasATeam);
+  // console.log("jpine", joinedCompetition)
   return (
     <CompetitionStyle>
       {data && (
@@ -65,9 +83,9 @@ const Competition_page = () => {
               <Route
                 path="overview"
                 element={
-                  
                   <Overview
-                  isLeader={isLeader}
+                    teamName={teamName}
+                    isLeader={isLeader}
                     setJoinedCompetition={setJoinedCompetition}
                     data={data}
                     isLogged={isLogged}
@@ -79,7 +97,7 @@ const Competition_page = () => {
                 }
               />
 
-              <Route
+              {/* <Route
                 path="/participants"
                 element={
                   <Participants_comp
@@ -88,7 +106,7 @@ const Competition_page = () => {
                     joinedCompetition={joinedCompetition}
                   />
                 }
-              />
+              /> */}
               <Route
                 path="/resources"
                 element={
@@ -104,7 +122,7 @@ const Competition_page = () => {
                   <Rules data={data} joinedCompetition={joinedCompetition} />
                 }
               />
-              <Route
+              {/* <Route
                 path="/projectGallery"
                 element={
                   <ProjectGallery
@@ -116,8 +134,8 @@ const Competition_page = () => {
               <Route
                 path="/discussions"
                 element={<Discussions joinedCompetition={joinedCompetition} />}
-              />
-              <Route
+              /> */}
+              {/* <Route
                 path="/myProject"
                 element={
                   <MyProject_competition
@@ -130,12 +148,13 @@ const Competition_page = () => {
                     hasAProject={hasAProject} setHasAProject={setHasAProject}
                   />
                 }
-              />
+              /> */}
               <Route
                 path="/myTeam"
                 element={
                   <ManageTeam
-                  connectedUser={connectedUser}
+                    teamName={teamName}
+                    connectedUser={connectedUser}
                     isLeader={isLeader}
                     data={data}
                     isLogged={isLogged}
@@ -143,12 +162,12 @@ const Competition_page = () => {
                     joinedCompetition={joinedCompetition}
                     hasATeam={hasATeam}
                     setHasATeam={setHasATeam}
-                    hasAProject={hasAProject} 
+                    hasAProject={hasAProject}
                     setHasAProject={setHasAProject}
                   />
                 }
               />
-              <Route
+              {/* <Route
                 path="/createProject/"
                 element={
                   <LeaderCreateProject
@@ -160,9 +179,9 @@ const Competition_page = () => {
 
                   />
                 }
-              />
+              /> */}
 
-              <Route
+              {/* <Route
                 path="/steps/:step/"
                 element={
                   <StepsCompetition_page
@@ -171,7 +190,7 @@ const Competition_page = () => {
                     joinedCompetition={joinedCompetition}
                   />
                 }
-              />
+              /> */}
             </Routes>
           </div>
         </>

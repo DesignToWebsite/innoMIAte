@@ -6,8 +6,26 @@ import tags from "../../assets/dashboard_competition/tags.png";
 import theme from "../../assets/dashboard_competition/theme.png";
 import { GREEN_COLOR, ORANGE_COLOR } from "../../style/Colors";
 const CardCompetitionInfo = ({ data }) => {
+  // const calculateTimeLeft = () => {
+  //   const difference = +new Date(data.deadLine.trim()) - +new Date();
+  //   let timeLeft = {};
+
+  //   if (difference > 0) {
+  //     timeLeft = {
+  //       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+  //       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+  //       minutes: Math.floor((difference / 1000 / 60) % 60),
+  //       seconds: Math.floor((difference / 1000) % 60),
+  //     };
+  //   }
+
+  //   return timeLeft;
+  // };
+
   const calculateTimeLeft = () => {
-    const difference = +new Date(data.deadLine.trim()) - +new Date();
+    const deadlineDate = new Date(data.deadLine.trim());
+    const currentDate = new Date();
+    const difference = deadlineDate - currentDate;
     let timeLeft = {};
 
     if (difference > 0) {
@@ -19,67 +37,83 @@ const CardCompetitionInfo = ({ data }) => {
       };
     }
 
-    return timeLeft;
+    // Format deadline date
+    const formattedDeadline = deadlineDate.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+    });
+
+    return { timeLeft, formattedDeadline };
   };
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const timerComponents = [];
 
-  Object.keys(timeLeft).some((interval) => {
-    if (timeLeft[interval]) {
-      timerComponents.push(
-        <span key={interval}>
-          {timeLeft[interval]} {interval} à la date limite
-        </span>
-      );
-      return true; // Break the loop after finding the first non-zero interval
-    }
-    return false;
-  });
+  // Object.keys(timeLeft).some((interval) => {
+  //   if (timeLeft[interval]) {
+  //     timerComponents.push(
+  //       <span key={interval}>
+  //         {timeLeft[interval]} {interval} à la date limite
+  //       </span>
+  //     );
+  //     return true; // Break the loop after finding the first non-zero interval
+  //   }
+  //   return false;
+  // });
 
   return (
     <Card>
       <div className="cardCompetionInfo">
         <div className="deadline">
           <p className="dayLeft">
-            {timerComponents.length ? (
-              timerComponents
+            {calculateTimeLeft() ? (
+              calculateTimeLeft().formattedDeadline
             ) : (
               <span>Le temps est écoulé!</span>
             )}
           </p>
           <h4>Date limite</h4>
-          <p>{data.deadLine} </p>
+          <p>{calculateTimeLeft().formattedDeadline} 2024</p>
         </div>
         <Line />
         <div className="info">
           <div className="row">
             <div className="col-6 item">
               <img src={place} alt="" />
-              {data.location }
+              {data.location}
             </div>
             <div className="col-6 item">
               <img src={publicIcon} alt="" />
               {data.targetAudience}
             </div>
-            <div className="col-6 item">{data.prizes.$values[0].amount}{data.prizes.$values[0].currency} in prizes</div>
-            <div className="col-6 item">{data.participants.$values.length} participants</div>
+            <div className="col-6 item">
+              {data.prizes.$values[0].amount}
+              {data.prizes.$values[0].currency} en prix
+            </div>
+            <div className="col-6 item">
+              {data.participants.$values.length} participants
+            </div>
           </div>
         </div>
         <Line />
         <div className="metaData">
           <div className="theme">
             <img src={theme} alt="" />
-            {
-             data.theme.$values.map((item, index)=>{
-                return(<p className="tagsTheme" key={index}>{item}</p>)
-              })
-            }
-  
+            {data.theme.$values.map((item, index) => {
+              return (
+                <p className="tagsTheme" key={index}>
+                  {item}
+                </p>
+              );
+            })}
           </div>
           <div className="tags">
             <img src={tags} alt="" />
             {data.tags.$values.map((tag, index) => {
-              return <p key={index} className="tag">{tag} </p>;
+              return (
+                <p key={index} className="tag">
+                  {tag}{" "}
+                </p>
+              );
             })}
           </div>
         </div>
@@ -131,7 +165,7 @@ const Card = styled.div`
     }
     .theme {
       display: flex;
-      flex-wrap   :wrap ;
+      flex-wrap: wrap;
       align-items: center;
       margin-bottom: 10px;
       .tagsTheme {
@@ -147,7 +181,7 @@ const Card = styled.div`
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      .tag{
+      .tag {
         color: ${ORANGE_COLOR};
         background-color: #c5801156;
         margin-right: 5px;

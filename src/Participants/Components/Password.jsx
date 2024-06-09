@@ -4,40 +4,68 @@ import { Link } from "react-router-dom";
 import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
 
 const PasswordChange = () => {
-  const [oldPassword, setOldPassword] = useState("");
+  // Initialize state from localStorage
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+
+  const [oldPassword, setOldPassword] = useState(user.password);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [savedData, setSavedData] = useState({});
+  const [savedData, setSavedData] = useState(user);
 
-  // Fonction pour enregistrer les modifications
-  const handleSubmit = (e) => {
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setSavedData((prevUser) => ({
+      ...prevUser,
+      [id]: value,
+    }));
+  };
+
+  // Function to save changes
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
       setError("Le nouveau mot de passe et la confirmation ne correspondent pas.");
     } else if (newPassword.length < 8) {
       setError("Les mots de passe doivent comporter au moins 8 caractères.");
     } else {
-      // Enregistrer les nouvelles valeurs
-      setSavedData({
-        oldPassword,
-        newPassword,
-        confirmPassword
-      });
-      // Réinitialiser les champs d'entrée et les erreurs
+      
+      
+      // Assuming the old password is correct and updated successfully
+      setUser((prevUser) => ({
+        ...prevUser,
+        password: newPassword,
+      }));
+      const url = `http://localhost:5299/api/User/${user.id}`
+    try{
+      const response = await axios.put(url, savedData)
+      if(response.data){
+       localStorage.setItem('user', JSON.stringify(savedData));
+        window.location.href = "/profile"; // Redirect to profile page
+
+      }
+    }catch(error){
+      console.log(error)
+    }
+      
+
+      // Reset input fields and error
       setError("");
       setOldPassword("");
       setNewPassword("");
       setConfirmPassword("");
+      window.location.href = "/profile"; // Redirect to profile page
     }
   };
 
   const handleCancel = () => {
-    // Effacer les champs d'entrée et les erreurs
+    // Clear input fields and error
     setOldPassword("");
     setNewPassword("");
     setConfirmPassword("");
     setError("");
+    window.location.href = "/profile"; // Redirect to profile page
+
   };
 
   return (
@@ -51,8 +79,8 @@ const PasswordChange = () => {
           <Label>Ancien mot de passe</Label>
           <Input
             type="password"
-            value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
+            required
           />
         </InputContainer>
 
@@ -62,6 +90,7 @@ const PasswordChange = () => {
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
+            required
           />
         </InputContainer>
 
@@ -71,28 +100,17 @@ const PasswordChange = () => {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            required
           />
         </InputContainer>
 
-        <ErrorMessage>{error}</ErrorMessage>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
 
         <ButtonContainer>
-          <SaveButton type="submit" to="/profile">Enregistrer les modifications</SaveButton>
-          <Link to="/profile">
-            <CancelButton type="button">Annuler</CancelButton>
-          </Link>
+          <SaveButton type="submit">Enregistrer les modifications</SaveButton>
+          <CancelButton type="button" onClick={handleCancel}>Annuler</CancelButton>
         </ButtonContainer>
       </Form>
-
-      {/* Afficher les données enregistrées */}
-      {/* {savedData && (
-        <SavedDataContainer>
-          <TitleSmall>Données enregistrées :</TitleSmall>
-          <p>Ancien mot de passe : {savedData.oldPassword}</p>
-          <p>Nouveau mot de passe : {savedData.newPassword}</p>
-          <p>Confirmation du nouveau mot de passe : {savedData.confirmPassword}</p>
-        </SavedDataContainer>
-      )} */}
     </PasswordChangeContainer>
   );
 };

@@ -4,10 +4,10 @@ const ModelCreateParticipant = () => {
   return (
     <div
       class="modal fade"
-      id="exampleModalCenter"
+      id="addParticipantModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
+      aria-labelledby="addParticipantModalTitle"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered" role="document">

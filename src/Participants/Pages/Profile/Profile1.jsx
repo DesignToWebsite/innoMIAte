@@ -25,7 +25,7 @@ const Profile = () => {
  
   const user = data.user;
   const competitions = data.competition;
-  const [activePage, setActivePage] = useState("Projects")
+  const [activePage, setActivePage] = useState("Hackathon")
   const projectsCounter = 
     user.competition.length + user.presonalProjects;
     // console.log(projectsCounter)
@@ -62,6 +62,15 @@ const Profile = () => {
   const handleHackathonSelection = (competition) => {
     setSelectedHackathon(competition);
   };
+
+  const handlerGetCompetition = async()=>{
+    const url = "http://localhost:5299/api/CompetitionParticipant"
+    try{
+
+    }catch(error){
+
+    }
+  }
   return (
     <ProfileStyle>
       <UserInfo>
@@ -73,7 +82,7 @@ const Profile = () => {
                 <img src={userProfile.image? userProfile.image : userImage} alt="" />
                 <div className="btns">
                   <Link to="/edit" className="btn btn-red">Modifier les paramètres</Link>
-                  <div className="btn btn-green" onClick={handleShowAlert}>Ajouter un nouveau projet</div>
+                  {/* <div className="btn btn-green" onClick={handleShowAlert}>Ajouter un nouveau projet</div> */}
                 </div>
               </div>
               <div className="info">
@@ -129,7 +138,7 @@ const Profile = () => {
         </div>
       </UserInfo>
       
-      {showAlert && (
+      {/* {showAlert && (
         <NewProjectAlert
           onCancel={handleCancelAlert}
           onYesClick={handleYesClick}
@@ -138,13 +147,21 @@ const Profile = () => {
           onSelectHackathon={handleHackathonSelection}
           selectedHackathonId={selectedHackathon ? selectedHackathon.id : null}
         />
-      )}
-      <UserDashboard>
+      )} */}
+     
+    </ProfileStyle>
+  );
+};
+
+
+const UserDashboard = ()=>{
+  return(
+     <UserDashboardStyle>
         <div className="UserDashboard">
           <div className="container">
             <ul className="nav_profile">
               <li>
-                <Link
+                {/* <Link
                   onClick={(e) => {
                     e.preventDefault();
                     setActivePage("Projects");
@@ -154,7 +171,7 @@ const Profile = () => {
                 >
                   <p className="number">{projectsCounter}</p>
                   <p>Projets</p>
-                </Link>
+                </Link> */}
               </li>
               <li>
                 <Link
@@ -253,14 +270,10 @@ const Profile = () => {
             }
           </div>
         </div>
-      </UserDashboard>
-    </ProfileStyle>
-  );
-};
-
-
-
-const UserDashboard = styled.div`
+      </UserDashboardStyle>
+  )
+}
+const UserDashboardStyle = styled.div`
   .UserDashboard {
     background: #f5f7f7;
     padding: 1em 0;
@@ -295,7 +308,7 @@ const UserDashboard = styled.div`
   }
 `;
 const ProfileStyle = styled.div`
-
+min-height: 100vh;
   
 `;
 

@@ -4,6 +4,7 @@ import { RED_COLOR, GREEN_COLOR } from '../../../style/Colors'
 import SideEdit from '../../Components/SideEdit';
 
 const EditProfile = () => {
+
   return (
     <div>
         <EditProfil>

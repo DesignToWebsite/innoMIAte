@@ -26,10 +26,10 @@ const Dashboard_competition = () => {
         <img src={Task} alt="" />
         <span>Team</span>
       </Link>
-      <Link class="nav-link" to={`/competition/${id}/participants`}>
+      {/* <Link class="nav-link" to={`/competition/${id}/participants`}>
         <img src={Participants} alt="" />
         <span>Participants </span>
-      </Link>
+      </Link> */}
       <Link class="nav-link" to={`/competition/${id}/Resources`}>
         <img src={Resources} alt="" />
         <span>Resources</span> 
@@ -38,14 +38,14 @@ const Dashboard_competition = () => {
         <img src={Rules} alt="" />
         <span>Règles</span> 
       </Link>
-      <Link class="nav-link" to={`/competition/${id}/projectGallery`}>
+      {/* <Link class="nav-link" to={`/competition/${id}/projectGallery`}>
         <img src={Picture} alt="" />
         <span>Galerie de projets</span> 
       </Link>
       <Link class="nav-link" to={`/competition/${id}/discussions`}>
         <img src={Discussion} alt="" />
         <span>Discussions</span> 
-      </Link>
+      </Link> */}
     </nav>
     </Dashboard>
   );

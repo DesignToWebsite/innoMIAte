@@ -1,28 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import data from "../../data/data.json";
 import LinkedIn from "../../assets/icons/Linkedln.png"
 import git_icon from "../../assets/icons/git_icon.png"
 import { ORANGE_COLOR, RED_COLOR, GREEN_COLOR } from "../../style/Colors";
+import axios from "axios";
 
 const AccountPrivacy = () => {
-  // Supposons que les données utilisateur soient accessibles dans data.user
-  const { userName, email } = data.user;
+  // Initialize state from localStorage
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-  const handleSave = () => {
-    // Récupérer les nouvelles valeurs des inputs
-    const newUserName = document.getElementById("userName").value;
-    const newEmail = document.getElementById("email").value;
-  
-    // Enregistrer les modifications
-    // Par exemple, vous pouvez envoyer ces nouvelles valeurs à votre backend pour les enregistrer dans la base de données
-    console.log("Nouveau nom d'utilisateur :", newUserName);
-    console.log("Nouvel email :", newEmail);
-  
-    // Rediriger vers la page de profil
-    window.location.href = "/profile"; // Redirection vers la page de profil
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [id]: value,
+    }));
   };
+
+   // Handle save action
+   const handleSave = async(e) => {
+    e.preventDefault()
+    const url = `http://localhost:5299/api/User/${user.id}`
+    try{
+      const response = await axios.put(url, user)
+      if(response.data){
+       localStorage.setItem('user', JSON.stringify(user));
+        window.location.href = "/profile"; // Redirect to profile page
+
+      }
+    }catch(error){
+      console.log(error)
+    }
+  };
+
 
   return (
     <AccountPrivacyContainer>
@@ -31,13 +44,13 @@ const AccountPrivacy = () => {
 
       <InputContainer>
         <Label>Nom d'utilisateur</Label>
-        <Input id="userName"  defaultValue={userName} />
+        <Input onChange={handleInputChange} id="userName"  defaultValue={user.userName} />
       </InputContainer>
 
       <InputContainer>
         <Label>Email</Label>
         <InfoText>La tête haute! Lorsque vous modifiez votre adresse e-mail, vous devrez revérifier avant de vous connecter avec cette adresse.</InfoText>
-        <Input id="email" defaultValue={email} />
+        <Input onChange={handleInputChange} id="email" defaultValue={user.email} />
       </InputContainer>
       <ButtonContainer>
         <SaveButton onClick={handleSave}>Enregistrer les modifications</SaveButton>

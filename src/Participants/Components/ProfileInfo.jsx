@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import data from "../../data/data.json";
 import { ORANGE_COLOR, RED_COLOR, GREEN_COLOR } from "../../style/Colors";
+import axios from "axios";
 
 const ProfileInfo = () => {
-  // Supposons que les données utilisateur soient accessibles dans data.user
-  const { firstName, lastName, bio, github, linkedin, website } = data.user;
+  // Initialize state from localStorage
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-  const handleSave = () => {
-    // Récupérer les nouvelles valeurs des champs d'entrée
-    const newUserName = document.getElementById("firstName").value;
-    const newEmail = document.getElementById("bio").value;
-  
-  
-    // Une fois que les modifications sont enregistrées, vous pouvez rediriger l'utilisateur vers la page de profil
-    window.location.href = "/profile";
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [id]: value,
+    }));
+  };
+
+  // Handle save action
+  const handleSave = async() => {
+    const url = `http://localhost:5299/api/User/${user.id}`
+    try{
+      const response = await axios.put(url, user)
+      if(response.data){
+       localStorage.setItem('user', JSON.stringify(user));
+        window.location.href = "/profile"; // Redirect to profile page
+
+      }
+    }catch(error){
+      console.log(error)
+    }
   };
 
   return (
@@ -23,52 +38,69 @@ const ProfileInfo = () => {
       <Title>Informations de profil</Title>
       <InfoText>Ces informations apparaîtront sur votre profil public Devpost.</InfoText>
 
-      <ProfileImageContainer>
-        {/* Image de profil */}
-        <ProfileImage src={data.user.img} alt="Profile" />
-        {/* Lien pour télécharger une photo */}
-        <UploadPhotoLink to="/profile/edit/upload-photo">Télécharger une photo</UploadPhotoLink>
-      </ProfileImageContainer>
-
-      {/* Inputs pour le nom et prénom */}
+      {/* Inputs for first and last name */}
       <Info>
         <InputContainer>
           <Label>Nom</Label>
-          <InputInfo defaultValue={lastName} />
+          <InputInfo
+            id="lastName"
+            value={user.lastName}
+            onChange={handleInputChange}
+          />
         </InputContainer>
         <InputContainer>
           <Label>Prénom</Label>
-          <InputInfo id="firstName" defaultValue={firstName} />
+          <InputInfo
+            id="firstName"
+            value={user.firstName}
+            onChange={handleInputChange}
+          />
         </InputContainer>
       </Info>
 
-      {/* Input pour la bio */}
+      {/* Input for bio */}
       <InputContainer>
         <Label>Bio</Label>
-        <Textarea id="bio" defaultValue={bio} />
+        <Textarea
+          id="bio"
+          value={user.bio}
+          onChange={handleInputChange}
+        />
       </InputContainer>
 
       <Title>Social</Title>
 
-      {/* Inputs pour GitHub et LinkedIn */}
+      {/* Inputs for GitHub and LinkedIn */}
       <Info>
         <InputContainer>
           <Label>GitHub</Label>
-          <InputInfo defaultValue={github} />
+          <InputInfo
+            id="github"
+            value={user.github}
+            onChange={handleInputChange}
+          />
         </InputContainer>
         <InputContainer>
           <Label>LinkedIn</Label>
-          <InputInfo defaultValue={linkedin} />
+          <InputInfo
+            id="linkedin"
+            value={user.linkedin}
+            onChange={handleInputChange}
+          />
         </InputContainer>
       </Info>
 
-      {/* Input pour le site Web */}
+      {/* Input for website */}
       <InputContainer>
         <Label>Site Web</Label>
-        <Input defaultValue={website} />
+        <Input
+          id="website"
+          value={user.website}
+          onChange={handleInputChange}
+        />
       </InputContainer>
 
-      {/* Boutons pour enregistrer les modifications ou annuler */}
+      {/* Buttons for saving changes or canceling */}
       <ButtonContainer>
         <SaveButton onClick={handleSave}>Enregistrer les modifications</SaveButton>
         <Link to="/profile">
@@ -78,7 +110,6 @@ const ProfileInfo = () => {
     </ProfileInfoContainer>
   );
 };
-
 const ProfileInfoContainer = styled.div`
   margin-top: 20px;
 `;

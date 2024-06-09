@@ -22,8 +22,9 @@ const GlobalStyle = createGlobalStyle`
         
     }
     a{
-        text-decoration: none;
+        text-decoration: none !important;
         color : ${ORANGE_COLOR}
+        
     }
     button{
         cursor: pointer;

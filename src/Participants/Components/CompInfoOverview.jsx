@@ -8,6 +8,7 @@ import JoinCompetitionBtn from "../JoinCompetitionBtn";
 import { GREEN_COLOR, RED_COLOR } from "../../style/Colors";
 
 const CompInfoOverview = ({
+  teamName,
   data,
   isLogged,
   joinedCompetition,
@@ -17,8 +18,8 @@ const CompInfoOverview = ({
   setHasAProject,
   isLeader,
 }) => {
-  console.log(hasATeam);
-  console.log(joinedCompetition)
+  // console.log(hasATeam);
+  // console.log(joinedCompetition)
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();
@@ -31,6 +32,7 @@ const CompInfoOverview = ({
   const ManageTeamMiathon = async (e) => {
     navigate(`/competition/${id}/myTeam`);
   };
+  console.log("team nema", teamName)
   return (
     <Info>
       <div className="info">
@@ -91,7 +93,7 @@ const CompInfoOverview = ({
             )}
             {hasATeam && (
               <p className="small">
-                You are a member of theNameOfTheTeam team
+                You are a member of {teamName?.name} team
               </p>
             )}
           </>

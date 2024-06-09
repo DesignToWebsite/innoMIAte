@@ -8,6 +8,25 @@ import InProgress from "../All/InProgress";
 const SignIn = ({confirmation = false}) => {
   const navigate = useNavigate();
   const [inProgress, setInProgress] = useState(false);
+  const handleConfirmation = async (userId)=>{
+    console.log(userId)
+    const participant ={
+      "userId": userId,
+      "competitionId": 1
+    }
+    const url = "http://localhost:5299/api/CompetitionParticipant";
+    try {
+      const response = await axios.post(url, participant);
+      if (response.data) {
+        setInProgress(false);
+        window.location.reload()
+        confirmation? navigate("/confirmation?success") : navigate("/login")
+      }
+    } catch (error) {
+      setInProgress(false);
+      console.error(error);
+    }
+  }
   const handleSignUp = async (e) => {
     e.preventDefault();
     setInProgress(true);
@@ -29,9 +48,10 @@ const SignIn = ({confirmation = false}) => {
       const response = await axios.post(url, user);
       if (response.data) {
         setInProgress(false);
-        window.location.reload()
-
-        confirmation? navigate("/confirmation?success") : navigate("/login")
+        // window.location.reload()
+        const userId = response.data.id
+        console.log(userId)
+        confirmation? handleConfirmation(userId) : navigate("/login")
 
 
       }

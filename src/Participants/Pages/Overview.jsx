@@ -5,7 +5,7 @@ import CompInfoOverview from "../Components/CompInfoOverview";
 import DescriptionComp from "../Components/DescriptionComp";
 
 
-const Overview = ({data,setJoinedCompetition, isLogged, joinedCompetition, hasATeam, isLeader}) => {
+const Overview = ({teamName, data,setJoinedCompetition, isLogged, joinedCompetition, hasATeam, isLeader}) => {
 // console.log(data)
   return (
     <>
@@ -20,7 +20,8 @@ const Overview = ({data,setJoinedCompetition, isLogged, joinedCompetition, hasAT
                     joinedCompetition={joinedCompetition} 
                      hasATeam={hasATeam}
                     data={data} 
-                    isLeader={isLeader}/>
+                    isLeader={isLeader}
+                    teamName={teamName}/>
               </div>
               <div className="col-12 col-md-5 col-sm-6 col-lg-4">
                 <CardCompetitionInfo data={data} />
