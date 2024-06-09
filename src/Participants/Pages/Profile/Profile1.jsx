@@ -20,7 +20,7 @@ import userImage from "../../../assets/Profile/user.png"
 const Profile = () => {
   const connectedUser = JSON.parse(localStorage.getItem('user'))
   const id = connectedUser.id;
-  console.log(connectedUser)
+  // console.log(connectedUser)
   const [userProfile, setUserProfile] = useState(connectedUser)
  
   const user = data.user;

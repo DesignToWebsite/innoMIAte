@@ -5,7 +5,7 @@ import star from "../../assets/dashboard_competition/Star.png";
 import imageUser from "../../assets/Profile/user.png"
 const DescriptionComp = ({ data }) => {
   // const data = dataJSON.competition[0];
-  console.log(data)
+  // console.log(data)
   return (
     <DescriptionCompStyle>
       <Description>

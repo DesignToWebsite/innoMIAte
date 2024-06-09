@@ -14,9 +14,9 @@ const Project_competition = () => {
       return res.json()
     })
     .then((data) => {
-      console.log(data)
+      // console.log(data)
       const dataCompetition = data.competition.filter(item=> item.competitionId == id) 
-      console.log(dataCompetition)
+      // console.log(dataCompetition)
       setData(dataCompetition[0])
     })
   },[])

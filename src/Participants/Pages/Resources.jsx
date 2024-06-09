@@ -6,7 +6,7 @@ import { marked } from 'marked';
 const Resources = ({data}) => {
 
   
-console.log(data)
+// console.log(data)
   return (
     <ResourcesContainer>
       <Title>Resources</Title>

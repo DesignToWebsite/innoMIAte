@@ -9,7 +9,7 @@ const SignIn = ({confirmation = false}) => {
   const navigate = useNavigate();
   const [inProgress, setInProgress] = useState(false);
   const handleConfirmation = async (userId)=>{
-    console.log(userId)
+    // console.log(userId)
     const participant ={
       "userId": userId,
       "competitionId": 1
@@ -50,7 +50,7 @@ const SignIn = ({confirmation = false}) => {
         setInProgress(false);
         // window.location.reload()
         const userId = response.data.id
-        console.log(userId)
+        // console.log(userId)
         confirmation? handleConfirmation(userId) : navigate("/login")
 
 

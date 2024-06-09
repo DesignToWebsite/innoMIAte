@@ -19,7 +19,7 @@ const CreateProjectBtn = ({
 
     // Check if required fields are filled
     if (!name || !description || !teamName) {
-      console.log(dataCard);
+      // console.log(dataCard);
       alert(
         "Please fill in all required fields: Project name, Project Description, and Team name."
       );
@@ -41,7 +41,7 @@ const CreateProjectBtn = ({
         const uploadImage = `http://localhost:5299/api/Files/upload`;
         const imageData = new FormData();
         imageData.append("file", team.projectImage);
-        console.log(imageData);
+        // console.log(imageData);
         const responseImageUploaded = await axios.post(uploadImage, imageData, {
           headers: {
             "Content-Type": "multipart/form-data",

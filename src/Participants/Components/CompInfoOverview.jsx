@@ -8,6 +8,7 @@ import JoinCompetitionBtn from "../JoinCompetitionBtn";
 import { GREEN_COLOR, RED_COLOR } from "../../style/Colors";
 
 const CompInfoOverview = ({
+  isConfirmed,
   teamName,
   data,
   isLogged,
@@ -18,7 +19,7 @@ const CompInfoOverview = ({
   setHasAProject,
   isLeader,
 }) => {
-  // console.log(hasATeam);
+  console.log(isConfirmed)
   // console.log(joinedCompetition)
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,7 +33,6 @@ const CompInfoOverview = ({
   const ManageTeamMiathon = async (e) => {
     navigate(`/competition/${id}/myTeam`);
   };
-  console.log("team nema", teamName)
   return (
     <Info>
       <div className="info">
@@ -70,30 +70,30 @@ const CompInfoOverview = ({
           </div>
         </div>
 
-        {!joinedCompetition && (
+        {!isConfirmed && (
           <p className="activeYouEmail">
             Activé votre inscription à la réception
           </p>
         )}
 
-        {joinedCompetition && isLeader && (
+        {isConfirmed && joinedCompetition && isLeader && (
           <button onClick={ManageTeamMiathon} className="btn btn-red">
-            Manage team
+            Gérer l'équipe
           </button>
         )}
 
-        {joinedCompetition && !isLeader && (
+        {isConfirmed && joinedCompetition && !isLeader && (
           <>
-            <p className="joined">Joined</p>
+            <p className="joined">Rejoint</p>
             {!hasATeam && (
               <p className="small">
-                You should join a Team find a project leader and be a member of
-                his team
+                Vous devez rejoindre une équipe, trouver un chef de projet et être membre de
+                son équipe
               </p>
             )}
             {hasATeam && (
               <p className="small">
-                You are a member of {teamName?.name} team
+                Vous êtes membre de l'équipe <b>{teamName?.name} </b>
               </p>
             )}
           </>

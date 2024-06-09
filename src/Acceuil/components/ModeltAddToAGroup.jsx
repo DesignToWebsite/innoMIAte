@@ -35,12 +35,12 @@ const ModelAddToAGroup = ({ user, index }) => {
   }, []);
 
   const handleChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setGroup(e.target.value);
   };
   
   const handleSubmit = async () => {
-console.log(group,userId)
+// console.log(group,userId)
     const url = `http://localhost:5299/api/groups/${group}/participants/${userId}`;
 
     try {

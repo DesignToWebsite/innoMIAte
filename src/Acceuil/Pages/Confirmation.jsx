@@ -6,6 +6,7 @@ import SearchReception from "../components/SearchReception";
 import ModelCreateParticipant from "../components/ModelCreateParticipant";
 import ModelEditParticipant from "../components/ModelEditParticipant";
 import ModelAddToAGroup from "../components/ModeltAddToAGroup";
+import { ORANGE_COLOR } from "../../style/Colors";
 
 const Confirmation = () => {
   const [isConfirmed, setIsConfirmed] = useState(true);
@@ -17,7 +18,7 @@ const Confirmation = () => {
 
   const handleConfirmation = async (e, user) => {
     e.preventDefault();
-    console.log(user);
+    // console.log(user);
     const url = `http://localhost:5299/api/CompetitionParticipant/confirm?userId=${user.userId}&competitionId=${user.competitionId}`;
     try {
       const response = await axios.post(url);
@@ -54,7 +55,7 @@ const Confirmation = () => {
   const hadleDeleteParticipantFromGroup = async (e, idParticipant) => {
     // const url = "55"
     e.preventDefault()
-    console.log(idParticipant)
+    // console.log(idParticipant)
     try {
       const response = await axios.patch(
         `http://localhost:5299/api/groups/remove-participant-from-group/${idParticipant}`
@@ -125,7 +126,7 @@ const Confirmation = () => {
             {!user.isConfirmed && (
               <button
                 onClick={(e) => handleConfirmation(e, user)}
-                className="btn btn-red"
+                className="btn btn-orange"
               >
                 Confirmation
               </button>
@@ -145,7 +146,7 @@ const Confirmation = () => {
                 {!user.groupName && (
                   <button
                     type="button"
-                    className="btn btn-green"
+                    className="btn btn-green btn-add"
                     data-toggle="modal"
                     data-target={`#addParticipantToAGroup${index}`}
                   >
@@ -155,7 +156,7 @@ const Confirmation = () => {
                 {user.groupName && user.isLeader && (
                   <button
                     type="button"
-                    className="btn btn-red"
+                    className="btn btn-red btn-delete-group"
                     onClick={(e) =>
                       handleDeleteGroup(
                         e,
@@ -327,6 +328,12 @@ const ConfirmationStyle = styled.div`
       white-space: normal;
       font-weight: bold;
     }
+  }
+  .btn-orange{
+    background-color: ${ORANGE_COLOR};
+  }
+  .btn-delete-group, .btn-add{
+    opacity: .8;
   }
 `;
 

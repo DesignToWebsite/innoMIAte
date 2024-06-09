@@ -19,7 +19,7 @@ const MyProject_competition = ({
   setHasAProject
   
 }) => {
-  console.log("has a team ", hasATeam);
+  // console.log("has a team ", hasATeam);
   return (
     <Projects>
       <div className="row">

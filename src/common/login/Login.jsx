@@ -22,13 +22,13 @@ const LogIn = () => {
     const url = `http://localhost:5299/api/Auth/login?email=${encodeURIComponent(
       email
     )}&password=${encodeURIComponent(password)}`;
-    console.log(url);
+    // console.log(url);
     try {
       const response = await axios.post(
         "http://localhost:5299/api/User/login",
         credential
       );
-      console.log(response.data);
+      // console.log(response.data);
       if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
         navigate("/");

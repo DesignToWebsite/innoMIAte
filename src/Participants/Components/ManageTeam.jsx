@@ -11,7 +11,7 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
   const [groupInfo, setGroupInfo] = useState([]);
   // console.log("team", teamName);
   const teamId = teamName?.groupId;
-  console.log(teamId)
+  // console.log(teamId)
   const getTeamInfo = async () => {
     const url = `http://localhost:5299/api/groups/${teamId}/participants`;
     try {
@@ -45,7 +45,7 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
       }
     } catch (error) {
       console.log(error);
-      setError(error);
+      setError(error.response.data);
     }
   };
 
@@ -178,6 +178,7 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
               enregistrer
             </button>
           </div>
+          {error && <p className="error">{error}</p>}
         </Team>
       ) : (
         <h2 style={{ margin: "2em" }}>

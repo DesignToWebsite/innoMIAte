@@ -5,7 +5,7 @@ import no_image from "../../assets/no_image.png"
 
 const ProjectCard_team = ({ hasATeam}) => {
   const { id } = useParams();
-  console.log(hasATeam)
+  // console.log(hasATeam)
   return (
     <>
       {hasATeam && (

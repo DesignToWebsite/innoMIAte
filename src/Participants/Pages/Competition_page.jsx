@@ -29,6 +29,7 @@ const Competition_page = () => {
   const [hasAProject, setHasAProject] = useState(null);
   const [isLeader, setIsLeader] = useState(null);
   const [teamName, setTeamName] = useState(null);
+  const [isConfirmed, setIsConfirmed] = useState(null)
   const getTeamInfo = async (teamId) => {
     const url = `http://localhost:5299/api/groups/${teamId}`;
     try {
@@ -57,6 +58,8 @@ const Competition_page = () => {
           );
           // console.log("user participant", userParticipant);
           setJoinedCompetition(userParticipant);
+          console.log("user part", userParticipant)
+          setIsConfirmed(userParticipant.isConfirmed)
           setHasATeam(userParticipant.groupId);
           setIsLeader(userParticipant.isLeader);
           if (userParticipant.groupId) {
@@ -84,6 +87,7 @@ const Competition_page = () => {
                 path="overview"
                 element={
                   <Overview
+                  isConfirmed={isConfirmed}
                     teamName={teamName}
                     isLeader={isLeader}
                     setJoinedCompetition={setJoinedCompetition}

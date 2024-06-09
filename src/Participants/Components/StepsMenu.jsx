@@ -11,7 +11,7 @@ const StepsMenu = ({steps}) => {
   const navigate = useNavigate();
   const {id, step} = useParams();
  const [currentStep, setCurrentStep] = useState(step)
- console.log(steps)
+//  console.log(steps)
   return (
     <Menu>
       <div className="stepList">

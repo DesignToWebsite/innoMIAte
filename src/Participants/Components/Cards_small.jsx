@@ -12,7 +12,7 @@ const Cards_small = () => {
         const url = "http://localhost:5299/api/Competition";
         try {
             const response = await axios.get(url);
-            console.log("Response data:", response.data.$values);
+            // console.log("Response data:", response.data.$values);
             setCompetitions(response.data.$values);
             if(response.data.length == 0){
               setNoCompetion('no competition exist')

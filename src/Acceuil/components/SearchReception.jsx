@@ -5,7 +5,7 @@ import styled from "styled-components";
 const SearchReception = ({ users, setFilteredUsers }) => {
     const [searchValue, setSearchValue] = useState("");
     const [searchCriteria, setSearchCriteria] = useState("email");
-  
+  // console.log(users)
     useEffect(() => {
       if (searchCriteria === "noTeam") {
         const filtered = users.filter(user => !user.groupName);
@@ -13,18 +13,41 @@ const SearchReception = ({ users, setFilteredUsers }) => {
       } else if (searchCriteria === "leader") {
         const filtered = users.filter(user => user.isLeader);
         setFilteredUsers(filtered);
-      } else {
+      } 
+      else {
         setFilteredUsers(users); // Reset to original list if search value is empty
       }
     }, [searchCriteria, users]);
   
     const handleSearch = () => {
+      // console.log(searchCriteria, searchValue)
       if (searchCriteria === "email") {
         const filtered = users.filter((user) =>
           user.email.toLowerCase().includes(searchValue.toLowerCase())
         );
         setFilteredUsers(filtered);
       }
+      if (searchCriteria === "teamName") {
+        const filtered = users.filter((user) =>
+          user.groupName === searchValue.toLowerCase()
+        );
+        setFilteredUsers(filtered);
+      }
+      if (searchCriteria === "name") {
+        const filtered = users.filter((user) =>
+          user.firstName
+          .toLowerCase()
+          .includes(searchValue.toLowerCase())
+          ||
+          user.lastName
+          .toLowerCase()
+          .includes(searchValue.toLowerCase())
+
+
+        );
+        setFilteredUsers(filtered);
+      }
+      
     };
   
     return (
@@ -41,7 +64,7 @@ const SearchReception = ({ users, setFilteredUsers }) => {
                   placeholder="Find your next hackathon"
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
-                  disabled={searchCriteria !== "email"}
+                  disabled={searchCriteria !== "email" && searchCriteria !== "teamName" && searchCriteria !== "name"}
                 />
                 <select
                   name="optionSearch"
@@ -52,6 +75,8 @@ const SearchReception = ({ users, setFilteredUsers }) => {
                   <option value="email">Email</option>
                   <option value="noTeam">Participant sans team</option>
                   <option value="leader">Leader</option>
+                  <option value="teamName">Nom du group</option>
+                  <option value="name">Nom</option>
                 </select>
               </div>
             </div>

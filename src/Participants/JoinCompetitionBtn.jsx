@@ -9,9 +9,9 @@ const JoinCompetitionBtn = ({ data, isLogged, joinedCompetition, setJoinedCompet
   const navigate = useNavigate();
   const location = useLocation();
   const connectedUser = JSON.parse(localStorage.getItem('user'));
-  console.log(connectedUser)
+  // console.log(connectedUser)
   const { id } = useParams()
-  console.log(data)
+  // console.log(data)
   const [inProgress, setInProgress] = useState(false)
   const [error, setError] = useState(null)
   const addProject = async (e) => {
