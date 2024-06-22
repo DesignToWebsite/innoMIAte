@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import userImage from "../../assets/Profile/user.png";
+import userImage from "../../../../assets/Profile/user.png";
 import styled from "styled-components";
-import { RED_COLOR } from "../../style/Colors";
+import { RED_COLOR } from "../../../../style/Colors";
 
 const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
   const [team, setTeam] = useState(null);
   const [emailToSearch, setEmailToSearch] = useState("");
   const [error, setError] = useState(null);
   const [groupInfo, setGroupInfo] = useState([]);
-  // console.log("team", teamName);
   const teamId = teamName?.groupId;
-  // console.log(teamId)
   const getTeamInfo = async () => {
     const url = `http://localhost:5299/api/groups/${teamId}/participants`;
     try {
@@ -181,9 +179,40 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
           {error && <p className="error">{error}</p>}
         </Team>
       ) : (
-        <h2 style={{ margin: "2em" }}>
-          Seul le leader peut inviter des membres.
-        </h2>
+        <Team>
+        <div className="currentMembers">
+        
+              <h3>Coéquipiers actuels</h3>
+              <div className="teams">
+                {groupInfo?.map((item, key) => {
+                  return (
+                    <div key={key} className="item">
+                      <div className="img">
+                        <img
+                          src={
+                            item?.image
+                              ? item.image
+                              : userImage
+                          }
+                          alt=""
+                        />
+                      </div>
+                      <div className="info">
+                        <a href="#">
+                          {item.lastName} {item.firstName}
+                        </a>
+                        <p>{item.username}</p>
+                      </div>
+                      {/* <div onClick={(item.userId) => handleDelete()} className="delete">
+                        X
+                      </div> */}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+        </Team>
+      
       )}
     </>
   );

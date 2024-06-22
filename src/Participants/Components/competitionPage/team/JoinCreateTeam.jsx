@@ -1,10 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Input_Step from "./Steps_components/Input_Step";
-import Image_drag_drop from "./Steps_components/Image_drag_drop";
-import Card_project from "./Steps_components/Card_project";
-import JoinCompetitionBtn from "../JoinCompetitionBtn";
-import CreateProjectBtn from "./Buttons/CreateProjectBtn";
+import Card_project from "../project/Steps_components/Card_project";
+import CreateProjectBtn from "../../Buttons/CreateProjectBtn";
 const JoinCreateTeam = ({data,hasATeam,
   joinedCompetition,
   setHasATeam,
@@ -50,7 +47,7 @@ const JoinCreateTeam = ({data,hasATeam,
   return (
     <JoinOrCreateTeam>
       <div>
-        <p className="info">Only leader can create a project if you're not you should join an team</p>
+        <h2 className="info">Only leader can create a project if you're not you should join an team</h2>
       </div>
       <form className="isLeader">
         <div className="createProject">
@@ -119,6 +116,9 @@ const JoinCreateTeam = ({data,hasATeam,
 
 const JoinOrCreateTeam = styled.div`
   /* padding: 2em; */
+  .info{
+    padding: 2em;
+  }
   .input {
     display: flex;
     flex-direction: column;

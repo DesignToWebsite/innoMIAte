@@ -1,27 +1,12 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
-import place from "../../assets/dashboard_competition/place.png";
-import publicIcon from "../../assets/dashboard_competition/public.png";
-import tags from "../../assets/dashboard_competition/tags.png";
-import theme from "../../assets/dashboard_competition/theme.png";
-import { GREEN_COLOR, ORANGE_COLOR } from "../../style/Colors";
+import place from "../../../assets/dashboard_competition/place.png";
+import publicIcon from "../../../assets/dashboard_competition/public.png";
+import tags from "../../../assets/dashboard_competition/tags.png";
+import theme from "../../../assets/dashboard_competition/theme.png";
+import { GREEN_COLOR, ORANGE_COLOR } from "../../../style/Colors";
 const CardCompetitionInfo = ({ data }) => {
-  // const calculateTimeLeft = () => {
-  //   const difference = +new Date(data.deadLine.trim()) - +new Date();
-  //   let timeLeft = {};
-
-  //   if (difference > 0) {
-  //     timeLeft = {
-  //       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-  //       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-  //       minutes: Math.floor((difference / 1000 / 60) % 60),
-  //       seconds: Math.floor((difference / 1000) % 60),
-  //     };
-  //   }
-
-  //   return timeLeft;
-  // };
-
+console.log(data.deadLine)
   const calculateTimeLeft = () => {
     const deadlineDate = new Date(data.deadLine.trim());
     const currentDate = new Date();
@@ -41,24 +26,13 @@ const CardCompetitionInfo = ({ data }) => {
     const formattedDeadline = deadlineDate.toLocaleDateString("en-GB", {
       day: "numeric",
       month: "long",
+      year : "numeric"
     });
 
     return { timeLeft, formattedDeadline };
   };
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  const timerComponents = [];
+  
 
-  // Object.keys(timeLeft).some((interval) => {
-  //   if (timeLeft[interval]) {
-  //     timerComponents.push(
-  //       <span key={interval}>
-  //         {timeLeft[interval]} {interval} à la date limite
-  //       </span>
-  //     );
-  //     return true; // Break the loop after finding the first non-zero interval
-  //   }
-  //   return false;
-  // });
 
   return (
     <Card>
@@ -72,14 +46,14 @@ const CardCompetitionInfo = ({ data }) => {
             )}
           </p>
           <h4>Date limite</h4>
-          <p>{calculateTimeLeft().formattedDeadline} 2024</p>
+          <p>{calculateTimeLeft().formattedDeadline}  </p>
         </div>
         <Line />
         <div className="info">
           <div className="row">
             <div className="col-6 item">
               <img src={place} alt="" />
-              {data.location}
+              {data.location == 0 ? "A distance" : data.location}
             </div>
             <div className="col-6 item">
               <img src={publicIcon} alt="" />
@@ -128,6 +102,8 @@ const Card = styled.div`
   max-width: 300px;
   padding: 1em 0.5em;
   border-radius: 10px;
+  border:2px solid #dce6e9;
+
   img {
     margin-right: 10px;
   }

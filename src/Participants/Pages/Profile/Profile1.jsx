@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import location from "../../../assets/Profile/location.png";
 import github from "../../../assets/Profile/github.png";
-import edit from "../../../assets/Profile/edit.png";
+// import edit from "../../../assets/Profile/edit.png";
 import website from "../../../assets/Profile/website.png";
 import data from "../../../data/data.json";
 import { Link } from "react-router-dom";
 import { GREEN_COLOR, ORANGE_COLOR, RED_COLOR } from "../../../style/Colors";
-import ProjectCard_competition from "../../Components/ProjectCard_competition";
-import ProfileNoProject from "../../Components/ProfileNoProject";
-import ProfileProjectsExist from "../../Components/ProfileProjectsExist";
-import NewProjectAlert from "../../Components/NewProjectAlert";
+import ProfileNoProject from "../../Components/profile/ProfileNoProject";
+import ProfileProjectsExist from "../../Components/profile/ProfileProjectsExist";
+// import NewProjectAlert from "../../Components/NewProjectAlert";
 import HackathonCard from "../../Components/HackathonCard";
-import axios from "axios";
 import userImage from "../../../assets/Profile/user.png"
 // import Profile_noProject from "../../Components/profile_noProject";
 

@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import CardCompetitionInfo from "../Components/CardCompetitionInfo";
-import dataJson from "../../data/data.json";
-import RegisterCompetition from "../Components/RegisterCompetition";
+import CardCompetitionInfo from "../Components/general/CardCompetitionInfo";
+// import dataJson from "../../data/data.json";
+import RegisterCompetition from "../Components/competitionPage/project/RegisterCompetition";
 import { BtnCreateProject, CreateProject } from "./CreateProject";
-import Project_competition from "../Components/Project_competition";
-import { useEffect, useState } from "react";
-import ProjectCard_competition from "../Components/ProjectCard_competition";
-import ProjectCard_team from "../Components/ProjectCard_team";
+import ProjectCard_team from "../Components/competitionPage/project/ProjectCard_team";
+import LeaveGroup from "../Components/Buttons/LeaveGroup";
 
 const MyProject_competition = ({
   data,
@@ -16,15 +14,16 @@ const MyProject_competition = ({
   setHasATeam,
   hasATeam,
   hasAProject,
-  setHasAProject
+  setHasAProject,
+  isLeader
   
 }) => {
-  // console.log("has a team ", hasATeam);
   return (
     <Projects>
       <div className="row">
         <div className="col-12 col-md-7 col-lg-8">
           {!isLogged && <RegisterCompetition />}
+          
           {isLogged && !joinedCompetition && (
             <CreateProject
               isLogged={isLogged}
@@ -36,14 +35,7 @@ const MyProject_competition = ({
               hasAProject={hasAProject} setHasAProject={setHasAProject}
             />
           )}
-          {isLogged && joinedCompetition && hasATeam && (
-            <Project_competition 
-            data={data}
-            setHasATeam={setHasATeam}
-              hasATeam={setHasATeam}
-              hasAProject={hasAProject} setHasAProject={setHasAProject}
-             />
-          )}
+          
           {isLogged && joinedCompetition && !hasATeam && (
             <CreateProject
               isLogged={isLogged}
@@ -57,6 +49,7 @@ const MyProject_competition = ({
           )}
           {isLogged && joinedCompetition && hasATeam && (
             <ProjectCard_team
+            isLeader={isLeader}
               isLogged={isLogged}
               joinedCompetition={joinedCompetition}
               setJoinedCompetition={setJoinedCompetition}
@@ -68,7 +61,10 @@ const MyProject_competition = ({
           )}
         </div>
         <div className="col-12 col-md-5 col-lg-4">
-          {isLogged && joinedCompetition && <BtnCreateProject />}
+        {isLogged && joinedCompetition && isLeader  && <BtnCreateProject hasATeam={hasATeam} />}
+        {isLogged && joinedCompetition && !isLeader && <LeaveGroup className="quitterbtn" participantId={joinedCompetition.id} />}
+        
+
           {data && <CardCompetitionInfo data={data} />}
           <p></p>
         </div>
@@ -80,6 +76,7 @@ const MyProject_competition = ({
 const Projects = styled.div`
   padding-top: 2em;
   padding-bottom: 2em;
+
 `;
 
 export default MyProject_competition;

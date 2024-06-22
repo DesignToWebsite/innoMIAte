@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 import { useLocation, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { BtnCreateProject } from "../Pages/CreateProject";
+import { BtnCreateProject } from "../../../Pages/CreateProject";
 import axios from "axios";
-import JoinCompetitionBtn from "../JoinCompetitionBtn";
-import { GREEN_COLOR, RED_COLOR } from "../../style/Colors";
+import JoinCompetitionBtn from "../../../JoinCompetitionBtn";
+import { GREEN_COLOR, RED_COLOR } from "../../../../style/Colors";
 
 const CompInfoOverview = ({
   isConfirmed,
@@ -19,8 +19,7 @@ const CompInfoOverview = ({
   setHasAProject,
   isLeader,
 }) => {
-  console.log(isConfirmed)
-  // console.log(joinedCompetition)
+  
   const navigate = useNavigate();
   const location = useLocation();
   const { id } = useParams();
@@ -56,25 +55,15 @@ const CompInfoOverview = ({
         <h3>{data.descriptionTop}</h3>
 
         <div className="isParticipant">
-          <div className="whoCanParticipate">
-            <p>Qui peut participer</p>
-            <div className="items">
-              <ul>
-                <li>- 18 ans et plus seulement</li>
-                <li>- Tous les pays/territoires</li>
-              </ul>
-            </div>
+          <div className="whoCanParticipate">            
             <a target="_blank" href={data.pdfRules}>
               Voir le règlement complet
             </a>
           </div>
         </div>
 
-        {!isConfirmed && (
-          <p className="activeYouEmail">
-            Activé votre inscription à la réception
-          </p>
-        )}
+
+       
 
         {isConfirmed && joinedCompetition && isLeader && (
           <button onClick={ManageTeamMiathon} className="btn btn-red">
@@ -99,7 +88,7 @@ const CompInfoOverview = ({
           </>
         )}
 
-        {/* {!joinedCompetition && (
+        {!joinedCompetition && (
           <JoinCompetitionBtn
             isLogged={isLogged}
             joinedCompetition={joinedCompetition}
@@ -107,7 +96,8 @@ const CompInfoOverview = ({
             data={data}
           />
         )}
-        {joinedCompetition && hasATeam && (
+
+        {joinedCompetition && hasATeam && isLeader && (
           <button onClick={EditProject} className="btn btn-green">
             Edit project
           </button>
@@ -117,20 +107,14 @@ const CompInfoOverview = ({
           <button onClick={ManageTeam} className="btn btn-green">
             Create a team OR Join a team
           </button>
-        )} */}
+        )}
+         
       </div>
     </Info>
   );
 };
 
 const Info = styled.div`
-  .activeYouEmail {
-    background-color: ${RED_COLOR};
-    width: fit-content;
-    color: white;
-    padding: 0.5em 1em;
-    margin: 1em 0;
-  }
   .joined {
     margin-top: 1em;
     padding: 0.5em 1.5em;
@@ -140,7 +124,6 @@ const Info = styled.div`
     margin-bottom: 0;
   }
   .info {
-    padding: 0em 2em;
     h3 {
       font-size: 1.4em;
     }
@@ -162,14 +145,12 @@ const Info = styled.div`
     }
     .btn {
       margin-top: 1.5em;
-      margin-bottom: 2em;
+      margin-right: 10px;
     }
   }
   .isParticipant {
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
     align-items: center;
-    /* flex-direction: row-reverse; */
     .whoCanParticipate {
       order: 2;
     }
@@ -183,11 +164,11 @@ const Info = styled.div`
       margin: 0;
     }
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    /* align-items: center; */
     justify-content: space-between;
-    gap: 10px;
+    gap: 20px;
+    align-items: center;
     margin-bottom: 2em;
     div.logos {
       display: flex;

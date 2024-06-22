@@ -51,7 +51,7 @@ const SignIn = ({confirmation = false}) => {
         // window.location.reload()
         const userId = response.data.id
         // console.log(userId)
-        confirmation? handleConfirmation(userId) : navigate("/login")
+        confirmation? handleConfirmation(userId) : navigate("/login?accountCreated")
 
 
       }

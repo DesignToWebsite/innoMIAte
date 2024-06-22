@@ -120,7 +120,9 @@ bottom: 0; */
   .footerItems {
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
+    gap: 20px;
     .item {
         
       .title {

@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import Rules from "../../assets/dashboard_competition/Rules.png"
-import Chat from "../../assets/dashboard_competition/Discussion.png"
-import Participants from "../../assets/dashboard_competition/Participants.png"
-import Discussion from "../../assets/dashboard_competition/Discussion.png"
-import Overview from "../../assets/dashboard_competition/Overview.png"
-import Picture from "../../assets/dashboard_competition/Picture.png"
-import Resources from "../../assets/dashboard_competition/Ressources.png"
-import Task from "../../assets/dashboard_competition/Task.png"
-import { GREEN_COLOR } from "../../style/Colors";
+import Rules from "../../../assets/dashboard_competition/Rules.png"
+import Participants from "../../../assets/dashboard_competition/Participants.png"
+import Discussion from "../../../assets/dashboard_competition/Discussion.png"
+import Overview from "../../../assets/dashboard_competition/Overview.png"
+import Picture from "../../../assets/dashboard_competition/Picture.png"
+import Resources from "../../../assets/dashboard_competition/Ressources.png"
+import Task from "../../../assets/dashboard_competition/Task.png"
+import { GREEN_COLOR } from "../../../style/Colors";
 import { Link, useParams } from "react-router-dom";
 
 const Dashboard_competition = () => {
@@ -18,18 +17,18 @@ const Dashboard_competition = () => {
       <Link to={`/competition/${id}/overview`} class="nav-link active" aria-current="page" >
          <img src={Overview} alt="" /> <span>Aperçu</span>
       </Link>
-      {/* <Link to={`/competition/${id}/myProject`} class="nav-link" >
+      <Link to={`/competition/${id}/myProject`} class="nav-link" >
         <img src={Task} alt="" />
         <span>Mon projet</span>
-      </Link> */}
+      </Link>
       <Link to={`/competition/${id}/myTeam`} class="nav-link" >
         <img src={Task} alt="" />
         <span>Team</span>
       </Link>
-      {/* <Link class="nav-link" to={`/competition/${id}/participants`}>
+      <Link class="nav-link" to={`/competition/${id}/participants`}>
         <img src={Participants} alt="" />
         <span>Participants </span>
-      </Link> */}
+      </Link>
       <Link class="nav-link" to={`/competition/${id}/Resources`}>
         <img src={Resources} alt="" />
         <span>Resources</span> 
@@ -38,14 +37,14 @@ const Dashboard_competition = () => {
         <img src={Rules} alt="" />
         <span>Règles</span> 
       </Link>
-      {/* <Link class="nav-link" to={`/competition/${id}/projectGallery`}>
+      <Link class="nav-link" to={`/competition/${id}/projectGallery`}>
         <img src={Picture} alt="" />
         <span>Galerie de projets</span> 
       </Link>
       <Link class="nav-link" to={`/competition/${id}/discussions`}>
         <img src={Discussion} alt="" />
         <span>Discussions</span> 
-      </Link> */}
+      </Link>
     </nav>
     </Dashboard>
   );

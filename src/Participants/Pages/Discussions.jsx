@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { PADDING_BIG_SCREEN, PADDING_SMALL_SCREEN } from '../../style/Padding';
 
 const Discussions = () => {
   const [discussions, setDiscussions] = useState([]);
@@ -19,21 +20,21 @@ const Discussions = () => {
             {/* Afficher les discussions */}
           </DiscussionList>
         )}
-        <LookingForTeammate>
+        {/* <LookingForTeammate>
           If you're looking for a teammate, <a href="#teammate">it's over here</a>.
-        </LookingForTeammate>
+        </LookingForTeammate> */}
       </DiscussionColumn>
 
       <NotificationColumn>
 
-        <NotificationContainer>
+        {/* <NotificationContainer>
           <input
             type="checkbox"
             checked={emailNotification}
             onChange={(e) => setEmailNotification(e.target.checked)}
           />
           <label>Email me when new discussions are added</label>
-        </NotificationContainer>
+        </NotificationContainer> */}
       </NotificationColumn>
     </DiscussionContainer>
   );
@@ -41,11 +42,16 @@ const Discussions = () => {
 
 const DiscussionContainer = styled.div`
   display: flex;
+  padding:${PADDING_BIG_SCREEN};
+    @media (max-width : 425px) {
+      padding:${PADDING_SMALL_SCREEN};
+
+    }
 `;
 
 const DiscussionColumn = styled.div`
   flex: 1;
-  padding: 20px;
+  /* padding: 20px; */
 `;
 
 const NotificationColumn = styled.div`

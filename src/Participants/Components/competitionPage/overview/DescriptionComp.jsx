@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import dataJSON from "../../data/data.json";
+// import dataJSON from "../../data/data.json";
 import { Marked, marked } from "marked";
-import star from "../../assets/dashboard_competition/Star.png";
-import imageUser from "../../assets/Profile/user.png"
+import star from "../../../../assets/dashboard_competition/Star.png";
+import imageUser from "../../../../assets/Profile/user.png"
+import { PADDING_BIG_SCREEN, PADDING_SMALL_SCREEN } from "../../../../style/Padding";
 const DescriptionComp = ({ data }) => {
   // const data = dataJSON.competition[0];
   // console.log(data)
@@ -119,6 +120,11 @@ const DescriptionComp = ({ data }) => {
 const DescriptionCompStyle = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
+  padding:${PADDING_BIG_SCREEN};
+    @media (max-width : 425px) {
+      padding:${PADDING_SMALL_SCREEN};
+
+    }
   @media screen and (max-width: 750px) {
     grid-template-columns: 1fr;
   }

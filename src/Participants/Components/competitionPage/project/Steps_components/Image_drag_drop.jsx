@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { GREEN_COLOR, RED_COLOR } from "../../../style/Colors";
-import deleteIcon from "../../../assets/dashboard_competition/delete.png"
+import { GREEN_COLOR, RED_COLOR } from "../../../../../style/Colors"
+import deleteIcon from "../../../../../assets/dashboard_competition/delete.png"
 
 
 const MAX_FILE_SIZE_MB = 5; // Max file size in MB

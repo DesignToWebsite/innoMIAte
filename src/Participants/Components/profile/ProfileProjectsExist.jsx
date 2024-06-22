@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ProjectCard_competition from "./ProjectCard_competition";
+import ProjectCard_competition from "../competitionPage/project/ProjectCard_competition";
 
 const ProfileProjectsExist = ({ user }) => {
   return (

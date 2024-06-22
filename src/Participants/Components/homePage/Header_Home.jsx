@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import mia_header from "../../assets/mia_header.png";
-import bg from "../../assets/bg_home.png";
-import arrow from "../../assets/arrow.png";
+import mia_header from "../../../assets/mia_header.png";
+import bg from "../../../assets/bg_home.png";
+import arrow from "../../../assets/arrow.png";
 import { Link } from 'react-router-dom';
 
 const Header_Home = () => {
@@ -14,7 +14,7 @@ const Header_Home = () => {
       
       <div className="container">
         <div className="row">
-          <div className="col-12 col-lg-6 col-md-6 my-5 my-md-1 order-2 order-md-1">
+          <div className="col-12 col-lg-7 col-md-7 my-5 my-md-1 order-2 order-md-1">
             <div className="description">
               <h1>Bienvenue chez InnoMIATe :</h1>
               <p>Votre destination ultime pour les hackathons et les compétitions</p>
@@ -23,27 +23,23 @@ const Header_Home = () => {
                 <a href="https://www.dgssi.gov.ma/sites/default/files/legislative/brochure/2023-07/loi%2009-08.pdf">
                  Notre politique de données</a>
               </p>
-              {/* <div className="row">
-              <div className="col-12 col-md-12 col-lg-6">
+              <div className="btns">
                 <Link to="./index" className="btn btn-green">
                   <p>Pour les organisateurs</p>
                   <p className="icon">
                     <img src={arrow} alt="go to the organizers page" />
                   </p>
                 </Link>
-              </div>
-                <div className="col-12 col-md-12 col-lg-6">
-                <button className="btn btn-red">
+                <Link to="/competitions" className="btn btn-red">
                   <p>Pour les participants</p>
                   <p className="icon">
                     <img src={arrow} alt="go to the participants page" />
                   </p>
-                </button>
-                </div>
-              </div> */}
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="col-12 col-lg-6 col-md-6 order-1 order-md-2">
+          <div className="col-12 col-lg-5 col-md-5 order-1 order-md-2">
             <div className="image">
               <img src={mia_header} alt="MIA" />
             </div>
@@ -76,7 +72,7 @@ const Header = styled.div`
     color: rgb(58, 58, 58);
   }
   .description {
-
+   
     h1 {
       font-size: 2.5em;
     }
@@ -85,18 +81,29 @@ const Header = styled.div`
       justify-content: space-between;
       align-items: center;
       /* padding: 0; */
-      width: 100%;
+      /* width: 100%; */
+      padding: 15px;
+      min-width: 250px;
       margin-bottom: 15px;
+      @media  (max-width: 555px) {
+        width: 100%;
+    }
       p{
         padding: 0;
         margin: 0;
       }
+      
     }
   }
   .image{
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .btns{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 `;
 export default Header_Home;

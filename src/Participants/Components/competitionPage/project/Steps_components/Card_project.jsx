@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import ProjectCard_competition from "../ProjectCard_competition";
-import { useState } from "react";
-import axios from "axios";
-import no_image from "../../../assets/no_image.png";
+import no_image from "../../../../../assets/no_image.png";
 
 const Card_project = ({ dataCard, setDataCard, setSelectedFile = null }) => {
   const handleImageChange = async (e) => {

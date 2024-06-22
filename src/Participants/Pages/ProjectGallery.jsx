@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import YouTube from 'react-youtube'; // Import the react-youtube library
 import data from '../../data/data.json'; // Import the data from data.json
+import { PADDING_BIG_SCREEN, PADDING_SMALL_SCREEN } from '../../style/Padding';
 
 const ProjectGallery = ({data}) => {
 
@@ -56,7 +57,12 @@ const ProjectGallery = ({data}) => {
 };
 
 const GalleryContainer = styled.div`
-  padding: 20px;
+  /* padding: 20px; */
+  padding:${PADDING_BIG_SCREEN};
+    @media (max-width : 425px) {
+      padding:${PADDING_SMALL_SCREEN};
+
+    }
 `;
 const Title = styled.h2`
   font-size: 24px;

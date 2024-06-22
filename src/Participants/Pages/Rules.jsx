@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import data from '../../data/data.json';
 import { marked } from 'marked';
+import { PADDING_BIG_SCREEN, PADDING_SMALL_SCREEN } from '../../style/Padding';
 
 const Rules = ({data}) => {
   
@@ -17,7 +18,12 @@ const Rules = ({data}) => {
 }
 
 const RulesContainer = styled.div`
-  padding: 20px;
+  /* padding: 20px; */
+  padding:${PADDING_BIG_SCREEN};
+    @media (max-width : 425px) {
+      padding:${PADDING_SMALL_SCREEN};
+
+    }
 `;
 
 const Title = styled.h2`

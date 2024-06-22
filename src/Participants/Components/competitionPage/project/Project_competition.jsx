@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import dataJson from "../../data/data.json";
-import ProjectCard_competition from "./ProjectCard_competition";
+// import dataJson from "../../data/data.json";
+// import ProjectCard_competition from "./ProjectCard_competition";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-const Project_competition = () => {
+import ProjectCard_competition from "./ProjectCard_competition";
+const Project_competition = ({hasATeam}) => {
   const {id} = useParams()
   const [data, setData] = useState(null)
   const connectedUser = JSON.parse(localStorage.getItem('user'))
@@ -14,12 +15,17 @@ const Project_competition = () => {
       return res.json()
     })
     .then((data) => {
-      // console.log(data)
       const dataCompetition = data.competition.filter(item=> item.competitionId == id) 
-      // console.log(dataCompetition)
       setData(dataCompetition[0])
     })
   },[])
+
+  
+
+  // useEffect(()=>{
+
+  // })
+  console.log(data)
   return (
     <Project>
       <h2>Mon projet de hackathon</h2>

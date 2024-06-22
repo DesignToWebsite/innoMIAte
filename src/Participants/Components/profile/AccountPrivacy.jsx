@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import data from "../../data/data.json";
-import LinkedIn from "../../assets/icons/Linkedln.png"
-import git_icon from "../../assets/icons/git_icon.png"
-import { ORANGE_COLOR, RED_COLOR, GREEN_COLOR } from "../../style/Colors";
+// import data from "../../data/data.json";
+// import LinkedIn from "../../assets/icons/Linkedln.png"
+// import git_icon from "../../assets/icons/git_icon.png"
+import { ORANGE_COLOR, RED_COLOR, GREEN_COLOR } from "../../../style/Colors";
 import axios from "axios";
 
 const AccountPrivacy = () => {

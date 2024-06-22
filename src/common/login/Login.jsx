@@ -4,11 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import InProgress from "../All/InProgress";
+import Popup from "../../Participants/Components/notification/Popup";
 
 const LogIn = () => {
   const navigate = useNavigate();
   const [inProgress, setInProgress] = useState(false);
   const [error, setError] = useState(null)
+  // const fromSignUp = navigate.state && navigate.state.fromSignUp;
+// console.log(fromSignUp)
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setInProgress(true);
@@ -31,7 +35,7 @@ const LogIn = () => {
       // console.log(response.data);
       if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
-        navigate("/");
+        navigate("/?loggedSuccessfully");
       }
     } catch (error) {
       setInProgress(false);

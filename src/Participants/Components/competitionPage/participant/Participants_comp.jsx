@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import usersIcon from "../../assets/dashboard_competition/Users.png";
-import Search from "./Search";
+import usersIcon from "../../../../assets/dashboard_competition/Users.png";
+import Search from "../../general/Search";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import userImage from "../../assets/Profile/user.png"
+import userImage from "../../../../assets/Profile/user.png";
 import SearchParticipant from "./SearchParticipant";
-
+import {
+  PADDING_BIG_SCREEN,
+  PADDING_SMALL_SCREEN,
+} from "../../../../style/Padding";
 
 const Participants_comp = () => {
   const logged = localStorage.getItem("user");
@@ -18,10 +21,6 @@ const Participants_comp = () => {
       const url = `http://localhost:5299/url/${id}?ParticipantInfo=true`;
       try {
         const response = await axios.get(url);
-        console.log(
-          "Response data Participant:",
-          response.data.participants.$values
-        );
         setData(response.data.participants.$values);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -29,7 +28,7 @@ const Participants_comp = () => {
     };
     fetchCompetitionParticipant();
   }, []);
-
+  console.log("participant", data);
   const goToTheLoginPage = () => {
     navigate("/login");
   };
@@ -51,11 +50,9 @@ const Participants_comp = () => {
         <div className="participants">
           <SearchParticipant />
           <div className="listParticipants">
-            
-            {
-              data?.map((item)=>{
-                return(
-                  <div className="item">
+            {data?.map((item) => {
+              return (
+                <div className="item">
                   <div className="profile">
                     <div className="img">
                       <img
@@ -65,32 +62,30 @@ const Participants_comp = () => {
                     </div>
                     <div className="info">
                       <div className="name">
-                        <p>{item.user.firstName}</p>
-                        <button className="follow">+</button>
+                        <p>{item.user.userName}</p>
                       </div>
-                      <div className="status">{item.team? "Has a team": "Looking for teammates"}</div>
+                      <div className="status">
+                        {item.groupId && item.isLeader && "chef d'équipe"}
+                        {item.groupId && !item.isLeader && "membre d'équipe"}
+                        {!item.groupId && "solo"}
+                      </div>
                     </div>
                   </div>
                   <div className="others">
                     <div className="skills">
-                      {
-                        item.user.skills?.map((skill)=>{
-                          return <p>{skill}</p>
-                        })
-                      }
+                      {item.user.skills?.map((skill) => {
+                        return <p>{skill}</p>;
+                      })}
                     </div>
                     <div className="intersts">
-                      {
-                        item.user.interests?.map((interest)=>{
-                          return <p>{interest}</p>
-                        })
-                      }
+                      {item.user.interests?.map((interest) => {
+                        return <p>{interest}</p>;
+                      })}
                     </div>
                   </div>
                 </div>
-                )
-              })
-            }
+              );
+            })}
           </div>
         </div>
       )}
@@ -99,6 +94,10 @@ const Participants_comp = () => {
 };
 
 const Participants = styled.div`
+  padding: ${PADDING_BIG_SCREEN};
+  @media (max-width: 425px) {
+    padding: ${PADDING_SMALL_SCREEN};
+  }
   .message {
     border: 1px solid #d9d9d9;
     background-color: #d9d9d9;
@@ -111,7 +110,7 @@ const Participants = styled.div`
     text-align: center;
   }
   .participants {
-    margin: 2em;
+    /* margin: 2em; */
     .listParticipants {
       margin: 2em 1em;
       .item {

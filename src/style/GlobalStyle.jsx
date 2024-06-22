@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { RED_COLOR, GREEN_COLOR, ORANGE_COLOR } from "../style/Colors";
+import { RED_COLOR, GREEN_COLOR, ORANGE_COLOR, ORANGE_COLOR_DARK } from "../style/Colors";
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -24,8 +24,9 @@ const GlobalStyle = createGlobalStyle`
     a{
         text-decoration: none !important;
         color : ${ORANGE_COLOR}
-        
+      
     }
+   
     button{
         cursor: pointer;
 

@@ -1,14 +1,11 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
-import { ORANGE_COLOR } from "../../style/Colors";
-import ProfileInfo from "./ProfileInfo";
-import data from "../../data/data.json";
-import Password from "./Password";
-import AccountPrivacy from "./AccountPrivacy";
+import ProfileInfo from "./profile/ProfileInfo";
+import Password from "./profile/Password";
+import AccountPrivacy from "./profile/AccountPrivacy";
 
 const SideEdit = () => {
-    const user = data.user;
     const [activePage, setActivePage] = useState("ProfileInfo")
 
   return (
@@ -50,21 +47,21 @@ const SideEdit = () => {
         <Content>
             {
                 activePage=="ProfileInfo" ? (
-                <ProfileInfo user={user}/>
+                <ProfileInfo />
                 ) : (
                 ""
                 )
             }
             {
                 activePage=="Password" ? (
-                <Password user={user}/>
+                <Password />
                 ) : (
                 ""
                 )
             }
             {
                 activePage=="AccountPrivacy" ? (
-                <AccountPrivacy user={user}/>
+                <AccountPrivacy />
                 ) : (
                 ""
                 )

@@ -1,172 +1,81 @@
-import styled from "styled-components";
-import searchIcon from "../../assets/icons/search_icon.png";
-import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-// const Navbar = () => {
-//   const navigate = useNavigate()
-//   const [isLogged, setIsLogged] = useState(false);
-//   const connectedUser = JSON.parse(localStorage.getItem("user"));
-
-//   useEffect(() => {
-//     setIsLogged(localStorage.getItem("user"));
-//   }, [navigate]);
-//   const logout = async (e)=>{
-//     e.preventDefault()
-//     localStorage.clear()
-//     // alert("Log out successfully")
-//     navigate("/login")
-//   }
-//   // console.log(connectedUser)
-//   return (
-//     <NavStyle>
-//       <nav class="navbar  navbar-light navbar-expand-md">
-//         <div class="container">
-//           <Link to="/" class="navbar-brand" href="#">
-//             <div className="logo">
-//               inno<span>MIA</span>te
-//             </div>
-//           </Link>
-//           <button
-//             class="navbar-toggler"
-//             type="button"
-//             data-bs-toggle="collapse"
-//             data-bs-target="#navbarSupportedContent"
-//             aria-controls="navbarSupportedContent"
-//             aria-expanded="false"
-//             aria-label="Toggle navigation"
-//           >
-//             <span class="navbar-toggler-icon"></span>
-//           </button>
-//           <div
-//             class="collapse navbar-collapse m-auto "
-//             id="navbarSupportedContent"
-//           >
-//             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-//               <li class="nav-item">
-//                 <Link
-//                   to="/"
-//                   class="nav-link active"
-//                   aria-current="page"
-//                   href="#"
-//                 >
-//                   Home
-//                 </Link>
-//               </li>
-//               {/* <li class="nav-item">
-//                 <a class="nav-link" href="#">
-//                   Hackathons
-//                 </a>
-//               </li>
-//               <li class="nav-item">
-//                 <a class="nav-link" href="#">
-//                   Create Hackathons
-//                 </a>
-//               </li>
-//               <li class="nav-item">
-//                 <a class="nav-link" href="#">
-//                   About Us
-//                 </a>
-//               </li> */}
-//               {connectedUser?.isAcceuil &&
-//                 <li class="nav-item">
-//                 <a class="nav-link" href="/confirmation/1">
-//                   Confirmation
-//                 </a>
-//               </li> }
-//             </ul>
-//             <div className="btns">
-//               <button className="search">
-//                 <img src={searchIcon} alt="search icon" />
-//               </button>
-//               {isLogged ? (
-//                 <>
-
-//                 <button  className="btn">
-//                   <Link to="/profile">Profile</Link>
-//                 </button>
-//                   <button onClick={logout} className="login">
-//                    Se déconnecter
-//                 </button>
-//                 </>
-
-//               ) : (
-//                 <>
-//                   <button  className="login">
-//                     <Link to="logIn">SE CONNECTER</Link>{" "}
-//                   </button>
-//                   {/* <button className="signUp">
-//                     <Link to="/signUp">S'INSCRIRE</Link>
-//                   </button> */}
-//                 </>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       </nav>
-
-//     </NavStyle>
-//   );
-// };
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link, useNavigate } from 'react-router-dom';
+import { RED_COLOR, GREEN_COLOR } from '../../style/Colors';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [isLogged, setIsLogged] = useState(false);
-  const connectedUser = JSON.parse(localStorage.getItem("user"));
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true); // State for navbar collapse
 
-  useEffect(() => {
-    setIsLogged(localStorage.getItem("user"));
-  }, [navigate]);
+  const connectedUser = JSON.parse(localStorage.getItem('user'));
+
+  // Function to toggle navbar collapse
+  const toggleNavCollapse = () => {
+    setIsNavCollapsed(!isNavCollapsed);
+  };
+
   const logout = async (e) => {
     e.preventDefault();
     localStorage.clear();
-    // alert("Log out successfully")
-    navigate("/login");
+    toggleNavCollapse()
+    navigate('/login');
   };
-  // console.log(connectedUser)
+
   return (
     <NavStyle className="container">
-      <nav class="navbar navbar-expand-md navbar-light ">
-        <Link class="navbar-brand" to="/">
+      <nav className="navbar navbar-expand-lg navbar-light">
+        <Link className="navbar-brand" to="/">
           <div className="logo">
-            inno<span>MIA</span>te{" "}
+            inno<span>MIA</span>te{' '}
           </div>
         </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={toggleNavCollapse} // Toggle collapse on button click
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <Link class="nav-link" to="/">
-                Home <span class="sr-only">(current)</span>
+        <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/" onClick={toggleNavCollapse}>
+                Home <span className="sr-only">(current)</span>
               </Link>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={toggleNavCollapse}>
+                Hackathons
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={toggleNavCollapse}>
+                Create Hackathons
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={toggleNavCollapse}>
+                About Us
+              </a>
+            </li>
             {connectedUser?.isAcceuil && (
-              <li class="nav-item">
-                <a class="nav-link" href="/confirmation/1">
+              <li className="nav-item">
+                <a className="nav-link" href="/confirmation/1" onClick={toggleNavCollapse}>
                   Confirmation
                 </a>
               </li>
             )}
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form className="form-inline my-2 my-lg-0">
             <div className="btns">
-              
               {isLogged ? (
                 <>
                   <button className="btn">
-                    <Link to="/profile">Profile</Link>
+                    <Link to="/profile" onClick={toggleNavCollapse}>
+                      Profile
+                    </Link>
                   </button>
                   <button onClick={logout} className="login">
                     Se déconnecter
@@ -175,11 +84,15 @@ const Navbar = () => {
               ) : (
                 <>
                   <button className="login">
-                    <Link to="logIn">SE CONNECTER</Link>{" "}
+                    <Link to="logIn" onClick={toggleNavCollapse}>
+                      SE CONNECTER
+                    </Link>{' '}
                   </button>
-                  {/* <button className="signUp">
-                     <Link to="/signUp">S'INSCRIRE</Link>
-                   </button> */}
+                  <button className="signUp">
+                    <Link to="/signUp" onClick={toggleNavCollapse}>
+                      S'INSCRIRE
+                    </Link>
+                  </button>
                 </>
               )}
             </div>
@@ -217,15 +130,18 @@ const NavStyle = styled.div`
       &.signUp {
         background-color: ${RED_COLOR};
         a {
-          color: white;
+          color: white !important;
         }
       }
     }
   }
-  button.navbar-toggler {
+
+  .navbar-toggler {
     box-shadow: none;
   }
-  div#navbarSupportedContent {
+
+  /* Ensure space between navbar items */
+  #navbarSupportedContent {
     justify-content: space-between;
   }
 `;

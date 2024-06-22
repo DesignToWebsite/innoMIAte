@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card from "../general/Card";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -47,6 +47,9 @@ const Cards = styled.div`
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
+        @media  (max-width: 555px) {
+        justify-content: center;
+    }
     }
     .no_comp{
       margin: 2em auto;

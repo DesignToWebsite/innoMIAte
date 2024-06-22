@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { RED_COLOR, GREEN_COLOR } from "../../style/Colors";
+import { RED_COLOR, GREEN_COLOR } from "../../../style/Colors";
 
-const PasswordChange = () => {
+const Password= () => {
   // Initialize state from localStorage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
@@ -194,4 +194,4 @@ const TitleSmall = styled.h4`
   margin-top: 20px;
 `;
 
-export default PasswordChange;
+export default Password;

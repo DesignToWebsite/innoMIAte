@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { RED_COLOR,GREEN_COLOR } from "../../style/Colors";
-import data from "../../data/data.json";
+import { RED_COLOR,GREEN_COLOR } from "../../../style/Colors";
+import data from "../../../data/data.json";
 
 const FAQ = () => {
   const [selectedQuestion, setSelectedQuestion] = useState(null);

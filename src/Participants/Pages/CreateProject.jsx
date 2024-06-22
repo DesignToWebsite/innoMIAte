@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import styled from "styled-components";
 import JoinCompetitionBtn from "../JoinCompetitionBtn";
 import CreateProjectBtn from "../Components/Buttons/CreateProjectBtn";
+import axios from "axios";
 
 const CreateProject = ({
   data,
@@ -73,22 +74,42 @@ const Create = styled.div`
   }
 `;
 
-const BtnCreateProject = () => {
+const BtnCreateProject = ({hasATeam}) => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const editProject = async (e) => {
+  const addProject = async (e) => {
     e.preventDefault();
-    navigate(`/competition/${id}/steps`);
+    navigate(`/competition/${id}/createProject`);
   };
   const addMembers = async (e) => {
     e.preventDefault();
     navigate(`/competition/${id}/participants`);
   };
+  const deteteProject = async(e)=>{
+    e.preventDefault()
+    try{
+      const url = await axios.delete(`http://localhost:5299/api/groups/delete/${hasATeam}`)
+
+      if(url.response){
+        console.log("group deleted")
+      }
+    }catch(error){
+      console.error(error)
+    }
+    window.reload()
+    navigate(`/competition/${id}/myProject`)
+  }
+
   return (
     <BtnCreate>
-      <button onClick={editProject} className="btn btn-red">
-        Edit project
-      </button>
+      {hasATeam? 
+        <button onClick={deteteProject} className="btn btn-red">
+        Delete project
+      </button> : 
+       <button onClick={addProject} className="btn btn-red">
+       Create project
+     </button>
+      }
       <button onClick={addMembers} className="btn btn-green">
         Trouver des coéquipiers
       </button>
@@ -98,7 +119,7 @@ const BtnCreateProject = () => {
 const BtnCreate = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 15px;
+  /* margin-right: 15px; */
   button {
     margin-bottom: 15px;
   }

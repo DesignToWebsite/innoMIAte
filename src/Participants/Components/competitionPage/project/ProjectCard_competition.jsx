@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-import no_image from "../../assets/no_image.png"
+import no_image from "../../../../assets/no_image.png"
 const ProjectCard_competition = ({ data }) => {
   const { id } = useParams();
   return (

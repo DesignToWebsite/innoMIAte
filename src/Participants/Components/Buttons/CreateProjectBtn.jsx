@@ -33,9 +33,12 @@ const CreateProjectBtn = ({
       projectName: dataCard.name,
       projectDescription: dataCard.description,
       projectImage: dataCard.img_save,
+      participantId : joinedCompetition.id
+
     };
 
     const leaderId = dataCard.leaderId;
+    console.log(leaderId)
     try {
       if (team.projectImage) {
         const uploadImage = `http://localhost:5299/api/Files/upload`;
@@ -49,24 +52,29 @@ const CreateProjectBtn = ({
         });
         console.log("image uploaded succusfully");
         team = {
-          name: dataCard.teamName, ///team NAME
-          slogan: dataCard.slogan, //TEAM SLOGAN
-          competitionId: dataCard.competitionId, /////
-          projectName: dataCard.name,
-          projectDescription: dataCard.description,
-          projectImage: responseImageUploaded.data.filePath,
+          "groupName": dataCard.teamName, ///team NAME
+          "slogan": dataCard.slogan, //TEAM SLOGAN
+          "competitionId": dataCard.competitionId, /////
+          "projectName": dataCard.name,
+          "projectDescription": dataCard.description,
+          "projectImage": responseImageUploaded.data.filePath,
+          "participantId" : joinedCompetition.id
         };
       
       }
       //add the project
-      const uploadProjectUrl = `http://localhost:5299/api/CompetitionParticipant/createTeamAssignLeader?participantId=${leaderId}`;
+      // const uploadProjectUrl = `http://localhost:5299/api/CompetitionParticipant/createTeamAssignLeader?participantId=${leaderId}`;
+      const uploadProjectUrl = "http://localhost:5299/api/groups/create"
+      console.log("team created, " , team)
       const response = await axios.post(uploadProjectUrl, team);
       if (response) {
         console.log("joined");
         setHasAProject(team);
+        console.log("team", response)
         // setHasATeam(team);
-        window.location.reload();
-        navigate(`/competition/${id}/steps`);
+        navigate(`/competition/${id}/myProject`);
+        // window.location.reload();
+
       }
     } catch (error) {
       // console.log(team);
@@ -83,6 +91,8 @@ const CreateProjectBtn = ({
   );
 };
 
-const BtnCreate = styled.div``;
+const BtnCreate = styled.div`
+margin-top : 2em;
+`;
 
 export default CreateProjectBtn;

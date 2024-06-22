@@ -1,57 +1,59 @@
 import styled from "styled-components"
 
-import search_icon from "../../assets/search_icon.png"
+import search_icon from "../../../../assets/search_icon.png"
 
-const Search = ()=>{
-    const hackathon = "Search hackathons"
+const SearchParticipant = ()=>{
+    const hackathon = "Search Participant"
     return(
         <SearchStyle>
             <div className="container">
-                <div className="row">
-                    <div className="col-9">
-                        <div className="searchInput">
+                {/* <div className="row">
+                    <div className="col-9"> */}
+                    <div className="search">
+                    <div className="searchInput">
                         <span className="icon_search">
                             <img src={search_icon} alt="Search" />
                         </span>
-                        <input type="text" placeholder="Find your next hackathon" />
+                        <input type="text" placeholder="Find participant" />
                         </div>
-                        
-                    </div>
-                    <div className="col-3">
                         <div className="btn btn-red btn-search">
                             {hackathon}
                         </div>
                     </div>
-                </div>
+                       
+                   
             </div>
         </SearchStyle>
     )
 }
 
 const SearchStyle = styled.div`
+.search{
+    display: flex;
+    width: 100%;
+
+}
 .searchInput{
     display: flex;
     align-items: center;
-    justify-content: center;
     border: 2px solid #B7C3C7;
-    border-radius: 5px;
+    width: inherit;
     span{
         padding: 5px;
     }
     input{
-        width: 100%;
         border: none;
         padding: 5px;
     }
 }
 .btn-search{
-    width: 100%;
-    padding: 0;
-    height: 100%;
+    /* width: 100%; */
+    padding: 0 1em;
+    /* height: 100%; */
     display: flex;
     align-items: center;
     justify-content: center;
 }  
 `
 
-export default Search;
+export default SearchParticipant;
