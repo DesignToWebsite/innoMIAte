@@ -28,9 +28,16 @@ const SearchParticipant = ()=>{
 }
 
 const SearchStyle = styled.div`
+
 .search{
     display: flex;
+    /* flex-wrap: wrap; */
     width: 100%;
+    @media (max-width: 517px) {
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    gap: 10px;
+  }
 
 }
 .searchInput{
@@ -53,6 +60,9 @@ const SearchStyle = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 517px) {
+    padding: 10px;
+  }
 }  
 `
 

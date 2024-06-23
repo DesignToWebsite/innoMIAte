@@ -109,7 +109,7 @@ const Profile = () => {
                 <div className="skills">
                   <h4>Compétences</h4>
                   <div className="list">
-                    {userProfile.skills?.map((item, key) => {
+                    {userProfile.skills?.$values.map((item, key) => {
                       return (
                         <div key={key} className="item">
                           {item}
@@ -121,7 +121,7 @@ const Profile = () => {
                 <div className="interests">
                   <h4>Intérêts</h4>
                   <div className="list">
-                    {userProfile.interests?.map((item, key) => {
+                    {userProfile.interests?.$values.map((item, key) => {
                       return (
                         <div key={key} className="item">
                           {item}
@@ -146,20 +146,13 @@ const Profile = () => {
           selectedHackathonId={selectedHackathon ? selectedHackathon.id : null}
         />
       )} */}
-     
-    </ProfileStyle>
-  );
-};
-
-
-const UserDashboard = ()=>{
-  return(
-     <UserDashboardStyle>
+      {/* <UserDashboard /> */}
+      <UserDashboardStyle>
         <div className="UserDashboard">
           <div className="container">
             <ul className="nav_profile">
               <li>
-                {/* <Link
+                <Link
                   onClick={(e) => {
                     e.preventDefault();
                     setActivePage("Projects");
@@ -169,7 +162,7 @@ const UserDashboard = ()=>{
                 >
                   <p className="number">{projectsCounter}</p>
                   <p>Projets</p>
-                </Link> */}
+                </Link>
               </li>
               <li>
                 <Link
@@ -269,8 +262,16 @@ const UserDashboard = ()=>{
           </div>
         </div>
       </UserDashboardStyle>
-  )
-}
+    </ProfileStyle>
+  );
+};
+
+
+// const UserDashboard = ()=>{
+//   return(
+   
+//   )
+// }
 const UserDashboardStyle = styled.div`
   .UserDashboard {
     background: #f5f7f7;

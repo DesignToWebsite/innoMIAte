@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { GREEN_COLOR, RED_COLOR } from "../../style/Colors";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import InProgress from "../All/InProgress";
 
 const SignIn = ({confirmation = false}) => {
+  // const {id} = useParams()
   const navigate = useNavigate();
   const [inProgress, setInProgress] = useState(false);
   const handleConfirmation = async (userId)=>{
@@ -19,8 +20,9 @@ const SignIn = ({confirmation = false}) => {
       const response = await axios.post(url, participant);
       if (response.data) {
         setInProgress(false);
+        confirmation? navigate(`/confirmation/1?userAdd`) : navigate("/login?accountCreated")
         window.location.reload()
-        confirmation? navigate("/confirmation?success") : navigate("/login")
+        
       }
     } catch (error) {
       setInProgress(false);

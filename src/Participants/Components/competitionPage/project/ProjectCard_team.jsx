@@ -66,7 +66,7 @@ const CardContent = ({ teamInfo }) => (
 );
 
 const ProjectCard = styled.div`
-  margin: 2em;
+  /* margin: 2em; */
   .project {
     width: 250px;
     display: grid;

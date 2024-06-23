@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const ModelAddToAGroup = ({ user, index }) => {
@@ -15,7 +16,7 @@ const ModelAddToAGroup = ({ user, index }) => {
   const [getGroups, setGetGroups] = useState([]);
   const [group, setGroup] = useState(null);
   const [userId, setUserId] = useState(user.participantId);
-
+const navigate = useNavigate()
   //Get the list of groupes
   const getGroupsFromApi = async () => {
     const url = "http://localhost:5299/api/groups";
@@ -47,6 +48,7 @@ const ModelAddToAGroup = ({ user, index }) => {
       const response = await axios.put(url);
       if (response.data) {
         alert("utilisateur ajouté avec succès au groupe");
+        navigate("/confirmation/1?userAddToAGroup")
         window.location.reload();
       }
     } catch (error) {

@@ -13,6 +13,7 @@ const CreateProjectBtn = ({
 }) => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [error,setError] = useState(null)
   const HandelCreate = async (e) => {
     e.preventDefault();
     const { name, description, teamName } = dataCard;
@@ -20,20 +21,18 @@ const CreateProjectBtn = ({
     // Check if required fields are filled
     if (!name || !description || !teamName) {
       // console.log(dataCard);
-      alert(
+      setError(
         "Please fill in all required fields: Project name, Project Description, and Team name."
       );
       return;
     }
 
     let team = {
-      name: dataCard.teamName, ///team NAME
-      slogan: dataCard.slogan, //TEAM SLOGAN
-      competitionId: dataCard.competitionId, /////
-      projectName: dataCard.name,
-      projectDescription: dataCard.description,
-      projectImage: dataCard.img_save,
-      participantId : joinedCompetition.id
+      "name": dataCard.teamName, ///team NAME
+      "slogan": dataCard.slogan, //TEAM SLOGAN
+      "projectName": dataCard.name,
+      "projectDescription": dataCard.description,
+      "projectImage": dataCard.img_save
 
     };
 
@@ -52,9 +51,8 @@ const CreateProjectBtn = ({
         });
         console.log("image uploaded succusfully");
         team = {
-          "groupName": dataCard.teamName, ///team NAME
+          "name" : dataCard.teamName,
           "slogan": dataCard.slogan, //TEAM SLOGAN
-          "competitionId": dataCard.competitionId, /////
           "projectName": dataCard.name,
           "projectDescription": dataCard.description,
           "projectImage": responseImageUploaded.data.filePath,
@@ -64,7 +62,7 @@ const CreateProjectBtn = ({
       }
       //add the project
       // const uploadProjectUrl = `http://localhost:5299/api/CompetitionParticipant/createTeamAssignLeader?participantId=${leaderId}`;
-      const uploadProjectUrl = "http://localhost:5299/api/groups/create"
+      const uploadProjectUrl = `http://localhost:5299/api/groups/leaderCreateGroup?participantId=${joinedCompetition.id}`
       console.log("team created, " , team)
       const response = await axios.post(uploadProjectUrl, team);
       if (response) {
@@ -72,7 +70,7 @@ const CreateProjectBtn = ({
         setHasAProject(team);
         console.log("team", response)
         // setHasATeam(team);
-        navigate(`/competition/${id}/myProject`);
+        navigate(`/competition/${id}/myProject?projectCreated`);
         // window.location.reload();
 
       }
@@ -87,6 +85,11 @@ const CreateProjectBtn = ({
       <button type="submit" className="btn btn-red" onClick={HandelCreate}>
         Create project
       </button>
+      {
+        error && <p className="error">
+          {error}
+        </p>
+      }
     </BtnCreate>
   );
 };

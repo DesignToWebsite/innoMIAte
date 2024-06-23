@@ -25,7 +25,9 @@ const Confirmation = () => {
       const response = await axios.post(url);
       if (response?.data) {
         console.log("User comfimed ");
+        navigate(`/confirmation/1?confirmed`)
         window.location.reload();
+
       }
     } catch (error) {
       console.log(error);
@@ -46,29 +48,15 @@ const Confirmation = () => {
         `http://localhost:5299/api/groups/delete/${idGroup}`
       );
       if (response.data) {
+        navigate("/confirmation/1?groupeDeleted")
         window.location.reload();
-        alert("Groupe a été supprimer");
+        // alert("Groupe a été supprimer");
       }
     } catch (e) {
       console.log(e);
     }
   };
-  // const hadleDeleteParticipantFromGroup = async (e, idParticipant) => {
-  //   // const url = "55"
-  //   e.preventDefault()
-  //   // console.log(idParticipant)
-  //   try {
-  //     const response = await axios.patch(
-  //       `http://localhost:5299/api/groups/remove-participant-from-group/${idParticipant}`
-  //     );
-  //     if (response.data) {
-  //       window.location.reload();
-  //       alert("Le participant a quitté le groupe");
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+
   useEffect(() => {
     const fetchUsers = async () => {
       const url = `http://localhost:5299/api/CompetitionParticipant/${id}`;
@@ -97,11 +85,11 @@ const Confirmation = () => {
               data-toggle="modal"
               data-target="#addParticipantModal"
             >
-             Ajouter un participant
+              Ajouter un participant
             </button>
           </div>
           <SearchReception users={users} setFilteredUsers={setFilteredUsers} />
-          <div style={{overflowX:'auto'}}></div>
+          <div style={{ overflowX: "auto" }}></div>
           <table>
             <thead>
               <tr>
@@ -113,81 +101,79 @@ const Confirmation = () => {
               </tr>
             </thead>
             <tbody>
-  {filteredUsers ? (
-    filteredUsers.map((user, index) => {
-      return (
-        <tr key={index}>
-          <td data-label="Nom complet">
-            {user.firstName} {user.lastName}
-          </td>
-          <td data-label="Email">{user.email}</td>
-          <td data-label="Team">{user.groupName}</td>
-          <td data-label="Leader">{user.isLeader ? 1 : 0}</td>
-          <td data-label="Action">
-            {!user.isConfirmed && (
-              <button
-                onClick={(e) => handleConfirmation(e, user)}
-                className="btn btn-orange"
-              >
-                Confirmation
-              </button>
-            )}
-            {user.isConfirmed && (
-              <div className="actions">
-                {!user.isLeader && !user.groupName && (
-                  <button
-                    type="button"
-                    className="btn btn-green"
-                    data-toggle="modal"
-                    data-target={`#editParticipantModel${index}`}
-                  >
-                    Modifier
-                  </button>
-                )}
-                {!user.groupName && (
-                  <button
-                    type="button"
-                    className="btn btn-green btn-add"
-                    data-toggle="modal"
-                    data-target={`#addParticipantToAGroup${index}`}
-                  >
-                    Ajouter
-                  </button>
-                )}
-                {user.groupName && user.isLeader && (
-                  <button
-                    type="button"
-                    className="btn btn-red btn-delete-group"
-                    onClick={(e) =>
-                      handleDeleteGroup(
-                        e,
-                        user.groupId,
-                        user.participantId
-                      )
-                    }
-                  >
-                    Supprimer le groupe
-                  </button>
-                )}
+              {filteredUsers ? (
+                filteredUsers.map((user, index) => {
+                  return (
+                    <tr key={index}>
+                      <td data-label="Nom complet">
+                        {user.firstName} {user.lastName}
+                      </td>
+                      <td data-label="Email">{user.email}</td>
+                      <td data-label="Team">{user.groupName}</td>
+                      <td data-label="Leader">{user.isLeader ? 1 : 0}</td>
+                      <td data-label="Action">
+                        {!user.isConfirmed && (
+                          <button
+                            onClick={(e) => handleConfirmation(e, user)}
+                            className="btn btn-orange"
+                          >
+                            Confirmation
+                          </button>
+                        )}
+                        {user.isConfirmed && (
+                          <div className="actions">
+                            {!user.isLeader && !user.groupName && (
+                              <button
+                                type="button"
+                                className="btn btn-green"
+                                data-toggle="modal"
+                                data-target={`#editParticipantModel${index}`}
+                              >
+                                Modifier
+                              </button>
+                            )}
+                            {!user.groupName && (
+                              <button
+                                type="button"
+                                className="btn btn-green btn-add"
+                                data-toggle="modal"
+                                data-target={`#addParticipantToAGroup${index}`}
+                              >
+                                Ajouter
+                              </button>
+                            )}
+                            {user.groupName && user.isLeader && (
+                              <button
+                                type="button"
+                                className="btn btn-red btn-delete-group"
+                                onClick={(e) =>
+                                  handleDeleteGroup(
+                                    e,
+                                    user.groupId,
+                                    user.participantId
+                                  )
+                                }
+                              >
+                                Supprimer le groupe
+                              </button>
+                            )}
 
-                {user.groupName && !user.isLeader && (
-                  
-                  <LeaveGroup participantId={user.participantId} />
-                )}
+                            {user.groupName && !user.isLeader && (
+                              <LeaveGroup participantId={user.participantId} />
+                            )}
 
-                <ModelEditParticipant user={user} index={index} />
-                <ModelAddToAGroup user={user} index={index} />
-              </div>
-            )}
-          </td>
-        </tr>
-      );
-    })
-  ) : (
-    <p>No user exists</p>
-  )}
-</tbody>
-
+                            <ModelEditParticipant user={user} index={index} />
+                            <ModelAddToAGroup user={user} index={index} />
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <p>No user exists</p>
+              )}
+            </tbody>
           </table>
           <ModelCreateParticipant />
         </ConfirmationStyle>
@@ -195,42 +181,7 @@ const Confirmation = () => {
     </>
   );
 };
-// const ConfirmationStyle = styled.div`
-//   min-height: 80vh;
-//   .actions {
-//     display: flex;
-//     flex-wrap: wrap;
-//     gap: 10px;
-//   }
-//   table {
-//     width: 100%;
-//     margin: 2em 0;
-//     border-collapse: collapse;
-//     overflow-x: auto;
-//   }
-//   th,
-//   td {
-//     border: 1px solid #ddd;
-//     padding: 8px;
-//   }
-//   th {
-//     background-color: #f2f2f2;
-//     text-align: left;
-//   }
-//   tr:nth-child(even) {
-//     background-color: #f9f9f9;
-//   }
-//   tr:hover {
-//     background-color: #ddd;
-//   }
-//   .title {
-//     caption-side: top;
-//     font-size: 1.5em;
-//     margin: 10px;
-//     display: flex;
-//     justify-content: space-between;
-//   }
-// `;
+
 const ConfirmationStyle = styled.div`
   min-height: 80vh;
   .actions {
@@ -245,13 +196,11 @@ const ConfirmationStyle = styled.div`
     border-collapse: collapse;
     overflow-x: auto;
     /* display: block; */
-
   }
   th,
   td {
     border: 1px solid #ddd;
     padding: 8px;
-
   }
   th {
     background-color: #f2f2f2;
@@ -269,6 +218,7 @@ const ConfirmationStyle = styled.div`
     margin: 10px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 768px) {
@@ -278,23 +228,21 @@ const ConfirmationStyle = styled.div`
       overflow-x: auto;
       white-space: nowrap;
       border-collapse: collapse;
-
     }
-    
+
     thead,
     tbody,
     th,
     td,
     tr {
       display: block;
-
     }
     thead tr {
       position: absolute;
       top: -9999px;
       left: -9999px;
-    display: flex;
-  }
+      display: flex;
+    }
     tr {
       /* margin: 0rem 0 1rem 0; */
       padding: 20px 0;
@@ -320,13 +268,13 @@ const ConfirmationStyle = styled.div`
       font-weight: bold;
     }
   }
-  .btn-orange{
+  .btn-orange {
     background-color: ${ORANGE_COLOR};
   }
-  .btn-delete-group, .btn-add{
-    opacity: .8;
+  .btn-delete-group,
+  .btn-add {
+    opacity: 0.8;
   }
 `;
-
 
 export default Confirmation;

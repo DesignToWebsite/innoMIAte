@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import userImage from "../../../../assets/Profile/user.png";
 import styled from "styled-components";
-import { RED_COLOR } from "../../../../style/Colors";
+import {
+  ORANGE_COLOR,
+  ORANGE_COLOR_DARK,
+  RED_COLOR,
+} from "../../../../style/Colors";
+import {
+  PADDING_BIG_SCREEN,
+  PADDING_SMALL_SCREEN,
+} from "../../../../style/Padding";
 
 const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
   const [team, setTeam] = useState(null);
@@ -22,8 +30,7 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
     }
   };
   useEffect(() => {
-    if(teamName)
-      getTeamInfo();
+    if (teamName) getTeamInfo();
   }, [teamId]);
   const counter = teamName?.participants.$values.length;
   // console.log(counter);
@@ -46,15 +53,19 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
       setError(error.response.data);
     }
   };
-
+  const handleCreateProject = async(e)=>{
+    e.preventDefault();
+    navigate(`/competition/${id}/createProject`)
+}
   const emailSearch = (e) => {
     setEmailToSearch(e.target.value);
   };
 
   const removeTeamMember = (emailToRemove) => {
-    setTeam((prevTeams) =>
-      prevTeams.filter((team) => team.email !== emailToRemove)
-    );
+    // setTeam((prevTeams) =>
+    //   prevTeams.filter((team) => team.email !== emailToRemove)
+    // );
+    setTeam(null);
   };
   const addMemberToDB = async (e) => {
     e.preventDefault();
@@ -74,9 +85,10 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
       console.log(error);
     }
   };
-  const handleDelete = ()=> {
-
-  }
+  const addMembers = async (e) => {
+    e.preventDefault();
+    navigate(`/competition/${id}/participants`);
+  };
   return (
     <>
       {isLeader ? (
@@ -88,6 +100,32 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
           </p>
           <div className="line"></div>
           <div className="addMember">
+            <div className="currentMembers">
+              <h3>Coéquipiers actuels</h3>
+              <div className="teams">
+                {groupInfo?.map((item, key) => {
+                  return (
+                    <div key={key} className="item">
+                      <div className="img">
+                        <img
+                          src={item?.image ? item.image : userImage}
+                          alt=""
+                        />
+                      </div>
+                      <div className="info">
+                        <a href="#">
+                          {item.lastName} {item.firstName}
+                        </a>
+                        <p>{item.username}</p>
+                      </div>
+                      {/* <div onClick={(item.userId) => handleDelete()} className="delete">
+                        X
+                      </div> */}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
             <div className="addMembers">
               {counter < 5 ? (
                 <>
@@ -109,49 +147,12 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
                 <h3>Équipe complète</h3>
               )}
             </div>
-
-            <div className="currentMembers">
-              <h3>Coéquipiers actuels</h3>
-              <div className="teams">
-                {groupInfo?.map((item, key) => {
-                  return (
-                    <div key={key} className="item">
-                      <div className="img">
-                        <img
-                          src={
-                            item?.image
-                              ? item.image
-                              : userImage
-                          }
-                          alt=""
-                        />
-                      </div>
-                      <div className="info">
-                        <a href="#">
-                          {item.lastName} {item.firstName}
-                        </a>
-                        <p>{item.username}</p>
-                      </div>
-                      {/* <div onClick={(item.userId) => handleDelete()} className="delete">
-                        X
-                      </div> */}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </div>
-          {emailToSearch && (
-            <p className="info">
-              Enregistrer le nouveau membre Pour que vous puissiez chercher
-              d'autre personne
-            </p>
-          )}
 
           <div className="newMembers">
             <div className="teams">
               {team && (
-                <div className="item" >
+                <div className="item">
                   <div className="img">
                     <img src={team.image ? team.image : userImage} alt="" />
                   </div>
@@ -175,51 +176,64 @@ const ManageTeam = ({ data, isLeader, connectedUser, teamName }) => {
             <button onClick={addMemberToDB} className="btn btn-green">
               enregistrer
             </button>
+            {emailToSearch && (
+              <p className="info">
+                Cliquez sur le bouton Enregistrer pour ajouter le nouveau membre
+                à votre groupe
+              </p>
+            )}
           </div>
           {error && <p className="error">{error}</p>}
         </Team>
+      ) : teamName ? (
+        <Team>
+          <div className="currentMembers">
+            <h3>Coéquipiers actuels</h3>
+            <div className="teams">
+              {groupInfo?.map((item, key) => {
+                return (
+                  <div key={key} className="item">
+                    <div className="img">
+                      <img src={item?.image ? item.image : userImage} alt="" />
+                    </div>
+                    <div className="info">
+                      <a href="#">
+                        {item.lastName} {item.firstName}
+                      </a>
+                      <p>{item.username}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </Team>
       ) : (
         <Team>
-        <div className="currentMembers">
-        
-              <h3>Coéquipiers actuels</h3>
-              <div className="teams">
-                {groupInfo?.map((item, key) => {
-                  return (
-                    <div key={key} className="item">
-                      <div className="img">
-                        <img
-                          src={
-                            item?.image
-                              ? item.image
-                              : userImage
-                          }
-                          alt=""
-                        />
-                      </div>
-                      <div className="info">
-                        <a href="#">
-                          {item.lastName} {item.firstName}
-                        </a>
-                        <p>{item.username}</p>
-                      </div>
-                      {/* <div onClick={(item.userId) => handleDelete()} className="delete">
-                        X
-                      </div> */}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+          <h2>Vous devez créer ou rejoindre une équipe</h2>
+          <div className="btns">
+          <button onClick={handleCreateProject} className="btn btn-red">Créer un projet</button>
+          <button onClick={addMembers} className="btn btn-green">
+        Trouver des coéquipiers
+      </button>
+          </div>
+          
         </Team>
-      
       )}
     </>
   );
 };
 
 const Team = styled.div`
-  margin: 1em 2em;
+  padding: ${PADDING_BIG_SCREEN};
+  @media (max-width: 425px) {
+    padding: ${PADDING_SMALL_SCREEN};
+  }
+  .btns{
+    display: flex;
+    gap: 20px;
+    margin: 2em 0;
+  }
   p {
     color: #233136;
   }
@@ -229,27 +243,35 @@ const Team = styled.div`
     margin-bottom: 25px;
   }
   .inviteInput {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    display: flex;
     margin: 15px 0;
+    width: 100%;
+    @media (max-width: 700px) {
+      flex-direction: column;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
     input {
       border: 1px solid #dddddd;
       padding: 5px 10px;
+      min-width: 500px;
+
+      /* min-width:400px ; */
+      /* width: inherit; */
     }
   }
-  .addMember {
-    display: grid !important;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-  }
-  .teams {
 
+  .teams {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 25px 0 0 0;
     .item {
       position: relative;
       display: flex;
       gap: 10px;
       margin-bottom: 10px;
-      
+
       img {
         width: 50px;
         height: 50px;
@@ -261,7 +283,7 @@ const Team = styled.div`
       }
     }
   }
-  .delete{
+  .delete {
     background-color: ${RED_COLOR};
     width: fit-content;
     height: fit-content;
@@ -271,12 +293,11 @@ const Team = styled.div`
     color: white;
     display: flex;
     cursor: pointer;
-   position: absolute;
-   right: 0;
+    position: absolute;
+    right: 0;
   }
   .newMembers {
     margin: 1em 0;
-
     .btn {
       display: flex;
       height: fit-content;
@@ -284,6 +305,12 @@ const Team = styled.div`
       justify-content: center;
       padding: 5px 10px;
     }
+  }
+  .info {
+    font-size: 14px;
+    margin: 0;
+    color: ${ORANGE_COLOR};
+    font-weight: bold;
   }
 `;
 

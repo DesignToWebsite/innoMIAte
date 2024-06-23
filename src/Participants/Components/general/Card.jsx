@@ -15,6 +15,7 @@ const Card = ({data})=>{
             </div>
             <div className="content">
                 <h2>{data.name}</h2>
+                <Line />
                 <CardCompetitionInfo className="cardHome" data={data}/>
             </div>
         </Link>
@@ -22,7 +23,12 @@ const Card = ({data})=>{
         </CardStyle>
     )
 }
-
+const Line = styled.div`
+  height: 3px;
+  background-color: #dce6e9;
+  margin: 15px 0;
+  /* padding: 0 15px; */
+`;
 const CardStyle = styled.div`
     max-width: 300px ;
     //height: 200px;

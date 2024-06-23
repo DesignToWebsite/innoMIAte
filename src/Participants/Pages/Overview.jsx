@@ -71,7 +71,10 @@ const OverviewStyle = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 15px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    @media (max-width:720px){
+      flex-wrap: wrap;
+    }
   }
 `;
 

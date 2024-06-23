@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const ModelEditParticipant = ({ user, index }) => {
@@ -11,7 +12,7 @@ const ModelEditParticipant = ({ user, index }) => {
     groupId: user.groupId,
     teamName: user.groupName,
   });
-
+const navigate = useNavigate()
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -46,6 +47,7 @@ const ModelEditParticipant = ({ user, index }) => {
         const response = await axios.post(url, create);
         if(response.data){
           console.log("team created succefully")
+          navigate('/confirmation/1?teamCreated')
           window.location.reload()
 
         }

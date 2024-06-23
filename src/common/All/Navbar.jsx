@@ -5,10 +5,10 @@ import { RED_COLOR, GREEN_COLOR } from '../../style/Colors';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [isLogged, setIsLogged] = useState(false);
   const [isNavCollapsed, setIsNavCollapsed] = useState(true); // State for navbar collapse
 
   const connectedUser = JSON.parse(localStorage.getItem('user'));
+  const [isLogged, setIsLogged] = useState(connectedUser);
 
   // Function to toggle navbar collapse
   const toggleNavCollapse = () => {

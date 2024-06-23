@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { RED_COLOR, GREEN_COLOR, ORANGE_COLOR, ORANGE_COLOR_DARK } from "../style/Colors";
+import { RED_COLOR, GREEN_COLOR, ORANGE_COLOR, ORANGE_COLOR_DARK, GRAY_COLOR } from "../style/Colors";
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-weight: lighter;
+        
     }
     body{
         overflow-x: hidden;
@@ -26,7 +27,13 @@ const GlobalStyle = createGlobalStyle`
         color : ${ORANGE_COLOR}
       
     }
-   
+    .alertInfo{
+    font-size: 1em;
+    color: ${GRAY_COLOR};
+    display: flex;
+    align-items: center;
+    
+  }
     button{
         cursor: pointer;
 
@@ -34,11 +41,15 @@ const GlobalStyle = createGlobalStyle`
     p{
         font-size: 18px;
     }
+    input{
+        outline: none;
+    }
     .btn{
         border: none;
         border-radius: 0;
         padding: 10px 30px;
         color: white;
+       white-space: normal;
         &:hover{
             color: white;
         }
@@ -54,9 +65,10 @@ const GlobalStyle = createGlobalStyle`
         }
     }
     .error{
-    color: ${RED_COLOR};
+    color: ${RED_COLOR} !important;
     font-size: 12px;
-    padding: 1em;
+    /* padding: 1em; */
+    font-weight: bold;
   }
 `;
 

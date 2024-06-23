@@ -31,8 +31,8 @@ const JoinCompetitionBtn = ({ data, isLogged, joinedCompetition, setJoinedCompet
         const response = await axios.post(url, userCompetition)
         if(response.data){
           setJoinedCompetition(true)
-          window.location.reload()
-          navigate(`/competition/${id}/myProject`)
+          // window.location.reload()
+          navigate(`/competition/${id}/myProject?joined`)
         }
       }catch(error){
         setInProgress(false)

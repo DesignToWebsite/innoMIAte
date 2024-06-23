@@ -101,8 +101,8 @@ const Card = styled.div`
   background-color: white;
   max-width: 300px;
   padding: 1em 0.5em;
-  border-radius: 10px;
-  border:2px solid #dce6e9;
+   border-radius: 10px; 
+   border:2px solid #dce6e9; 
 
   img {
     margin-right: 10px;

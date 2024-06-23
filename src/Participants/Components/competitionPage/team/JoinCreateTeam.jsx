@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import Card_project from "../project/Steps_components/Card_project";
 import CreateProjectBtn from "../../Buttons/CreateProjectBtn";
+import { GRAY_COLOR, ORANGE_COLOR } from "../../../../style/Colors";
+import alert from "../../../../assets/icons/alert.png"
 const JoinCreateTeam = ({data,hasATeam,
   joinedCompetition,
   setHasATeam,
@@ -47,7 +49,10 @@ const JoinCreateTeam = ({data,hasATeam,
   return (
     <JoinOrCreateTeam>
       <div>
-        <h2 className="info">Only leader can create a project if you're not you should join an team</h2>
+        <h3 className="alertInfo">
+          <img src={alert} alt="" />
+          Seul le leader peut créer un projet, si vous ne l'êtes pas, vous devez rejoindre une équipe
+         <br /> Remarque : vous ne pouvez pas modifier les informations du projet une fois celui-ci créé.</h3>
       </div>
       <form className="isLeader">
         <div className="createProject">
@@ -116,18 +121,21 @@ const JoinCreateTeam = ({data,hasATeam,
 
 const JoinOrCreateTeam = styled.div`
   /* padding: 2em; */
-  .info{
-    padding: 2em;
-  }
+
   .input {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    flex-wrap: wrap;
     input,
     textarea {
       all: initial;
       padding: 10px 10px;
       border: 1px solid #c4c6c7;
+      width: 100%;          
+      max-width: 500px;     
+      box-sizing: border-box; 
+   
     }
     .charactersLeft {
       text-align: end;
@@ -139,8 +147,12 @@ const JoinOrCreateTeam = styled.div`
     display: flex;
     flex-direction: row;
     gap: 20px;
+    align-items: center;
     justify-content: center;
     margin: 2em auto;
+    @media (max-width: 800px){
+      flex-direction: column-reverse;
+    }
   }
 `;
 

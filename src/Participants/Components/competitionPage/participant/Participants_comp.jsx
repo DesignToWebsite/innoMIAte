@@ -72,16 +72,16 @@ const Participants_comp = () => {
                     </div>
                   </div>
                   <div className="others">
-                    <div className="skills">
-                      {item.user.skills?.map((skill) => {
+                    <div className="items skills">
+                      {item.user.skills?.$values.map((skill) => {
                         return <p>{skill}</p>;
                       })}
                     </div>
-                    <div className="intersts">
-                      {item.user.interests?.map((interest) => {
+                    {/* <div className="items intersts">
+                      {item.user.interests?.$values.map((interest) => {
                         return <p>{interest}</p>;
                       })}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               );
@@ -98,6 +98,7 @@ const Participants = styled.div`
   @media (max-width: 425px) {
     padding: ${PADDING_SMALL_SCREEN};
   }
+  
   .message {
     border: 1px solid #d9d9d9;
     background-color: #d9d9d9;
@@ -130,6 +131,8 @@ const Participants = styled.div`
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
             .name {
               display: flex;
               align-items: center;
@@ -156,7 +159,7 @@ const Participants = styled.div`
           }
         }
         .others {
-          margin: 1em 0;
+          margin: 15px 0 0 0;
           display: flex;
           justify-content: space-between;
           .intersts {
@@ -173,6 +176,10 @@ const Participants = styled.div`
         }
       }
     }
+  }
+  .items{
+    display: flex;
+    gap: 10px;
   }
 `;
 

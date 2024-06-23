@@ -36,21 +36,7 @@ const Card_project = ({ dataCard, setDataCard, setSelectedFile = null }) => {
             <div className="projectDescription">
               <p>{dataCard.description}</p>{" "}
             </div>
-            {/* <div className="team">
-              <div className="img-team">
-                {dataCard.team.map((img, index) => {
-                  return (
-                    <div
-                      className="circle"
-                      style={{ position: "absolute", left: index * 20 }}
-                      key={index}
-                    >
-                      <img src={img} alt={`Image ${index + 1}`} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div> */}
+            
           </div>
         </div>
 
@@ -82,6 +68,7 @@ const Card = styled.div`
     .img img {
       height: 200px;
       width: 100%;
+      border-bottom: 2px solid #dadadab5;
     }
     .projectName {
      margin-bottom: 0;

@@ -19,7 +19,7 @@ const Register = styled.div`
     border: 1px solid #d9d9d9;
     width: fit-content;
     margin: auto;
-    padding: 2em 4em;
+    /* padding: 2em 4em; */
     border-radius: 5px;
   }
 `;

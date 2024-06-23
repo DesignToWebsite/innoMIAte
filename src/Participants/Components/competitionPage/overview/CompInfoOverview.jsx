@@ -71,9 +71,30 @@ const CompInfoOverview = ({
           </button>
         )}
 
-        {isConfirmed && joinedCompetition && !isLeader && (
+        
+
+        {!joinedCompetition && (
+          <JoinCompetitionBtn
+            isLogged={isLogged}
+            joinedCompetition={joinedCompetition}
+            setJoinedCompetition={setJoinedCompetition}
+            data={data}
+          />
+        )}
+
+        {joinedCompetition && hasATeam && isLeader && (
+          <button onClick={EditProject} className="btn btn-green">
+            Modifier le projet
+          </button>
+        )}
+
+        {joinedCompetition && !hasATeam && (
+          <button onClick={ManageTeam} className="btn btn-green">
+            Créer une équipe OU Rejoindre une équipe
+          </button>
+        )}
+         {isConfirmed && joinedCompetition && !isLeader && (
           <>
-            <p className="joined">Rejoint</p>
             {!hasATeam && (
               <p className="small">
                 Vous devez rejoindre une équipe, trouver un chef de projet et être membre de
@@ -87,42 +108,20 @@ const CompInfoOverview = ({
             )}
           </>
         )}
-
-        {!joinedCompetition && (
-          <JoinCompetitionBtn
-            isLogged={isLogged}
-            joinedCompetition={joinedCompetition}
-            setJoinedCompetition={setJoinedCompetition}
-            data={data}
-          />
-        )}
-
-        {joinedCompetition && hasATeam && isLeader && (
-          <button onClick={EditProject} className="btn btn-green">
-            Edit project
-          </button>
-        )}
-
-        {joinedCompetition && !hasATeam && (
-          <button onClick={ManageTeam} className="btn btn-green">
-            Create a team OR Join a team
-          </button>
-        )}
-         
       </div>
     </Info>
   );
 };
 
 const Info = styled.div`
-  .joined {
+  /* .joined {
     margin-top: 1em;
     padding: 0.5em 1.5em;
     background-color: ${GREEN_COLOR};
     width: fit-content;
     color: white;
     margin-bottom: 0;
-  }
+  } */
   .info {
     h3 {
       font-size: 1.4em;

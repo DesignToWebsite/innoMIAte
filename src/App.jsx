@@ -42,7 +42,11 @@ function App() {
 
  const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   useEffect(() => {
     // Define your popup configurations
     const popup = [
@@ -54,6 +58,43 @@ function App() {
         url: 'loggedSuccessfully',
         message: 'Welcome to InnoMIAte',
       },
+      {
+        url: 'projectCreated',
+        message: 'Projet créé avec succès',
+      },
+      {
+        url : 'projectDeleted',
+        message : 'Projet supprimé avec succès'
+      },
+      {
+        url : 'joined',
+        message : `Vous avez rejoint le concours avec succès. Bonne chance! `
+      },
+      {
+        url : 'confirmed',
+        message : `Confirmation réussi`
+      },
+      {
+        url : 'userAdd',
+        message : 'Utilisateur ajouté avec succès'
+      },
+      {
+        url : "groupeDeleted",
+        message : "Groupe a été supprimer"
+      },
+      {
+        url : 'teamCreated',
+        message : "Le groupe a été creer"
+      },
+      {
+        url : "userAddToAGroup",
+        message : "Participant â été ajouté au groupe avec succés"
+      },
+      {
+        url : "/confirmation/1?firstName",
+        message : "Participant â été ajouté au groupe avec succés"
+      }
+      
       // Add more popup configurations as needed
     ];
 

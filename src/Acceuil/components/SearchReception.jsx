@@ -99,13 +99,19 @@ const SearchStyle = styled.div`
     justify-content: center;
     border: 2px solid #B7C3C7;
     border-radius: 5px;
+    height: 40px;
+    .icon_search img{
+      /* height: 30px; */
+      width: 40px;
+    }
+    /* padding: 5px; */
+/* background-color: red; */
     span{
         padding: 5px;
     }
     input{
         width: 100%;
         border: none;
-        padding: 5px;
         &:focus {
     border: none;
     font-size: inherit;
@@ -113,16 +119,29 @@ const SearchStyle = styled.div`
     box-shadow: none;
     outline: none;
 }
+
     }
+
 }
 .btn-search{
     width: 100%;
     padding: 0;
-    height: 100%;
+    /* height: 100%; */
+    height: 40px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-}  
+} 
+select{
+  /* padding: 5px; */
+  display: flex;
+  padding: 5px;
+  width: fit-content;
+  max-width: 100px;
+  margin: 0;
+  height: 100%;
+} 
 `
 
 export default SearchReception;
