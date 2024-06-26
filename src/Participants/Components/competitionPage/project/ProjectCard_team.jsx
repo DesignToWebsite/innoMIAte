@@ -32,7 +32,7 @@ const ProjectCard_team = ({ hasATeam, isLeader }) => {
       {hasATeam && teamInfo && (
         <ProjectCard>
           {isLeader ? (
-            <Link to={`/competition/${id}/steps/manageTeam`} className="project">
+            <Link to={`/competition/${id}/steps/0`} className="project">
               <CardContent teamInfo={teamInfo} />
             </Link>
           ) : (

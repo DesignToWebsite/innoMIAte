@@ -56,7 +56,7 @@ const Competition_page = () => {
             (participant) => participant.userId === userId
           );
           setJoinedCompetition(userParticipant);
-          console.log("user Participant", userParticipant)
+          // console.log("user Participant", userParticipant)
           setIsConfirmed(userParticipant.isConfirmed);
           setHasATeam(userParticipant.groupId);
           setIsLeader(userParticipant.isLeader);
@@ -71,7 +71,7 @@ const Competition_page = () => {
     };
     fetchCompetition();
   }, []);
-console.log("joined competition" , joinedCompetition)
+// console.log("joined competition" , joinedCompetition)
 
   return (
     <CompetitionStyle>
@@ -188,7 +188,7 @@ console.log("joined competition" , joinedCompetition)
                 }
               />
                <Route
-                path="/steps/:step/"
+                path="/steps/:idStep"
                 element={
                   <StepsCompetition_page
                     data={data}

@@ -84,7 +84,7 @@ const CompInfoOverview = ({
 
         {joinedCompetition && hasATeam && isLeader && (
           <button onClick={EditProject} className="btn btn-green">
-            Modifier le projet
+            Votre projet
           </button>
         )}
 
@@ -93,7 +93,8 @@ const CompInfoOverview = ({
             Créer une équipe OU Rejoindre une équipe
           </button>
         )}
-         {isConfirmed && joinedCompetition && !isLeader && (
+        
+         {joinedCompetition && !isLeader && (
           <>
             {!hasATeam && (
               <p className="small">
@@ -101,7 +102,7 @@ const CompInfoOverview = ({
                 son équipe
               </p>
             )}
-            {hasATeam && (
+            {hasAProject && (
               <p className="small">
                 Vous êtes membre de l'équipe <b>{teamName?.name} </b>
               </p>

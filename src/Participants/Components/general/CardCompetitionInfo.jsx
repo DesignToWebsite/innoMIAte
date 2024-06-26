@@ -35,7 +35,7 @@ console.log(data.deadLine)
 
 
   return (
-    <Card>
+    <Card className="cardCompHome">
       <div className="cardCompetionInfo">
         <div className="deadline">
           <p className="dayLeft">

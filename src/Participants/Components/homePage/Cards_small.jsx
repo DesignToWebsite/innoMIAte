@@ -54,5 +54,8 @@ const Cards = styled.div`
     .no_comp{
       margin: 2em auto;
     }
+    .cardCompHome{
+      border: none !important;
+    }
 `
 export default Cards_small;

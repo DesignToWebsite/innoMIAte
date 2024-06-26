@@ -15,7 +15,7 @@ const StepsMenu = ({steps}) => {
   return (
     <Menu>
       <div className="stepList">
-        <Link to={`/competition/${id}/steps/manageTeam`}
+        {/* <Link to={`/competition/${id}/steps/manageTeam`}
           className={`manageTeam step incomplete ${currentStep=="manageTeam" ? "active" : ""}`}
         >
           <img src={incompleteStepIcon} alt="" />
@@ -30,7 +30,7 @@ const StepsMenu = ({steps}) => {
           >
             <path d="M0 151.15L42.24 75.57L0 0" class="arrow"></path>
           </svg>{" "}
-        </Link>
+        </Link> */}
         
         {steps?.map((step, index) => {
           // console.log("indesxxxxxxxxxxx", index)
@@ -40,7 +40,7 @@ const StepsMenu = ({steps}) => {
               className={`step${index} step ${step.completed ? "complete" : "incomplete"} ${currentStep==`${index}` ? "active" : ""}`}
             >
               <img src={incompleteStepIcon} alt="" />
-              <span>{step.title}</span>
+              <span>{step.Title}</span>
               <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"

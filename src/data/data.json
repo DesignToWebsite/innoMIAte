@@ -1,21 +1,48 @@
 {
-  "faq": [
-    {
-      "question": "Qu'est-ce que React?",
-      "titleAnswer": "React",
-      "answer": "React est une bibliothèque JavaScript utilisée pour construire des interfaces utilisateur interactives."
-    },
-    {
-      "question": "Comment installer React?",
-      "titleAnswer": "React",
-      "answer": "Vous pouvez installer React en utilisant npm ou yarn. Exécutez `npm install react` ou `yarn add react` dans votre terminal."
-    },
-    {
-      "question": "Qu'est-ce que JSX?",
-      "titleAnswer": "React",
-      "answer": "JSX est une syntaxe de JavaScript qui permet d'écrire du HTML dans des fichiers JavaScript et de les utiliser avec React."
-    }
-  ],
+  
+    "faq": [
+      {
+        "question": "Qu'est-ce qu'une compétition en ligne?",
+        "titleAnswer": "Compétition",
+        "answer": "Une compétition en ligne est un événement compétitif organisé sur Internet où les participants peuvent s'inscrire et concourir pour gagner des prix."
+      },
+      {
+        "question": "Comment participer à une compétition?",
+        "titleAnswer": "Participation",
+        "answer": "Pour participer à une compétition, créez un compte sur notre site, trouvez la compétition à laquelle vous souhaitez participer, et suivez les instructions pour vous inscrire."
+      },
+      {
+        "question": "Quels types de compétitions sont disponibles?",
+        "titleAnswer": "Types de Compétitions",
+        "answer": "Nous proposons divers types de compétitions, y compris des compétitions de photographie, d'écriture, de design, de codage, et bien plus encore."
+      },
+      {
+        "question": "Comment puis-je créer ma propre compétition?",
+        "titleAnswer": "Création de Compétition",
+        "answer": "Pour créer votre propre compétition, connectez-vous à votre compte, accédez à la section 'Créer une Compétition' et remplissez les détails nécessaires comme le titre, la description, les règles et les prix."
+      },
+      {
+        "question": "Quels sont les critères de jugement des compétitions?",
+        "titleAnswer": "Critères de Jugement",
+        "answer": "Les critères de jugement varient en fonction de la compétition. Ils sont généralement décrits dans la section des règles de la compétition et peuvent inclure l'originalité, la créativité, la précision, et d'autres facteurs pertinents."
+      },
+      {
+        "question": "Y a-t-il des frais d'inscription pour participer aux compétitions?",
+        "titleAnswer": "Frais d'Inscription",
+        "answer": "Certaines compétitions peuvent avoir des frais d'inscription, tandis que d'autres sont gratuites. Les détails des frais sont indiqués dans la description de la compétition."
+      },
+      {
+        "question": "Comment puis-je savoir si j'ai gagné une compétition?",
+        "titleAnswer": "Annonce des Gagnants",
+        "answer": "Les gagnants des compétitions seront annoncés sur notre site et recevront également une notification par e-mail avec les détails du prix."
+      },
+      {
+        "question": "Que faire si j'ai des questions ou des problèmes?",
+        "titleAnswer": "Support",
+        "answer": "Si vous avez des questions ou rencontrez des problèmes, veuillez contacter notre support client via la page 'Contactez-nous' sur notre site."
+      }
+    ],
+  
   "competition": [
     {
       "id": 1,
@@ -371,111 +398,212 @@
     {
       "idStep": 1,
       "infoWithCard": false,
-      "Title": "Project details",
-      "completed" : false,
-      "Info": "Information entered below will appear on your public project page.",
+      "Title": "Étape 1",
+      "completed": false,
+      "Info": "Les informations saisies ci-dessous apparaîtront sur la page publique de votre projet.",
       "toComplete": [
         {
           "type": "text",
           "tag": "textarea",
-          "label": "About the project",
-          "description": "Be sure to write what inspired you, what you learned, how you built your project, and the challenges you faced. Format yourstory in Markdown.",
-          "placeholder": " ## Inspiration",
+          "label": "À propos du projet",
+          "description": "Décrivez votre projet, y compris votre inspiration, ce que vous avez appris, comment vous l'avez construit et les défis que vous avez rencontrés. Formatez votre histoire en Markdown.",
+          "placeholder": "## Inspiration",
           "required": true,
           "value": "",
           "mulipleValues": false,
-          "id": "about"
+          "id": "aboutProject"
         },
         {
           "type": "text",
           "tag": "input",
-          "label": "Built with",
-          "description": "What languages, frameworks, platforms, cloud services, databases, APIs, or other technologies did you use?",
-          "placeholder": "Languages, frameworks, platforms, cloud services, databases, APIs, etc.",
+          "label": "Outils et technologies utilisés",
+          "description": "Listez les langages, frameworks, plateformes, services cloud, bases de données, API ou autres technologies que vous avez utilisés.",
+          "placeholder": "Langages, frameworks, plateformes, services cloud, bases de données, API, etc.",
           "required": true,
           "value": "",
           "mulipleValues": false,
-          "id" : "builtWith"
+          "id": "toolsTechnologies"
         },
         {
           "type": "text",
           "tag": "input",
-          "label": "Links",
-          "description": "Add links where people can try your project or see your code.",
+          "label": "Liens de projet",
+          "description": "Ajoutez des liens où les gens peuvent essayer votre projet ou voir votre code.",
+          "placeholder": "Liens de projet",
           "required": false,
-          "value": [],
-          "mulipleValues": true,
-          "id" : "links"
-        },
-        {
-          "type": "image",
-          "tag": "image",
-          "label": "Image gallery",
-          "description": "JPG, PNG or GIF format, 5 MB max file size. For best results, use a 3:2 ratio.",
-          "required": false,
-          "value": [],
-          "mulipleValues": true,
-          "id" : "imageGallery"
-        },
-        {
-          "type": "text",
-          "tag": "input",
-          "label": " Video demo link",
-          "description": "This video will be embedded at the top of your project page. Read more about uploading videos.",
-          "required": true,
           "value": "",
-          "mulipleValues": false,
-          "id" : "videoLink"
+          "mulipleValues": true,
+          "id": "projectLinks"
         }
       ]
     },
     {
       "idStep": 2,
-      "completed" : false,
-      "Title": "Aperçu du projet",
-      "Info": "Veuillez respecter nos <a href=\"#\">directives communautaires</a>.",
-      "SecondTitle": "General info",
-      "infoWithCard": true,
+      "infoWithCard": false,
+      "Title": "Étape 2",
+      "completed": false,
+      "Info": "Fournissez des détails supplémentaires sur votre projet.",
+      "toComplete": [
+        {
+          "type": "text",
+          "tag": "textarea",
+          "label": "Détails du projet",
+          "description": "Fournissez des détails supplémentaires sur votre projet qui pourraient être utiles aux juges.",
+          "placeholder": "Détails supplémentaires...",
+          "required": true,
+          "value": "",
+          "mulipleValues": false,
+          "id": "projectDetails"
+        },
+        {
+          "type": "text",
+          "tag": "input",
+          "label": "Lien de démonstration",
+          "description": "Ajoutez un lien vers une démonstration en direct de votre projet.",
+          "placeholder": "Lien de démonstration",
+          "required": false,
+          "value": "",
+          "mulipleValues": false,
+          "id": "demoLink"
+        },
+        {
+          "type": "text",
+          "tag": "textarea",
+          "label": "Description des défis",
+          "description": "Décrivez les défis que vous avez rencontrés lors de la réalisation de votre projet.",
+          "placeholder": "Description des défis...",
+          "required": false,
+          "value": "",
+          "mulipleValues": false,
+          "id": "challengesDescription"
+        }
+      ]
+    },
+    {
+      "idStep": 3,
+      "infoWithCard": false,
+      "Title": "Étape 3",
+      "completed": false,
+      "Info": "Téléchargez des images et des documents relatifs à votre projet.",
+      "toComplete": [
+        {
+          "type": "image",
+          "tag": "image",
+          "label": "Galerie d'images",
+          "description": "Format JPG, PNG ou GIF, taille de fichier max 5 Mo. Pour de meilleurs résultats, utilisez un ratio 3:2.",
+          "required": true,
+          "value": [],
+          "mulipleValues": true,
+          "id": "imageGallery"
+        },
+        {
+          "type": "file",
+          "tag": "input",
+          "label": "Documents de support",
+          "description": "Téléchargez des documents supplémentaires qui soutiennent votre projet. Format PDF, DOC, DOCX, taille de fichier max 10 Mo.",
+          "required": false,
+          "value": [],
+          "mulipleValues": true,
+          "id": "supportingDocuments"
+        },
+        {
+          "type": "text",
+          "tag": "textarea",
+          "label": "Description des images",
+          "description": "Fournissez une description pour chaque image téléchargée.",
+          "placeholder": "Description des images...",
+          "required": false,
+          "value": "",
+          "mulipleValues": false,
+          "id": "imageDescriptions"
+        }
+      ]
+    },
+    {
+      "idStep": 4,
+      "infoWithCard": false,
+      "Title": "Étape 4",
+      "completed": false,
+      "Info": "Fournissez une démonstration vidéo de votre projet.",
       "toComplete": [
         {
           "type": "text",
           "tag": "input",
-          "label": "Nom du projet",
-          "description": "",
-          "placeholder": "",
+          "label": "Lien de démonstration vidéo",
+          "description": "Cette vidéo sera intégrée en haut de la page de votre projet. Lisez-en plus sur le téléchargement de vidéos.",
           "required": true,
           "value": "",
           "mulipleValues": false,
-          "maxCaracter": 60,
-          "id": "projectName"
+          "id": "videoDemoLink"
         },
         {
           "type": "text",
           "tag": "textarea",
-          "label": "Description du projet",
-          "description": "",
-          "placeholder": "",
-          "required": true,
+          "label": "Description de la vidéo",
+          "description": "Décrivez ce que montre la vidéo et les points clés que les juges devraient noter.",
+          "placeholder": "Description de la vidéo...",
+          "required": false,
           "value": "",
           "mulipleValues": false,
-          "maxCaracter": 200,
-          "id": "projectDescription"
+          "id": "videoDescription"
         },
         {
-          "type": "image",
-          "tag": "textarea",
-          "label": "Description du projet",
-          "description": "",
-          "placeholder": "",
-          "required": true,
+          "type": "text",
+          "tag": "input",
+          "label": "Durée de la vidéo",
+          "description": "Indiquez la durée de la vidéo en minutes et secondes.",
+          "placeholder": "Durée de la vidéo (minutes:secondes)",
+          "required": false,
           "value": "",
           "mulipleValues": false,
-          "maxCaracter": 200,
-          "id": "projectDescription"
+          "id": "videoDuration"
+        }
+      ]
+    },
+    {
+      "idStep": 5,
+      "infoWithCard": false,
+      "Title": "Étape 5",
+      "completed": false,
+      "Info": "Soumettez votre projet pour évaluation.",
+      "toComplete": [
+        {
+          "type": "text",
+          "tag": "textarea",
+          "label": "Remarques finales",
+          "description": "Ajoutez des remarques ou des commentaires supplémentaires sur votre projet.",
+          "placeholder": "Ajoutez des remarques supplémentaires ici...",
+          "required": false,
+          "value": "",
+          "mulipleValues": false,
+          "id": "finalRemarks"
+        },
+        {
+          "type": "checkbox",
+          "tag": "input",
+          "label": "Accepter les conditions",
+          "description": "Confirmez que vous avez lu et accepté les conditions du concours.",
+          "required": true,
+          "value": false,
+          "mulipleValues": false,
+          "id": "agreeTerms"
+        },
+        {
+          "type": "text",
+          "tag": "textarea",
+          "label": "Informations supplémentaires",
+          "description": "Ajoutez toute information supplémentaire que vous souhaitez partager avec les juges.",
+          "placeholder": "Informations supplémentaires...",
+          "required": false,
+          "value": "",
+          "mulipleValues": false,
+          "id": "additionalInfo"
         }
       ]
     }
-  ],
+  ]
+  
+  ,
   "competitionDefault" : {
     "name": "Sans titre",
     "description": "Pas de description",
